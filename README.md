@@ -4,7 +4,7 @@
 Oliver (peyol278)
 Liam (kerli421)
 Max
-Seda
+Seda (Jorse427)
 
 ## Ideas
 
