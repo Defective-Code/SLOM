@@ -6,9 +6,6 @@ Liam (kerli421)
 Max
 Seda (Jorse427)
 
-## Ideas
+## Assignment 1
 
-Basic Text Editor
-Calculator
-Vim Shortcut teaching game
-Inventory Management System
+https://docs.google.com/document/d/1SS1wqEoKww-3AS1dL_yarDEx65OoJ2iezDPtezxMpek/edit
