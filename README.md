@@ -1,13 +1,11 @@
 # TEAM SLOM
 
-## Overview
-
-A simple terminal based app that contains a handful of word games that use Maori instead of English.
-
 ## Team
 Oliver (peyol278)
 Liam (kerli421)
 Max
-Seda
+Seda (Jorse427)
 
+## Assignment 1
 
+https://docs.google.com/document/d/1SS1wqEoKww-3AS1dL_yarDEx65OoJ2iezDPtezxMpek
