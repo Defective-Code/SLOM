@@ -8,7 +8,7 @@
 int mock_key_state(int key) {
     // Simulate that the 'A' key (0x41) is pressed
     // You can adjust this function to simulate different keys
-    if (key == get_virtual_keycode("UP")) {
+    if (key == get_virtual_keycode("DOWN")) {
         return 0x8000; // Simulate key press
     }
     return 0;
