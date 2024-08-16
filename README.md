@@ -3,7 +3,7 @@
 ## Team
 Oliver (peyol278)
 Liam (kerli421)
-Max
+Max Simes Foster (simma362)
 Seda (Jorse427)
 
 ## Assignment 1
