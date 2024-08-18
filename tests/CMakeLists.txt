@@ -6,7 +6,7 @@ set(SOURCES main_t.cpp test_utils.cpp input_handler_t.cpp)
 # Add the test executable
 add_executable(Tests ${SOURCES})
 
-target_include_directories(Tests PRIVATE "${PROJECT_BINARY_DIR}" "${${PROJECT_SOURCE_DIR}}/src/utilities")
+target_include_directories(Tests PRIVATE "${${PROJECT_SOURCE_DIR}}/src/utilities")
 
 target_link_libraries(Tests Input_Handling)
 

@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include "input_handler.h"
-
+#include "wordle.h"
 
 int main() {
 
 	printf("Hello World, its Oliver here!");
+
+    test_print();
 
         /*char ch;
         char word[10];
