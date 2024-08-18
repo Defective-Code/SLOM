@@ -7,7 +7,7 @@ A simple terminal based app that contains a handful of word games that use Maori
 ## Team
 Oliver (peyol278)
 Liam (kerli421)
-Max
+Max Simes Foster (simma362)
 Seda (Jorse427)
 
 ## Ideas
