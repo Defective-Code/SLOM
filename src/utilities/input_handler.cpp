@@ -15,7 +15,6 @@ char* capture_word() {
 * Method that captures a keypress, and what key it was. Modified slightly for easier testing
 */
 
-
 // Default key state function using GetAsyncKeyState
 int default_key_state(int key) {
     return GetAsyncKeyState(key);
