@@ -1,18 +1,24 @@
+﻿ 1000 frequent words of Māori – in alphabetical order
+• An asterisk * in the first column means that this word is one of the 360 most frequent words in this list. Each of these words occurred 200 times or more in the Māori Texts for Children Corpus (MTC). Note that the asterisk does not mean that every meaning listed also occurred more than 200 times.
+• Some of these words have more than one meaning. This list gives the more frequent meanings of these words, as identified by their use in the texts in the MTC corpus.
+• Small caps in the third column shows the formation of the word, eg haria hari + passive suffix -a [indicating that the word haria is made up of the stem word hari and the passive suffix -a].
+• In the fourth column references are given for more information on function words – these can be difficult to translate simply.
+
+
 a
-Not translatable into an English word; nominal particle, used before names and pronouns: a Mere, a korua, a ia.
+Not translatable into an English word; nominal particle, used before names and pronouns: a Mere, a kōrua, a ia.
 See Harlow index p. 299 for a.
 *
-a
-Various meanings, eg: and, and then, as in: Ka tae mai, a, ka noho ki te kai; plural of ta, as in: ta tatou whare, a tatou whare; indicating future time, as in: A te po nei
-See Harlow index p. 299 for a.
+ā
+Various meanings, eg: and, and then, as in: Ka tae mai, ā, ka noho ki te kai; plural of tā, as in: tā tātou whare, ā tātou whare; indicating future time, as in: Ā te pō nei
+See Harlow index p. 299 for ā.
 *
-ae
+āe
 yes
 
 *
 aha
 what? 
-See Harlow index p. 299 for aha.
 *
 ahakoa
 although
@@ -20,17 +26,16 @@ although
 
 ahatia
 aha + passive suffix -tia
-See Harlow index p. 299 for aha.
 *
 ahau
 I, me
 
 
-ahei
+āhei
 to be able
 
 
-ahei
+āhei
 to allow
 
 *
@@ -62,44 +67,43 @@ ahu
 to look after
 
 *
-ahua
-shape, form, appearance
+āhua
 
 *
-ahuatanga
+āhuatanga
 property, characteristic, feature, circumstance
-ahua + nominal suffix -tanga
+āhua + nominal suffix -tanga
 
 *
 ai
 Not translatable into an English word; verbal particle; used in various subordinate structures, for example relative clauses, adverbials
 
 
-aihikirimi
+aihikirīmi
 ice-cream
 
 
-aitua
+aituā
 accident; to have an accident
 
 
-aitua
+aituā
 disaster; to suffer a disaster
 
 
-akau
+ākau
 shore, coast
 
 *
 ake
-Various uses and meanings, eg upwards, as in: piki ake, titiro ake; comparative as in: nui ake; own, as in: toku whanau ake
+Various uses and meanings, eg upwards, as in: piki ake, titiro ake; comparative as in: nui ake; own, as in: tōku whānau ake
 
 *
 ako
 to learn, to teach
 
 
-akonga
+ākonga
 student, learner
 
 
@@ -109,35 +113,29 @@ thing that is taught or learnt
 *
 aku
 my, mine, plural form of taku, neutral for possession category
-See Harlow's table of pronouns and of possessives: pp. 69-73, Table 3.5 on p. 71.
 
-aku
-my, mine, for a category items, plural form of taku
-See Harlow's table of pronouns and of possessives: pp. 69-73, Table 3.5 on p. 71.
+āku
+my, mine, for ā category items, plural form of tāku
 
-akuanei
+ākuanei
 soon, presently
 
 *
 ana
 Verbal particle showing ongoing action as in: e haere ana
-See Harlow's table of pronouns and of possessives: pp. 69-73, Table 3.5 on p. 71.
 *
 ana
 his, her, plural form of tana, neutral for possession category
-See Harlow's table of pronouns and of possessives: pp. 69-73, Table 3.5 on p. 71.
 *
 ana
 cave
 
 
-ana
+anā
 there, by you
-See Harlow index p. 299 for anei, ana, ara.
 *
-ana
-his, her, plural, for a category items
-See Harlow's table of pronouns and of possessives: pp. 69-73, Table 3.5 on p. 71.
+āna
+his, her, plural, for ā category items
 *
 anake
 only, just
@@ -145,7 +143,6 @@ only, just
 *
 anei
 here, by me
-See Harlow index p. 299 for anei, ana, ara.
 
 anga
 face or move in a certain direction
@@ -155,9 +152,9 @@ anga
 shell
 
 *
-ano
-Various meanings, eg again; also, too; self(reflexive) as in: ki a ia ano
-See Harlow index p. 299 for ano.
+anō
+Various meanings, eg again; also, too; self(reflexive) as in: ki a ia anō
+
 *
 ao
 world, dawn, cloud
@@ -167,11 +164,11 @@ aorangi
 planet
 
 
-apopo
+āpōpō
 tomorrow
 
 
-aporo
+āporo
 apple
 
 *
@@ -183,15 +180,14 @@ ara
 to rise
 
 *
-ara
+arā
 over there, away from us both
-See Harlow index p. 299 for anei, ana, ara.
 
-arahi
+ārahi
 to lead, guide
 
 
-arai
+ārai
 curtain; to screen off, block
 
 
@@ -211,11 +207,11 @@ ata
 morning, shadow
 
 *
-ata
+āta
 gently, carefully, deliberately
 
 *
-ataahua
+ātaahua
 beautiful, well formed
 
 
@@ -223,18 +219,16 @@ atawhai
 to show kindness towards
 
 
-atea
+ātea
 open space
 
 
-atea
+ātea
 outer space
 
 *
 atu
-away from current orientation
-(often not translatable by a separate English word)
-See Harlow index p. 299 for atu.
+away from current orientation (often not translatable by a separate English word)
 
 atua
 god
@@ -242,14 +236,13 @@ god
 *
 au
 I, me
-Harlow, pp. 33-37, and especially summary table of personal pronouns, Table 3.1 on p. 34.
 
-au
-your, plural form of tau, a category possession.
+āu
+your, plural form of tāu, ā category possession.
 
 *
 aua
-I don't know, as in: He aha tera? Aua!
+I don’t know, as in: He aha tērā? Aua!
 
 *
 aua
@@ -264,7 +257,7 @@ auau
 to bark, howl
 
 *
-aue
+auē
 Alas! An expression of woe, sadness
 
 *
@@ -272,7 +265,7 @@ awa
 river
 
 
-awangawanga
+āwangawanga
 worried
 
 
@@ -284,7 +277,7 @@ awhi
 to hug, embrace
 
 *
-awhina
+āwhina
 to help
 
 *
@@ -293,23 +286,19 @@ A particle used in many ways, including:
 before verbs as in: e haere ana, e tangi nei
 before verbs that have only one or two morae to make a command (imperative), as in: e noho!
 before names when addressing a person
-by - for the agent phrase of a passive structure, as in:
+by – for the agent phrase of a passive structure, as in:
 I horoia ia e taku matua.
-See Harlow index p. 300 for e.
-See Harlow index p. 304, for mora, morae, and 
-pp. 217-218 for imperatives.
+
 
 *
 ehara
 Negative used for nominal sentences, as in:
-He kuri tera. Ehara tera i te kuri.
-Ko Mere tenei. Ehara tena i a Mere.
-See Harlow index p. 300 for ehara.
+He kurī tērā. Ehara tērā i te kurī.
+Ko Mere tēnei. Ehara tēnā i a Mere.
 
 *
 ehara
 Exclamation: Sure enough, without a doubt.
-See Harlow index p. 300 for ehara.
 *
 eke
 to climb up on
@@ -319,36 +308,34 @@ eke
 to embark, get onto
 
 
-ena
-those, near you; plural of tena
-See Harlow index p. 309 and p. 65 for determiners, eg te, tetahi, tehea, tenei, tena, tera.
+ēnā
+those, near you; plural of tēnā
+
 *
-enei
-these, near me; plural of tenei
-See Harlow index p. 309 and p. 65 for determiners, eg te, tetahi, tehea, tenei, tena, tera.
+ēnei
+these, near me; plural of tēnei
+
 *
 engari
 but, on the contrary
-See Harlow index p. 300 for engari
-*
-era
 
-those, over there; plural of tera
-See Harlow index p. 309 and p. 65 for determiners, eg te, tetahi, tehea, tenei, tena, tera.
 *
-etahi
-some; plural of tetahi
-See Harlow index p. 309 and p. 65 for determiners, eg te, tetahi, tehea, tenei, tena, tera.
+ērā
 
-etehi
-some; plural of tetehi (variant of etahi)
-See Harlow index p. 309 and p. 65 for determiners, eg te, tetahi, tehea, tenei, tena, tera.
+those, over there; plural of tērā
+
+*
+ētahi
+some; plural of tētahi
+
+ētehi
+some; plural of tētehi (variant of ētahi)
 
 ha
 what!
 
 
-ha
+hā
 breath
 
 *
@@ -356,7 +343,7 @@ haere
 go, come
 
 *
-haereere
+hāereere
 to wander, roam
 
 
@@ -376,7 +363,7 @@ haka
 to perform traditional dance; haka, a traditional dance, war dance
 
 
-hakari
+hākari
 feast
 
 
@@ -384,15 +371,15 @@ haki
 flag
 
 
-hakinakina
+hākinakina
 sport; to play sport
 
 
-hamama
+hāmama
 to yell, shout
 
 
-hamama
+hāmama
 open, gaping
 
 *
@@ -400,7 +387,7 @@ hanga
 to build, erect, make
 
 
-hangai
+hāngai
 opposite, facing
 
 *
@@ -412,7 +399,7 @@ hangarau
 technology
 
 
-hangi
+hāngi
 traditional earth oven
 
 
@@ -420,23 +407,23 @@ hao
 to catch in a net, a net
 
 *
-haora
+hāora
 hour
 
 *
-haora
+hāora
 oxygen
 
 
-haparangi
+hāparangi
 to shout, bawl
 
 
-hapu
+hapū
 subtribe
 
 
-hapu
+hapū
 pregnant
 
 
@@ -484,7 +471,7 @@ haunga
 smelly, stinky
 
 
-haunga
+hāunga
 besides
 
 
@@ -496,7 +483,7 @@ haurua
 half
 
 
-hawhe
+hāwhe
 half
 
 *
@@ -504,12 +491,13 @@ he
 a, some
 See Harlow index p. 301 for he.
 
-he
+hē
 wrong; error, mistake
 
 *
 hea
 where?
+
 *
 hei
 Various meanings, eg future preposition, at, in, with,
@@ -532,7 +520,7 @@ descent
 heke + nominal suffix -nga
 
 
-heki
+hēki
 egg
 
 
@@ -544,7 +532,7 @@ hemo
 to pass by, be gone
 
 *
-heoi
+hēoi
 and so, therefore
 
 
@@ -556,12 +544,13 @@ herea
 here + passive suffix -a
 
 *
-hi
+hī
 to catch fish with a line
 
 *
 hia
 how many?
+
 *
 hiahia
 to want
@@ -586,12 +575,13 @@ lightning; to flash
 hiko
 electricity
 
+
 *
-hikoi
+hīkoi
 to walk
 
 *
-hikoi
+hīkoi
 to step, tread
 
 
@@ -625,31 +615,30 @@ enemy
 *
 hoatu
 to give (away from speaker)
-See Harlow index p. 301 for hoatu, homai.
 
 hoe
 to paddle, row
 
 
-hoha
+hōhā
 annoyed, a nuisance
 
 
-hohonu
+hōhonu
 deep
 
 
-hoia
+hōia
 soldier, warrior
 
 
-hoiho
+hōiho
 horse
 
 *
 hoki 
 also, too
-See Harlow index p. 301 for hoki.
+
 *
 hoki 
 to go back, return
@@ -658,6 +647,7 @@ to go back, return
 hokinga
 return
 hoki + nominal suffix -nga
+
 
 *
 hoko
@@ -672,7 +662,7 @@ hokona
 hoko + passive suffix -na
 
 
-homai
+hōmai
 to give (to speaker)
 
 
@@ -700,7 +690,7 @@ hou
 new
 
 *
-hu
+hū
 shoe
 
 *
@@ -780,23 +770,23 @@ fur
 i
 Several uses; not always translatable with a specific English word.
 Past tense verb particle: I haere ia ... She went 
-Past time marker: I tera wiki ... Last week 
-Direct object marker: Ka kai ia i te aporo.
+Past time marker: I tērā wiki ... Last week 
+Direct object marker: Ka kai ia i te āporo.
 Source marker (from): Kua hoki mai au i te kura.
- See Harlow index p. 302 for i.
+
 *
-i naianei 
+i nāianei 
 now
-(spelled as inaianei in older texts)
-See Harlow index p. 309 for time, expressions of time.
+(spelled as ināianei in older texts)
+
+
 *
 ia
 he, she, him, her
-See Harlow index p. 302 for ia, and index p. 308 for pronouns.
+
 *
 iho
 downwards
-See Harlow index p. 302 for iho.
 
 ihu
 nose
@@ -810,7 +800,7 @@ ina
 if, when
 
 *
-ina
+inā
 if, when
 
 
@@ -856,9 +846,8 @@ tribe
 *
 ka
 Verbal particle with a range of meanings; not directly translated with an English word
-See Harlow index p. 302 for ka.
 
-ka
+kā
 to burn, be alight
 
 *
@@ -866,9 +855,9 @@ kaha
 strong, able
 
 *
-kahore
-Negative used for verb sentences - not (variant of kaore)
-See Harlow index p. 302 for kahore and kaore.
+kāhore
+Negative used for verb sentences – not (variant of kāore)
+
 
 kahu
 cloak, cape, covering
@@ -891,9 +880,9 @@ teacher
 kai- + ako
 
 
-kaikorero
+kaikōrero
 speaker, orator
-kai- + korero
+kai- + kōrero
 
 
 kaimahi
@@ -909,7 +898,7 @@ kainga
 kai + passive suffix -nga
 
 *
-kainga
+kāinga
 home
 
 
@@ -917,18 +906,18 @@ kaipuke
 ship
 
 
-kaiputaiao
+kaipūtaiao
 scientist
-kai- + putaiao
+kai- + pūtaiao
 
 
-kaita
+kaitā
 big, sturdy of build
 
 
-kaitakaro
+kaitākaro
 player, sportsperson
-kai- + takaro
+kai- + tākaro
 
 
 kaitiaki
@@ -946,11 +935,11 @@ manager, organiser
 kai- + whakahaere
 
 *
-kakahu
+kākahu
 clothing, garment
 
 
-kakano
+kākano
 seed
 
 
@@ -958,7 +947,7 @@ kakara
 scent, smell
 
 
-kakariki
+kākāriki
 green
 
 
@@ -970,7 +959,7 @@ kake
 to climb
 
 
-kaki
+kakī
 neck
 
 
@@ -978,7 +967,7 @@ kamo
 eye
 
 
-kanga
+kānga
 corn
 
 
@@ -994,23 +983,23 @@ kanohi
 face
 
 
-kao
+kāo
 no!
-See Harlow index p. 302 for kao.
+
 *
-kaore
-Negative used for verb sentences - not
-See Harlow index p. 302 for kaore and kare.
+kāore
+Negative used for verb sentences – not
+
 *
 kapa
 group, row of people, as in: kapa haka
 
 
-kapata
+kāpata
 cupboard
 
 
-kapene
+kāpene
 captain
 
 
@@ -1018,7 +1007,7 @@ kapi
 to be covered or occupied (of space)
 
 
-kapia
+kāpia
 glue
 
 
@@ -1034,7 +1023,7 @@ kara
 colour
 
 
-karahe
+karāhe
 glass, mirror
 
 
@@ -1074,27 +1063,26 @@ kare
 stove, heater
 
 *
-kare
-Negative word - not, none
-See Harlow index p. 302 for kaore and kare.
+kāre
+Negative word – not, none
 
 karere
 messenger
 
 
-kareti
+kāreti
 college
 
 
-kareti
+kāreti
 carrot
 
 
-kari
+kāri
 card
 
 
-kari
+kāri
 playing card
 
 
@@ -1106,25 +1094,24 @@ kata
 to laugh
 
 *
-katahi
+kātahi
 then
-See Harlow index p. 302 for katahi.
 
 katakata
 to laugh and laugh, laughter
 
 
-kati
-Stop! As in: Kati te tangi - Stop crying
-See Harlow index p. 302 for kati.
+kāti
+Stop! As in: Kāti te tangi – Stop crying
+
 *
 katoa
 all
-See Harlow index p. 302 for katoa.
+
 *
 kau
-manner particle, as in: kaore kau, kare kau, ehara kau
-See Harlow index p. 302 for kau.
+manner particle, as in: kāore kau, kāre kau, ehara kau
+
 *
 kau
 cow
@@ -1135,13 +1122,13 @@ swim
 
 *
 kaua
-Negative word, do not, eg: Kaua e tangi - Don't cry
-See Harlow index p. 302 for kaua.
+Negative word, do not, eg: Kaua e tangi – Don’t cry
+
 
 kauaka
 Negative word, do not (variant of kaua), eg:
-Kauaka e tangi - Don't cry
-See Harlow index p. 302 for kaua.
+Kauaka e tangi – Don’t cry
+
 
 kauhoe
 to swim
@@ -1151,7 +1138,7 @@ kaukau
 to bathe
 
 
-kaumatua
+kaumātua
 elder; elderly
 
 *
@@ -1167,13 +1154,13 @@ kauwhata
 graph
 
 
-kawana
+kāwana
 government, governor
 
 
-kawanatanga
+kāwanatanga
 government
-kawana + nominal suffix -tanga
+kāwana + nominal suffix -tanga
 
 *
 kawe
@@ -1189,23 +1176,23 @@ load, luggage, burden
 kawe + nominal suffix -nga
 
 
-kawhe
+kāwhe
 calf
 
 *
-ke
+kē
 already, instead
-See Harlow index p. 302 for ke and ke atu.
 
-kehua
+
+kēhua
 ghost
 
 *
 kei
 Various uses, meanings, eg:
-preposition, present time and place location - at, in 
+preposition, present time and place location – at, in 
 verbal particle, non-past time, as in: kei te haere
-See Harlow index pp. 302-303 for kei, kei te.
+
 
 keke
 cake
@@ -1215,7 +1202,7 @@ kekeno
 seal
 
 *
-kemu
+kēmu
 game
 
 *
@@ -1225,26 +1212,26 @@ basket, kit
 *
 ki
 Has various uses and meanings, eg: to, at
-See Harlow index p. 303 for ki, ki te, ki te mea.
+
 *
-ki
+kī
 to say
 
 *
-ki
+kī
 to be full
 
 *
 kia
 Various uses, meanings. Often not translatable by an English word.
-See Harlow index p. 303 for kia.
 
-kihai
-Negative word - not, used with the past tense
-See Harlow index p. 303 for kihai.
+
+kīhai
+Negative word – not, used with the past tense
+
 *
-kiia
-ki + passive suffix -ia
+kīia
+kī + passive suffix -ia
 
 
 kiia
@@ -1298,9 +1285,8 @@ kiwi, native bird
 *
 ko
 Various uses; not usually translatable with an English word
-See Harlow index p. 303 for ko, ko te.
 
-ko
+kō
 at a distance, yonder
 
 
@@ -1314,17 +1300,17 @@ happy
 *
 koe
 you, one person
-See Harlow index p. 303 for koe.
+
 
 koha
 gift
 
 *
-kohanga
+kōhanga
 nest
 
 
-kohatu
+kōhatu
 stone
 
 
@@ -1336,7 +1322,7 @@ kohikohi
 to collect, gather together
 
 
-kohua
+kōhua
 to boil; cooking pot
 
 
@@ -1350,58 +1336,58 @@ it is, so
 
 koina
 that is (near listener)
-See Harlow index p. 303 for koina, koinei, koira.
+
 *
 koinei
 this is
-See Harlow index p. 303 for koina, koinei, koira.
 
-koiwi
+
+kōiwi
 bone
 
 
-koka
+kōkā
 mother, aunt
 
 
-kokiri
+kōkiri
 to charge, rush at
 
 
-kona
+konā
 there, by listener
-See Harlow p. 22 for konei , kona, kora; pp. 21-28 for locative nouns.
+
 *
 konei
 here, by speaker
-See Harlow p. 22 for konei , kona, kora; pp. 21-28 for locative nouns.
+
 
 kongakonga
 small piece, fragment
 
 
-kopae
+kōpae
 disc
 
 *
 kore
 zero, nothing
-See Harlow index p. 303 for kore.
 
-korere
+
+kōrere
 tap
 
 *
-korero
+kōrero
 to talk, speak
 
 
-korerorero
+kōrerorero
 to discuss
 
 
-korerotia
-korero + passive suffix -tia
+kōrerotia
+kōrero + passive suffix -tia
 
 *
 koro
@@ -1412,37 +1398,37 @@ koroua
 elderly man, grandfather
 
 *
-korua
+kōrua
 you, two people
-See Harlow index p. 303 for korua.
+
 *
 kotahi
 one
-See Harlow index p. 305 for numbers.
+
 *
-kotiro
+kōtiro
 girl
 
 
-kotuku
+kōtuku
 white heron
 
 *
 koutou
 you, three or more people
-See Harlow index p. 303 for koutou.
 
-kowhai
+
+kōwhai
 yellow (colour)
 
 
-kowhai
-kowhai, a native tree
+kōwhai
+kōwhai, a native tree
 
 *
 kua
 Verbal particle; indicating completed action or movement into a state
-See Harlow index p. 303 for kua.
+
 
 kuhu
 to enter, to go or come in
@@ -1464,11 +1450,11 @@ kukume
 to pull, to drag
 
 
-kumara
-kumara, sweet potato
+kūmara
+kūmara, sweet potato
 
 
-kupenga
+kūpenga
 net
 
 *
@@ -1492,19 +1478,19 @@ kura
 treasured item
 
 *
-kuri
+kurī
 dog
 
 *
-ma
-Various uses and meanings, eg by, for; plural marker and others, as in: I haere mai a Mere ma.
-See Harlow index pp. 303-304 for ma, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
+mā
+Various uses and meanings, eg by, for; plural marker and others, as in: I haere mai a Mere mā.
+
 *
-ma
+mā
 white
 
 *
-ma
+mā
 clean
 
 *
@@ -1516,7 +1502,7 @@ mahana
 warm
 
 
-mahanga
+māhanga
 twin(s)
 
 
@@ -1524,15 +1510,15 @@ mahara
 thought, memory
 
 
-maharahara
+māharahara
 mahara
 worried, anxious
 
 
-mahau
+māhau
 for you
-(variant of mau)
-See Harlow index pp. 303-304 for ma, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession
+(variant of māu)
+
 
 mahere
 map, plan
@@ -1550,15 +1536,15 @@ mahue
 to be left behind
 
 
-mahunga
+māhunga
 head
 
 *
 mai
 towards the speaker in space or in orientation
-See Harlow index p. 304 for mai.
 
-maia
+
+māia
 capable, brave, bold
 
 
@@ -1567,7 +1553,7 @@ cold
 
 
 makawe
-hair of the head (human), used in plural: nga makawe
+hair of the head (human), used in plural: ngā makawe
 
 
 makere
@@ -1582,19 +1568,19 @@ makere
 to get down from
 
 *
-maku
+māku
 for me, by me
-See Harlow index pp. 303-304 for ma, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
 
-maku
+
+mākū
 wet
 
 *
-mama
+māmā
 mother, mum, mummy (informal)
 
 *
-mama
+māmā
 easy
 
 
@@ -1606,9 +1592,9 @@ mana
 prestige, authority
 
 *
-mana
+māna
 for him / her, by him / her
-See Harlow index pp. 303-304 for ma, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
+
 
 manaaki
 to look after, to show hospitality towards
@@ -1638,15 +1624,15 @@ manuhiri
 guest
 
 *
-Maori
-Maori (people, language culture)
+Māori
+Māori (people, language culture)
 
 *
-maori
+māori
 normal, ordinary, fresh (of water)
 
 
-mara
+māra
 garden
 
 *
@@ -1658,7 +1644,7 @@ marama
 month, moon
 
 *
-marama
+mārama
 clear, understand
 
 
@@ -1670,15 +1656,15 @@ marangai
 rain, storm
 
 
-marika
-indeed, quite, certainly; ae marika
+mārika
+indeed, quite, certainly; āe mārika
 
 
 maringi
 to spill
 
 
-maro
+mārō
 hard (of texture, personality)
 
 
@@ -1694,11 +1680,11 @@ mata
 point, blade
 
 
-mataki 
+mātaki 
 to watch
 
 
-matakitaki
+mātakitaki
 to watch, to observe, examine, inspect
 
 *
@@ -1706,7 +1692,7 @@ mataku
 scared, afraid
 
 
-matao
+mātao
 cold
 
 
@@ -1722,15 +1708,15 @@ matau
 fish hook
 
 *
-matau
-we, us (variant of matou)
-See Harlow pp. 33-37 for pronouns.
+mātau
+we, us (variant of mātou)
+
 *
-matau
+mātau
 to know, understand
 
 *
-matauranga
+mātauranga
 education, knowledge
 
 *
@@ -1746,11 +1732,11 @@ matimati
 finger, toe
 
 *
-matou
+mātou
 we, us (three or more, excluding addressee)
-See Harlow pp. 33-37 for pronouns.
 
-matu
+
+matū
 fat, chemical
 
 *
@@ -1758,7 +1744,7 @@ matua
 parent, father 
 
 *
-matua 
+mātua 
 parents, fathers (plural form of matua)
 
 *
@@ -1774,15 +1760,15 @@ mau
 to wear clothes
 
 
-mau
-for you, by you; a category possession
-See Harlow index pp. 303-304 for ma, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
-*
-maua
-we, us (two people, excluding addressee)
-See Harlow pp. 33-37 for pronouns.
+māu
+for you, by you; ā category possession
 
-maui
+*
+māua
+we, us (two people, excluding addressee)
+
+
+mauī
 left (direction)
 
 
@@ -1804,7 +1790,7 @@ mau + passive suffix -ria
 *
 me
 Various meanings, uses, eg with, like, should
-See Harlow index p. 304 for me.
+
 *
 mea 
 thing
@@ -1818,14 +1804,14 @@ meatia
 
 mea + passive suffix -tia
 to be said
-to be done - non-specific action, as in: meatia te mea na
+to be done – non-specific action, as in: meatia te mea nā
 
 *
 mehemea
 if (presuming not; cf. ki te, if, expressing simple uncertainty)
 
 *
-mena
+mēnā
 if
 
 
@@ -1841,11 +1827,11 @@ mere
 bush, shrub
 
 
-miere
+mīere
 honey
 
 *
-miharo
+mīharo
 to wonder at; amazing
 
 *
@@ -1853,7 +1839,7 @@ mihi
 to greet
 
 *
-mihini
+mīhini
 machine
 
 
@@ -1873,14 +1859,14 @@ mita
 metre
 
 
-miti
+mīti
 meat
 
 *
-mo
-for, unrealised, o category possession
+mō
+for, unrealised, ō category possession
 about
-See Harlow index p. 304 for mo, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
+
 *
 moana
 sea
@@ -1894,7 +1880,7 @@ moe
 to marry
 
 
-moemoea 
+moemoeā 
 to dream
 dream
 
@@ -1905,24 +1891,24 @@ bed
 moe + nominal suffix -nga
 
 *
-mohio
+mōhio
 to know
 
 
-mohiotanga
+mōhiotanga
 knowledge
-mohio + nominal suffix -tanga
+mōhio + nominal suffix -tanga
 
 
-mohiotia
-mohio + passive suffix -tia
+mōhiotia
+mōhio + passive suffix -tia
 
 
 moka
 end, margin, piece
 
 
-mokai
+mōkai
 pet
 
 
@@ -1950,23 +1936,23 @@ mokopuna
 grandchild
 
 
-moku
+mōku
 for me, unrealised, o category possession
-See Harlow index p. 304 for mo, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
+
 *
 momo
 type, kind
 
 
-mona
+mōna
 for him / her, unrealised, o category possession
-See Harlow index p. 304 for mo, p. 81 on prepositions, p. 35 on pronouns, pp. 157-163 on a / o category possession.
+
 *
 moni
 money
 
 *
-motoka
+motokā
 car, motorcar
 
 *
@@ -1988,7 +1974,7 @@ island
 *
 mua
 front, before
-See Harlow pp. 33-37 for mua.
+
 
 mura
 blaze, flame
@@ -1996,7 +1982,7 @@ blaze, flame
 *
 muri
 behind, after
-See Harlow pp. 33-37 for muri.
+See Harlow pp. 33–37 for muri.
 *
 mutu
 be ended, finished (but not necessarily completed)
@@ -2007,26 +1993,26 @@ end
 mutu + noun ending -nga
 
 *
-na
-Various meanings, eg by, belonging to (a category), by way of 
-See Harlow index p. 304 for na.
+nā
+Various meanings, eg by, belonging to (ā category), by way of 
 
-naianei
+
+nāianei
 now
 
 
-naku
-mine, realised possession, a category
+nāku
+mine, realised possession, ā category
 by me
-See Harlow index p. 304 for na, p. 81 on prepositions, and pp. 34-35 on pronouns.
+
 
 nama
 number
 
 *
-nana
+nāna
 by him / her, belonging to him / her
-See Harlow index p. 304 for na, and p. 81 on prepositions, and p. 35 on pronouns.
+
 
 nanakia
 rascal
@@ -2037,17 +2023,17 @@ nau
 come, go: as in: Nau mai!
 
 
-nawai
+nāwai
 presently, in due course, after a while
 
 *
-ne
+nē
 tag question, translated variously depending on the English structure; eh?
-See Harlow p. 224 for ne.
+
 *
 nei
 here, by speaker
-See Harlow index p. 305 for nei, and pp. 34-35 on pronouns.
+
 
 neke
 to move
@@ -2057,19 +2043,19 @@ nekeneke
 to move gradually
 
 *
-nga
+ngā
 the, plural
-See Harlow index p. 305 for nga, and p. 300 determiners.
+
 *
 ngahere
 forest
 
 
-ngakau
+ngākau
 heart, as in seat of the affections and feelings
 
 
-ngarara
+ngārara
 reptile, monster
 
 *
@@ -2089,12 +2075,12 @@ ngata
 to be satisfied
 
 
-ngatahi
+ngātahi
 together
 
 *
-Ngati
-tribal name prefix, as in: Ngati Porou, Ngati Kahungunu
+Ngāti
+tribal name prefix, as in: Ngāti Porou, Ngāti Kahungunu
 
 
 ngau
@@ -2105,15 +2091,15 @@ ngaungau
 to chew, a snack
 
 
-ngawari
+ngāwari
 easy
 
 
-ngawari
+ngāwari
 soft, supple of texture
 
 
-ngawari
+ngāwari
 kind, pleasant of personality
 
 
@@ -2137,14 +2123,13 @@ niho
 tooth
 
 *
-no
+nō
+Various meanings: from, of, belonging to (ō category)
 
-Various meanings: from, of, belonging to (o category)
-See Harlow index p. 304 for no, p. 81 on prepositions and p. 35 on pronouns.
 *
 noa
 Various meanings, eg only, just, merely
-See Harlow index p. 305 for noa and noa iho.
+
 *
 noho
 to sit
@@ -2162,14 +2147,13 @@ noke
 worm
 
 
-noku
-mine, realised possession, o category
-See Harlow index p. 304 for no, p. 81 on prepositions and p. 35 on pronouns.
+nōku
+mine, realised possession, ō category
 
-nona
 
-his, her, realised possession, o category
-See Harlow index p. 304 for no, p. 81 on prepositions and p. 35 on pronouns.
+nōna
+his, her, realised possession, ō category
+
 *
 nui 
 big, great, many
@@ -2191,11 +2175,11 @@ big (plural form)
 *
 o
 Has several uses: of, belonging to
-See Harlow index p. 305 for o and pp. 160-163.
+
 *
-o
+ō
 your, one person, neutral category possession, plural 
-See Harlow index p. 305 for o, see p. 81 on prepositions.
+
 
 oho
 to wake up
@@ -2205,17 +2189,17 @@ ohorere
 to start suddenly, be startled
 
 *
-oku
-mine, plural, o category possession
-See Harlow index p. 305 for o, and pp. 157-163.
+ōku
+mine, plural, ō category possession
+
 *
 oma
 to run, escape
 
 *
-ona
-his / her, plural, o category possession
-See Harlow index p. 305 for o, and pp. 157-163.
+ōna
+his / her, plural, ō category possession
+
 
 one
 beach, sand
@@ -2227,7 +2211,7 @@ earth, soil
 *
 ono
 six
-See Harlow index p. 305 for numbers.
+
 
 ope
 group travelling together
@@ -2246,7 +2230,7 @@ oreore
 to shake, quiver
 
 
-orite
+ōrite
 to be the same as
 
 
@@ -2258,23 +2242,23 @@ oti
 to be completed
 
 *
-otira
+otirā
 but, on the other hand
-See Harlow index p. 306 for otira.
 
-ou
-yours, one person, o category possession, plural
-See Harlow index p. 305 for o, and pp. 157-163.
+
+ōu
+yours, one person, ō category possession, plural
+
 *
-pa
+pā
 to touch, to affect
 
 *
-pa
-Term of address for father: E pa
+pā
+Term of address for father: E pā
 
 *
-pa
+pā
 a fortified settlement
 
 
@@ -2295,22 +2279,22 @@ container
 
 
 paepae
-speakers' bench on the marae
+speakers’ bench on the marae
 
 
 pahi
 bus
 
 
-pahi
+pāhi
 purse, to pass
 
 
-pahu
+pahū
 to explode, burst; bomb
 
 
-pahu
+pahū
 drum
 
 *
@@ -2347,8 +2331,8 @@ pakaru
 broken down
 
 *
-Pakeha
-Pakeha
+Pākehā
+Pakehā
 
 *
 pakeke
@@ -2359,11 +2343,11 @@ pakeke
 hard, stiff
 
 
-pakete
+pākete
 packet
 
 
-pakete
+pākete
 bucket
 
 
@@ -2391,7 +2375,7 @@ pakupaku
 very small
 
 
-pamu
+pāmu
 farm
 
 
@@ -2411,7 +2395,7 @@ panga
 puzzle, riddle
 
 
-pangarau
+pāngarau
 mathematics
 
 *
@@ -2423,11 +2407,11 @@ pani
 orphan; to be orphaned
 
 
-panui
+pānui
 to read 
 
 
-panui
+pānui
 to publish, advertise; notice, advertisement
 
 
@@ -2439,7 +2423,7 @@ papa
 floor, ground, flat surface
 
 *
-papa
+pāpā
 father, uncle
 
 
@@ -2447,7 +2431,7 @@ parakuihi
 breakfast
 
 
-paraoa
+parāoa
 bread, flour
 
 
@@ -2483,23 +2467,23 @@ pata
 butter
 
 *
-patai
+pātai
 question; to ask a question
 
 
-patata
+pātata
 close (of distance)
 
 
-patene
+pātene
 button
 
 
-patiki
+pātiki
 flounder (fish)
 
 
-patiti
+pātītī
 grass
 
 
@@ -2519,13 +2503,13 @@ pau
 to be consumed, used up completely, all gone
 
 
-paua
-paua (abalone)
+pāua
+pāua (abalone)
 
 *
 pea
 maybe, perhaps
-See Harlow index p. 306 for pea.
+
 *
 pea
 pear
@@ -2539,9 +2523,9 @@ pea
 pair
 
 *
-pehea
+pēhea
 how?
-See Harlow index p. 306 for pehea and also penei, pena, pera; and index p. 302 for interrogatives.
+
 
 peita
 paint
@@ -2551,7 +2535,7 @@ peka
 branch
 
 
-pekana
+pēkana
 bacon
 
 
@@ -2563,43 +2547,43 @@ peke
 to jump, to leap over
 
 
-peke
+pēke
 bag
 
 
-pena
+pēnā
 like that, near listener
-See Harlow index p. 306 for pehea and also penei, pena, pera.
+
 
 pene
 pen
 
 *
-penei 
+pēnei 
 like this, near speaker
-See Harlow index p. 306 for pehea and also penei, pena, pera.
+
 *
 pepa
 paper
 
 
-pepi
+pēpi
 baby
 
 *
-pera
+pērā
 like that, yonder
-See Harlow index p. 306 for pehea and also penei, pena, pera.
+
 
 pere
 bell
 
 
-pewhea 
-how? (variant of pehea)
-See Harlow index p. 306 for pehea and also penei, pena, pera.
+pēwhea 
+how? (variant of pēhea)
 
-pi
+
+pī
 bee
 
 *
@@ -2615,11 +2599,11 @@ pikitia
 picture, film
 
 
-pipi
+pīpī
 chick, baby
 
 *
-pirangi
+pīrangi
 to want, desire
 
 
@@ -2655,7 +2639,7 @@ piupiu
 flax skirt worn as part of traditional costume, eg in kapa haka
 
 *
-po
+pō
 night
 
 
@@ -2663,11 +2647,11 @@ poaka
 pig
 
 
-pohatu
+pōhatu
 stone
 
 
-pohehe
+pōhēhē
 to think mistakenly, be mistaken
 
 
@@ -2695,7 +2679,7 @@ poro
 to cut off, to cut short
 
 
-poro
+pōro
 ball
 
 
@@ -2707,7 +2691,7 @@ porowhita
 circle, round (variant of porohita)
 
 
-potae
+pōtae
 hat
 
 
@@ -2739,19 +2723,19 @@ pounamu
 greenstone
 
 
-pouri
+pōuri
 sad, dark
 
 *
-pu
+pū
 letter (of the alphabet)
 
 *
-pu
+pū
 gun
 
 *
-pu 
+pū 
 to blow gently
 
 
@@ -2767,7 +2751,7 @@ puhi
 to blow (wind)
 
 
-pukaha
+pūkaha
 engine
 
 *
@@ -2783,7 +2767,7 @@ puke
 hill
 
 
-pukenga
+pūkenga
 skilled, expert
 
 *
@@ -2791,7 +2775,7 @@ puku
 stomach, belly
 
 
-pumau
+pūmau
 fixed, permanent
 
 
@@ -2799,7 +2783,7 @@ puna
 pool, spring
 
 
-pungawerewere
+pūngāwerewere
 spider
 
 
@@ -2811,11 +2795,11 @@ puoro
 to sing, to rumble
 
 
-pupu
+pupū
 to boil 
 
 
-pupu
+pupū
 to bubble up, arise from
 
 
@@ -2831,7 +2815,7 @@ pupuri
 to hold onto
 
 
-purakau
+pūrākau
 traditional story
 
 
@@ -2843,11 +2827,11 @@ purei
 to play / play
 
 
-purere
+pūrere
 appliance, machine (electric)
 
 
-purerehua
+pūrerehua
 butterfly
 
 
@@ -2867,15 +2851,15 @@ puta
 to appear, to come out
 
 
-putaiao
+pūtaiao
 science
 
 
-putake
+pūtake
 reason, cause
 
 
-putake
+pūtake
 root
 
 
@@ -2884,7 +2868,7 @@ opening, exit
 puta + nominal suffix -nga
 
 
-putea
+pūtea
 budget, resources
 
 
@@ -2896,15 +2880,15 @@ putu
 to heap up; a heap, pile
 
 *
-ra
+rā
 Various uses, meanings, eg over there 
-See Harlow index p. 308 for ra.
+
 *
-ra
+rā
 sun
 
 *
-ra
+rā
 day
 
 *
@@ -2912,7 +2896,7 @@ rahi
 large
 
 *
-rakau
+rākau
 tree; timber
 
 
@@ -2924,9 +2908,9 @@ rama
 light, torch
 
 *
-ranei
+rānei
 or
-See Harlow index p. 308 for ranei.
+
 *
 rangatahi
 youth
@@ -2956,13 +2940,13 @@ rapu
 to look for
 
 *
-rarangi
+rārangi
 line, row
 
 *
 raro
 under
-See Harlow pp. 21-28 locative nouns.
+
 
 raru
 trouble; to be in difficulty, in trouble
@@ -2976,13 +2960,13 @@ rata
 friendly, at ease, calm
 
 *
-ratou
+rātou
 they, them, three or more people
-See Harlow index p. 308 for ratou and pp. 33-37 on pronouns
+
 *
 rau
 hundred
-See Harlow index p. 305 for numbers.
+
 *
 rau
 leaf
@@ -2992,29 +2976,29 @@ rau
 to put into
 
 *
-raua
+rāua
 they, them, two people
-See Harlow index p. 308 for ratou and pp. 33-37 on pronouns.
+
 *
 rawa
 Various meanings, eg quite, very
-See Harlow index p. 308 for rawa, rawa atu.
+
 *
 rawe
 lovely, excellent
 
 
-rawhiti
+rāwhiti
 east
 
 
-rehia
+rēhia
 pleasure, amusement
 
 *
 reira
 there (previously mentioned)
-See Harlow index p. 308 for reira.
+
 *
 reka
 sweet
@@ -3044,18 +3028,16 @@ rere
 to escape
 
 *
-rereke 
+rerekē 
 different, changed
 
 
 rerenga
-
 voyage
 rere + nominal suffix -nga
 
 
 rerenga
-
 escape, running away
 rere + nominal suffix -nga
 
@@ -3082,7 +3064,8 @@ skates, skating
 *
 rima
 five
-See Harlow index p. 305 for numbers.
+
+
 *
 ringa
 hand, arm
@@ -3096,7 +3079,7 @@ rino
 iron
 
 
-ripene
+rīpene
 ribbon, tape
 
 
@@ -3114,15 +3097,16 @@ litre
 *
 rite
 like
-See Harlow index p. 308 for rite.
 
-riwai
+
+rīwai
 potato
 
 *
-ro
-in (short form of roto, as in: ki ro whare)
-See Harlow p. 25 for ro (roto).
+rō
+in (short form of roto, as in: ki rō whare)
+
+
 *
 roa
 long
@@ -3145,7 +3129,7 @@ rongo
 to hear, perceive
 
 
-rongoa
+rongoā
 medicine
 
 
@@ -3153,7 +3137,7 @@ rongonui
 famous
 
 *
-ropu
+rōpū
 group
 
 
@@ -3167,11 +3151,11 @@ computer
 *
 roto
 in
-See Harlow pp. 21-28 locative nouns.
+
 *
 rua
 two
-See Harlow index p. 305 for numbers.
+
 *
 rua
 hole
@@ -3181,27 +3165,29 @@ ruku
 to dive
 
 *
-ruma
+rūma
 room
 
 *
 runga
 on
-See Harlow pp. 21-28 locative nouns.
-*
-ta
-a category possession, singular form, used with other pronouns to form possessive pronouns, as in: a matou tamariki
-See Harlow pp. 69-74 for possessive determiners.
-*
-ta
-according to, as said by (as in: Hei ta Manu)
+
 
 *
-ta
+tā
+ā category possession, singular form, used with other pronouns to form possessive pronouns, as in: ā mātou tamariki
+
+
+*
+tā
+according to, as said by (as in: Hei tā Manu)
+
+*
+tā
 to draw, paint
 
 *
-ta
+tā
 to publish, print
 
 *
@@ -3227,20 +3213,21 @@ taha
 to pass by
 
 
-tahau
-your, a category possession, singular (variant of tau)
-See Harlow pp. 69-74 for possessive determiners.
+tāhau
+your, ā category possession, singular (variant of tāu)
+
+
 *
 tahi 
 one, single
-See Harlow index p. 305 for numbers.
 
-tahuhu
+
+tāhuhu
 ridgepole of a house
 
 
-tahuhu
-Ministry of Education, as in: Te Tahuhu o te Matauranga
+tāhuhu
+Ministry of Education, as in: Te Tāhuhu o te Mātauranga
 
 
 tahuri
@@ -3253,14 +3240,15 @@ to capsize
 *
 tai
 the sea, as opposed to land
-See Harlow index p. 303 for locatives.
+
+
 *
 tai
 tide
 
 
-taia
-ta + passive suffix -ia
+tāia
+tā + passive suffix -ia
 
 
 taiapa
@@ -3269,7 +3257,7 @@ fence
 
 taihoa
 wait
-See Harlow index p. 309 for taihoa.
+
 
 taitama
 young man
@@ -3283,7 +3271,7 @@ taka
 to come around in a cycle 
 
 *
-takaro
+tākaro
 to play
 
 *
@@ -3307,7 +3295,7 @@ taki
 to lead, to bring along
 
 
-takiwa
+takiwā
 district, region
 
 *
@@ -3317,13 +3305,13 @@ to lie down
 *
 taku
 my, neutral, singular
-See Harlow pp. 69-74 for possessive determiners.
-*
-taku
-my, a category possession, singular
-See Harlow pp. 69-74 for possessive determiners.
 
-takuta
+*
+tāku
+my, ā category possession, singular
+
+
+tākuta
 doctor
 
 *
@@ -3332,7 +3320,7 @@ son, nephew
 Term of address for a boy, son: tama
 
 
-tamahine
+tamāhine
 daughter
 
 *
@@ -3344,7 +3332,7 @@ tamariki
 children (plural form of tamaiti)
 
 
-tamatane
+tamatāne
 boy
 
 
@@ -3354,13 +3342,15 @@ male animal
 *
 tana
 his / her, neutral, singular
-See Harlow pp. 69-74 for possessive determiners.
+
+
 *
-tana
-his / her, a category possession, singular
-See Harlow pp. 69-74 for possessive determiners.
+tāna
+his / her, ā category possession, singular
+
+
 *
-tane
+tāne
 man
 
 *
@@ -3368,7 +3358,7 @@ tangata
 person
 
 *
-tangata
+tāngata
 people (plural of tangata)
 
 *
@@ -3400,7 +3390,7 @@ tao
 to cook
 
 
-taone
+tāone
 town
 
 *
@@ -3428,7 +3418,7 @@ tapahia
 tapahi + passive suffix -a
 
 
-tapiri
+tāpiri
 to join something on, to add
 
 
@@ -3452,7 +3442,7 @@ tapuwae
 footprint
 
 
-tara
+tāra
 dollar
 
 
@@ -3488,15 +3478,15 @@ tata
 near
 
 
-tatahi
+tātahi
 seaside, beach
-See Harlow index p. 303 for locatives.
 
-tatai
+
+tātai
 to measure, to calculate
 
 
-tatai
+tātai
 to arrange, to set in order
 
 *
@@ -3512,9 +3502,10 @@ tatau
 to count
 
 *
-tatou
+tātou
 we, us, inclusive, three or more people
-See Harlow pp. 33-37 on pronouns.
+
+
 *
 tau
 number
@@ -3540,17 +3531,19 @@ tau
 to settle down
 
 
-tau
-your, one person, a category, singular
-See Harlow pp. 69-74 for possessive determiners.
+tāu
+your, one person, ā category, singular
+
+
 *
 taua
 that, previously mentioned (singular)
-See Harlow index p. 309 for taua and pp. 65-69 on determiners.
+
+
 *
-taua
+tāua
 we, us, you and I, inclusive, dual
-See Harlow index p. 309 for taua and pp. 33-37 on pronouns.
+
 
 tauhou
 strange, unfamiliar; stranger
@@ -3608,7 +3601,7 @@ to support
 *
 tawhiti
 distant, a distant place
-See Harlow index p. 303 for locative.
+
 
 tawhito
 old, former
@@ -3616,15 +3609,15 @@ old, former
 *
 te
 the, singular definite article
-See Harlow index p. 309 for te and pp. 65-69 on determiners.
 
-tehea
+
+tēhea
 which, singular
-See Harlow index p. 309 for tehea and pp. 65-69 on determiners.
+
 
 teina
 younger sibling, same sex
-See Harlow index p. 303 for kinship terms.
+
 
 teitei
 tall, high, lofty; height
@@ -3632,41 +3625,41 @@ tall, high, lofty; height
 *
 tekau
 ten
-See Harlow index p. 305 for numbers.
-*
-tena
-that, by the listener
-See Harlow index p. 309 for tena and pp. 65-69 on determiners.
-*
-tenei
-this, by speaker
-See Harlow index p. 309 for tenei and pp. 65-69 on determiners.
 
-tepu
+*
+tēnā
+that, by the listener
+
+*
+tēnei
+this, by speaker
+
+
+tēpu
 table
 
 *
-tera
+tērā
 that, yonder
-See Harlow index p. 309 for tera and pp. 65-69 on determiners.
+
 *
 tere
 to flow, float, move quickly; fast
 
 *
-tetahi
+tētahi
 a, one specific thing
-See Harlow index p. 309 for tetahi and pp. 65-69 on determiners.
 
-tetehi
-a, one specific thing (variant of tetahi)
-See Harlow index p. 309 for tetahi and pp. 65-69 on determiners.
 
-ti
+tētehi
+a, one specific thing (variant of tētahi)
+
+
+tī
 tea
 
 
-ti
+tī
 cabbage tree
 
 *
@@ -3700,25 +3693,25 @@ tiki
 
 
 to fetch
-tiki atu - go and fetch, bring
-tiki mai - come and fetch, take away
+tiki atu – go and fetch, bring
+tiki mai – come and fetch, take away
 
 
-tikina
+tīkina
 tiki + passive suffix -na (note the first i is lengthened)
 
 *
-tima
+tīma
 team
 
 *
-timata
+tīmata
 to begin, to start
 
 
-timatanga
+tīmatanga
 beginning
-timata + nominal suffix -nga
+tīmata + nominal suffix -nga
 
 
 tina
@@ -3733,7 +3726,7 @@ tini
 very many, numerous, plenty; multitude, throng
 
 
-tini
+tīni
 to change
 
 
@@ -3747,7 +3740,7 @@ to trick, amuse with trickery
 *
 tino
 very
-See Harlow index p. 309 for tino and pp. 47-50.
+See Harlow index p. 309 for tino and pp. 47–50.
 *
 tipu
 to grow, develop
@@ -3773,7 +3766,7 @@ tipuna
 grandparent, ancestor
 
 
-tipuna
+tīpuna
 grandparents (plural form of tipuna)
 
 
@@ -3813,16 +3806,17 @@ titiro
 to look at
 
 *
-to
+tō
 your, neutral, one person, singular
-o category possessive determiner, singular, as in: to tatou 
-See Harlow pp. 69-74 for possessive determiners.
+ō category possessive determiner, singular, as in: tō tātou 
+
+
 *
-to
+tō
 stove
 
 *
-to
+tō
 to drag
 
 *
@@ -3851,7 +3845,7 @@ leftovers, remnants
 toe + nominal suffix -nga
 
 
-tohora
+tohorā
 whale
 
 *
@@ -3891,35 +3885,31 @@ toka
 rock
 
 
-tokena
+tōkena
 stockings, socks
 
 
 tokomaha
 many (of people)
-See Harlow index p. 309 for toko- prefix and index p. 305 for numbers.
+
 
 tokorua
 two (of people)
-See Harlow index p. 309 for toko- prefix and index p. 305 for numbers.
+
 
 tokotoru
 three (people)
-See Harlow index p. 309 for toko- prefix and index p. 305 for numbers.
-*
-toku
 
-my, o category possession, singular
-See Harlow index p. 309 for toku and pp. 69-74 for possessive determiners.
+*
+tōku
+my, ō category possession, singular
 
 tomo
 to enter, go into
 
 *
-tona
-
-his / her, o category possession, singular
-See Harlow index p. 309 for tona and pp. 69-74 for possessive determiners.
+tōna
+his / her, ō category possession, singular
 
 tonga
 south
@@ -3943,11 +3933,11 @@ tono + passive suffix -a
 *
 tonu
 still
-See Harlow index pp. 309-310 for tonu.
+
 
 tonutia
 tonu + passive suffix -tia
-See Harlow index pp. 309-310 for tonu.
+
 
 toro
 to stretch out, to extend
@@ -3963,13 +3953,13 @@ albatross
 *
 toru
 three
-See Harlow index p. 305 for numbers.
+
 
 tote
 salt
 
 
-totika
+tōtika
 straight, direct, right
 
 
@@ -3977,53 +3967,52 @@ toto
 blood
 
 *
-tou
-your, o category possession, singular
-See Harlow pp. 69-74 for possessive determiners.
+tōu
+your, ō category possession, singular
+
 *
-tu
+tū
 to stand
 
 *
-tu
+tū
 to be wounded; a wound
 
 *
 tua
 beyond
-See Harlow index p. 303 for locatives.
 
 tuahine
 sister, of a male
-See Harlow index p. 303 for kinship terms.
 
 tuakana
 older sibling of the same sex 
-See Harlow index p. 303 for kinship terms.
 
 tuanui
 roof
 
 
-tuara
+tuarā
 back
 
 *
 tuarua
 second
-See Harlow index p. 310 for tua- prefix and index p. 305 for numbers.
+
+
 *
 tuatahi
 first
-See Harlow index p. 310 for tua- prefix and index p. 305 for numbers.
+
 
 tuatoru
 third
-See Harlow index p. 310 for tua- prefix and index p. 305 for numbers.
 
-tuawha
+
+tuawhā
 fourth
-See Harlow index p. 310 for tua- prefix and index p. 305 for numbers.
+
+
 *
 tuhi 
 to write, to draw
@@ -4091,7 +4080,7 @@ tukutuku
 spider web
 
 
-tumanako
+tūmanako
 to hope for, anticipate, expect
 
 
@@ -4103,15 +4092,15 @@ tuna
 eel
 
 
-tungane
+tungāne
 brother, of a female
-See Harlow index p. 303 for kinship terms.
+
 
 tunu 
 to cook, roast
 
 
-tupato
+tūpato
 to be careful; caution, cautious
 
 
@@ -4120,26 +4109,26 @@ to grow, develop; a plant, shoot
 (variant of tipu)
 
 
-tupuna
+tūpuna
 grandparents (plural form of tupuna)
-(variant of tipuna)
+(variant of tīpuna)
 
 
-turanga
+tūranga
 position, job
-tu + nominal suffix -ranga
+tū + nominal suffix -ranga
 
 
-turanga
-stopping place, as in: turanga pahi bus stop 
-tu + nominal suffix -ranga
+tūranga
+stopping place, as in: tūranga pahi bus stop 
+tū + nominal suffix -ranga
 
 
 ture
 law, rule
 
 
-turehu
+tūrehu
 fairy
 
 
@@ -4147,15 +4136,15 @@ turituri
 be quiet! noisy
 
 
-turu
+tūru
 chair, seat, stool
 
 
-tutaki
+tūtaki
 to meet
 
 
-tutaki
+tūtaki
 to close up, to block
 
 
@@ -4163,23 +4152,23 @@ tutuki
 to complete, to achieve
 
 *
-tuturu
+tūturu
 real, natural, authentic
 
 *
-tuturu
+tūturu
 fixed, permanent, definite
 
 
-u
+ū
 to land, to reach land
 
 
-u
+ū
 to be firm, fixed
 
 
-u
+ū
 breast, udder
 
 
@@ -4249,7 +4238,7 @@ west
 
 uta
 shore, land as opposed to sea or water
-See Harlow index p. 303 for locatives.
+
 
 uta
 to load
@@ -4263,11 +4252,11 @@ uwha
 female animal
 
 *
-wa
+wā
 time
 
 *
-wa
+wā
 place, space, area
 
 *
@@ -4303,23 +4292,23 @@ waha
 load, burden
 
 *
-wahanga
+wāhanga
 part, portion, section
 
 *
-wahanga
+wāhanga
 chapter, episode
 
 *
-wahi
+wāhi
 place, locality
 
 *
-wahi
+wāhi
 to break, to split, to break open
 
 *
-wahi
+wāhi
 part, portion
 
 
@@ -4331,17 +4320,19 @@ wahine
 woman, wife
 
 *
-wahine 
+wāhine 
 women, wives (plural form of wahine)
 
 *
 waho
 out, outside, the outside
-See Harlow index p. 303 for locatives.
+
+
 *
 Wai?
 who?
-See Harlow index p. 302 for interrogatives.
+
+
 *
 wai
 water
@@ -4392,8 +4383,8 @@ waka
 vehicle (land, air and sea)
 
 
-wananga
-place of learning, as in: whare wananga
+wānanga
+place of learning, as in: whare wānanga
 
 
 wao
@@ -4406,13 +4397,14 @@ to forget; forgetful
 *
 waru
 eight
-See Harlow index p. 305 for numbers.
+
+
 *
 waru
 to scrape, to peel
 
 
-watea
+wātea
 to be clear, unoccupied, free of obstruction
 
 
@@ -4462,9 +4454,10 @@ wero
 to challenge; formal challenge at a welcome ceremony
 
 *
-wha
+whā
 four
-See Harlow index p. 305 for numbers.
+
+
 *
 whaea
 mother, aunt
@@ -4474,16 +4467,16 @@ whai
 to follow, to chase
 
 
-whaia
+whāia
 whai + passive suffix -a (note lengthening of first vowel)
 
 
-whainga
+whāinga
 objective, aim, purpose
 whai + nominal suffix -nga (note first vowel lengthens)
 
 
-whaiti
+whāiti
 narrow, crowded together
 
 *
@@ -4545,7 +4538,7 @@ whakaheke
 to decrease, drop, lower
 
 
-whakahihi
+whakahīhī
 arrogant
 
 
@@ -4565,11 +4558,11 @@ whakairo
 to carve, a carving
 
 
-whakaki
+whakakī
 to fill something
 
 
-whakama
+whakamā
 to be embarrassed, ashamed
 
 
@@ -4585,19 +4578,19 @@ whakamahia
 whakamahi + passive suffix -a
 
 
-whakamaori
-to translate into Maori
+whakamāori
+to translate into Māori
 
 *
-whakamarama
+whakamārama
 to explain
 
 
-whakamatau
+whakamātau
 to test, examine
 
 
-whakamatautau
+whakamātautau
 examination, test
 
 
@@ -4613,7 +4606,7 @@ whakamaua
 whakamau + passive suffix -a
 
 
-whakamiharo
+whakamīharo
 amazing, astonishing
 
 
@@ -4630,7 +4623,7 @@ ending, conclusion
 whakamutu + nominal suffix -nga
 
 
-whakanga
+whakangā
 to rest
 
 
@@ -4718,7 +4711,7 @@ whakarunga
 upwards
 
 
-whakata
+whakatā
 to rest
 
 *
@@ -4754,20 +4747,20 @@ whakatoi
 to give cheek
 
 
-whakatu
+whakatū
 to establish, to put someone or something in position
 
 
-whakatu
+whakatū
 to stand something up
 
 
-whakatupato
+whakatūpato
 to warn, to caution
 
 
-whakaturia
-whakatu + passive suffix -ria
+whakatūria
+whakatū + passive suffix -ria
 
 
 whakauru
@@ -4782,21 +4775,21 @@ whakawhiti
 to cross
 
 
-whaki
+whāki
 to reveal, to disclose, to confess
 
 *
-whanau 
+whānau 
 family
 
 *
-whanau 
+whānau 
 to be born / be born
 
 *
 whanaunga
 relative, relation
-whanau + nominal suffix -nga (note the short first vowel)
+whānau + nominal suffix -nga (note the short first vowel)
 
 
 whanga
@@ -4807,11 +4800,11 @@ whanga
 to wait
 
 
-whangai
+whāngai
 to feed, to foster
 
 *
-whanui
+whānui
 broad, wide
 
 
@@ -4819,7 +4812,7 @@ whara
 to be injured
 
 
-wharangi
+whārangi
 page
 
 *
@@ -4828,10 +4821,10 @@ house, building
 
 
 wharekura
-Maori-medium secondary school
+Māori-medium secondary school
 
 
-whariki
+whāriki
 mat, carpet, rug
 
 *
@@ -4847,7 +4840,7 @@ whatu
 to weave, knit
 
 
-whawha
+whāwhā
 to fiddle with, to touch
 
 
@@ -4867,7 +4860,7 @@ whero
 red
 
 *
-whetu
+whetū
 star
 
 
@@ -4877,7 +4870,7 @@ to cross
 
 whitu
 seven
-See Harlow index p. 305 for numbers.
+
 
 whiu
 to throw, to fling
@@ -4903,7 +4896,7 @@ whiwhi
 to be in possession of
 
 
-whutuporo
+whutupōro
 football, rugby
 
 
@@ -4911,20 +4904,10 @@ wiki
 week
 
 
-wira
+wīra
 wheel
 
 
 wiriwiri
 to tremble, to shake, to quiver
-
-
-
-
-
-High frequency word lists | 1000 frequent words of Maori - alphabetical order										4 of 41
-From: TKI | Te reo Maori in English-medium schools | Te Whakaipurangi Rauemi teacher resources collection
-http://tereomaori.tki.org.nz/Teacher-resources/Te-Whakaipurangi-Rauemi-teacher-resources-collection
-(c) New Zealand Ministry of Education 2010 - copying restricted to use by the New Zealand education sector 
-
 
