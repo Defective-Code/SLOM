@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "wordle.h"
 
@@ -5,7 +6,7 @@ int main() {
 
 	printf("Hello World, its Oliver here!");
 
-    test_print();
+    
 
         /*char ch;
         char word[10];
@@ -23,7 +24,8 @@ int main() {
 
         printf("\nYou entered the word: %s", word);*/
 
-
+    startGame();
+    
     
 	return 0;
 }

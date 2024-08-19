@@ -1,3 +1,14 @@
 #pragma once
+#include <string>
 
-void test_print();
+void initialiseGame();
+
+std::string selectWorldeWord();
+
+void receiveUserInput();
+
+void getNextGameState();
+
+void displayGameState();
+
+void startGame();
