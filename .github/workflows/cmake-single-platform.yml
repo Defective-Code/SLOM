@@ -21,6 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -37,9 +38,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
 
-
-    - name: Setup MSBuild and add to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
+    - name: Setup MSBuild and add to PATH 
         id: setup_msbuild
       - name: Run MSBuild
         id: run_msbuild
