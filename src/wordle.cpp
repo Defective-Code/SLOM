@@ -5,7 +5,7 @@
 // Declare a global variable
 std::string wordleWord = "Test";
 std::string displayWordleWord = "";
-int attemptsLeft = 5;
+int attemptsLeft = 2;
 bool wordleComplete = false;
 
 std::string selectWorldeWord(){
@@ -23,11 +23,17 @@ void initialiseGame(){
 }
 
 std::string receiveUserInput(){
-	return "Hurdle";
+	std::string userInput;
+	std::cin >> userInput;
+	return userInput;
     // Code to get user key press
 }
 
 void getNextGameState(const std::string userGuess){
+	if(userGuess == wordleWord){
+		wordleComplete = true;
+		return;
+	}
     for (size_t i = 0; i < userGuess.length(); ++i) {
         char guessChar = userGuess[i];
         char wordleChar = wordleWord[i];
@@ -48,6 +54,11 @@ void startGame(){
     while(attemptsLeft != 0 && !wordleComplete){
         getNextGameState(receiveUserInput());
 		displayGameState();
-        attemptsLeft = 0;
+        attemptsLeft -= 1;
     }
+	if(wordleComplete){
+		std::cout << "Congrats Wordle complete!" << std::endl;
+	}else{
+		std::cout << "You've ran out of attempts... better luck next time." << std::endl;
+	}
 }
