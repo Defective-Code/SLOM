@@ -1,17 +1,13 @@
-﻿ 1000 frequent words of Māori – in alphabetical order
-• An asterisk * in the first column means that this word is one of the 360 most frequent words in this list. Each of these words occurred 200 times or more in the Māori Texts for Children Corpus (MTC). Note that the asterisk does not mean that every meaning listed also occurred more than 200 times.
-• Some of these words have more than one meaning. This list gives the more frequent meanings of these words, as identified by their use in the texts in the MTC corpus.
-• Small caps in the third column shows the formation of the word, eg haria hari + passive suffix -a [indicating that the word haria is made up of the stem word hari and the passive suffix -a].
-• In the fourth column references are given for more information on function words – these can be difficult to translate simply.
-
-
+﻿
 a
 Not translatable into an English word; nominal particle, used before names and pronouns: a Mere, a kōrua, a ia.
-See Harlow index p. 299 for a.
+
+
 *
 ā
 Various meanings, eg: and, and then, as in: Ka tae mai, ā, ka noho ki te kai; plural of tā, as in: tā tātou whare, ā tātou whare; indicating future time, as in: Ā te pō nei
-See Harlow index p. 299 for ā.
+
+
 *
 āe
 yes
@@ -19,6 +15,7 @@ yes
 *
 aha
 what? 
+
 *
 ahakoa
 although
@@ -26,6 +23,7 @@ although
 
 ahatia
 aha + passive suffix -tia
+
 *
 ahau
 I, me
