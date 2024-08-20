@@ -10,12 +10,6 @@
         } \
     } while (false)
 
-// Define a structure to hold key mappings
-typedef struct {
-    const char* keyName;
-    WORD virtualKeyCode;
-} KeyMapping;
+// char simulate_keypress(char* pressedKey);
 
-void simulate_keypress(WORD key);
-
-WORD get_virtual_keycode(const char* keyName);
+// WORD get_virtual_keycode(const char* keyName); //for using windows library for getting keyboard inputs

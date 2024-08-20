@@ -5,7 +5,10 @@
 * E.g by capturing arrow keypresses to navigate a menu
 */
 
-char* capture_word();
+// char* capture_word();
 
-typedef int (*KeyStateFunc)(int);
-int capture_keypress(KeyStateFunc key_state_func);
+// typedef int (*KeyStateFunc)(int);
+// int capture_keypress(KeyStateFunc key_state_func);
+
+void start_capture_keypress();
+void end_capture_keypress();
