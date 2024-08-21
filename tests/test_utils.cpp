@@ -1,8 +1,16 @@
 #include <stdio.h>
 #include <string.h>
-#include <windows.h> // For VK_* constants
 #include "test_utils.h"
 
+/*
+char simulate_keypress(char* pressedKey) {
+    return *pressedKey;
+}
+*/
+
+
+
+/*
 // Initialize the key mappings for easier referencing later
 const KeyMapping keyMap[] = {
     {"A", 0x41},
@@ -52,7 +60,9 @@ const KeyMapping keyMap[] = {
     {"UP", VK_UP},
     {"DOWN", VK_DOWN}
 };
+*/
 
+/*
 // Function to get the virtual key code from a key name
 WORD get_virtual_keycode(const char* keyName) {
     size_t mapSize = sizeof(keyMap) / sizeof(keyMap[0]);
@@ -64,7 +74,9 @@ WORD get_virtual_keycode(const char* keyName) {
     fprintf(stderr, "Key name not found: %s\n", keyName);
     return 0; // Return 0 if the key name is not found
 }
+*/
 
+/*
 void simulate_keypress(WORD key) {
     INPUT ip;
 
@@ -83,3 +95,4 @@ void simulate_keypress(WORD key) {
     ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
     SendInput(1, &ip, sizeof(INPUT));
 }
+*/

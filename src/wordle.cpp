@@ -1,25 +1,30 @@
-#include <iostream>
+#include <iostream> 
 #include "input_handler.h"
-#include <string>
+
 
 // Declare a global variable
 std::string wordleWord = "Test";
 std::string displayWordleWord = "";
-int attemptsLeft = 2;
+int attemptsLeft = 3;
 bool wordleComplete = false;
 
 std::string selectWorldeWord(){
-    return "Wordle";
+    return "Holiday";
+}
+
+void displayGameState(){
+    // Code to display game state
+	std::cout << "\n" << displayWordleWord << std::endl;
 }
 
 void initialiseGame(){
     wordleWord = selectWorldeWord();
-    std::cout << "\nWordle word set to: " << wordleWord << std::endl;
+    // std::cout << "\nWordle word set to: " << wordleWord << std::endl;
     displayWordleWord = "";
     for (size_t i = 0; i < wordleWord.length(); ++i) {
         displayWordleWord += "_ ";
     }
-	std::cout << "\nCurrent display for Wordle word set: " << displayWordleWord << std::endl;
+	displayGameState();
 }
 
 std::string receiveUserInput(){
@@ -29,24 +34,26 @@ std::string receiveUserInput(){
     // Code to get user key press
 }
 
-void getNextGameState(const std::string userGuess){
+void getNextGameState(const std::string userGuess) {
+    displayWordleWord = ""; // Reset the display string
 	if(userGuess == wordleWord){
 		wordleComplete = true;
-		return;
 	}
     for (size_t i = 0; i < userGuess.length(); ++i) {
         char guessChar = userGuess[i];
         char wordleChar = wordleWord[i];
 
-        if(guessChar == wordleChar){
-            displayWordleWord[i * 2] = guessChar;
+        if (guessChar == wordleChar) {
+            // Correct character: color it gray
+            displayWordleWord += "\033[38;5;8m" + std::string(1, guessChar) + "\033[0m ";
+        } else if(wordleWord.find(guessChar)){
+			// Checks if wordleWord contains letter (Note: needs updating to update displayWordleWord)
+			std::cout << "Contains letter: " << guessChar << std::endl;
+		}else{
+            // Incorrect character: keep it as "_"
+            displayWordleWord += "_ ";
         }
     }
-    std::cout << "Updated: " << displayWordleWord << std::endl;
-}
-
-void displayGameState(){
-    // Code to display game state
 }
 
 void startGame(){

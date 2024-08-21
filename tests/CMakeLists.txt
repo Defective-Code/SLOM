@@ -6,6 +6,9 @@ set(SOURCES main_t.cpp test_utils.cpp input_handler_t.cpp)
 # Add the test executable
 add_executable(Tests ${SOURCES})
 
+# Define the testing macro for the unit test target
+target_compile_definitions(Tests PRIVATE TESTING)
+
 target_include_directories(Tests PRIVATE "${${PROJECT_SOURCE_DIR}}/src/utilities")
 
 target_link_libraries(Tests Input_Handling)

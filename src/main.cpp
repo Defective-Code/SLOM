@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "wordle.h"
+#include "input_handler.h"
 
 int main() {
 
@@ -24,8 +25,8 @@ int main() {
 
         printf("\nYou entered the word: %s", word);*/
 
-    startGame();
-    
+    // startGame();
+    // start_capture_keypress();
     
 	return 0;
 }
