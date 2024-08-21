@@ -26,7 +26,7 @@ int main() {
         printf("\nYou entered the word: %s", word);*/
 
     // startGame();
-    start_capture_keypress();
+    // start_capture_keypress();
     
 	return 0;
 }
