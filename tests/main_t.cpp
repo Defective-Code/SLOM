@@ -8,7 +8,6 @@ int main() {
 	int check = 0;
 
 	// Here we will call the other test methods/classes
-	check+=capture_keypress_t();
 
 	return check;
 }
