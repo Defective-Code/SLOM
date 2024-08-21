@@ -44,14 +44,14 @@ void getNextGameState(const std::string userGuess) {
         char wordleChar = wordleWord[i];
 
         if (guessChar == wordleChar) {
-            // Correct character: color it gray
-            displayWordleWord += "\033[38;5;8m" + std::string(1, guessChar) + "\033[0m ";
-        } else if(wordleWord.find(guessChar)){
-			// Checks if wordleWord contains letter (Note: needs updating to update displayWordleWord)
-			std::cout << "Contains letter: " << guessChar << std::endl;
+            // Correct character -- colour it green
+            displayWordleWord += "\033[38;5;10m" + std::string(1, guessChar) + "\033[0m ";
+        } else if(wordleWord.find(guessChar) != std::string::npos){
+			// Correct character by in wrong place -- Colour it yellow
+			displayWordleWord += "\033[38;5;226m" + std::string(1, guessChar) + "\033[0m ";
 		}else{
-            // Incorrect character: keep it as "_"
-            displayWordleWord += "_ ";
+            // Incorrect character -- colour it gray
+            displayWordleWord += "\033[38;5;250m" + std::string(1, guessChar) + "\033[0m ";
         }
     }
 }
