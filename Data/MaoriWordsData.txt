@@ -487,7 +487,7 @@ half
 *
 he
 a, some
-See Harlow index p. 301 for he.
+
 
 hē
 wrong; error, mistake
@@ -1290,7 +1290,7 @@ at a distance, yonder
 
 koa
 please
-See Harlow index p. 303 for koa.
+
 
 koa
 happy
@@ -1884,7 +1884,6 @@ dream
 
 
 moenga
-
 bed
 moe + nominal suffix -nga
 
@@ -1980,7 +1979,7 @@ blaze, flame
 *
 muri
 behind, after
-See Harlow pp. 33–37 for muri.
+
 *
 mutu
 be ended, finished (but not necessarily completed)
