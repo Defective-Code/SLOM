@@ -2,16 +2,28 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
+#include <vector>
+
 
 class DataGenerator{
 
 public:
     std::unordered_map<std::string,std::string> wordmap;
 
+
+    /***
+     * Constructor calls method to instantiate our word map
+    */
     DataGenerator() {
         make_wordmap();
     }
 
+
+    /***
+     * Method to populate unordered map containing all Maori words and defnitions as key value pairs
+     * Set up to handle multi line definitions
+     * Key value pairs stored in wordmap
+    */
     void make_wordmap(){
         std::ifstream file("Data/MaoriWordsData.txt");
 
@@ -58,5 +70,39 @@ public:
 
         file.close();
     }
+
+
+    /***
+     * Get random_entry method
+     * Takes an optional length argument, finds all matching values that match that length and puts them into a vector
+     * Randomly indexes the vector and returns the key value pair
+     * Throws an error if no matching word found
+     * 
+     * @param length: Optional length of word, -1 by default for no length
+     * @return returns randomly chosen word of given (or not) length
+    */
+    std::pair<std::string, std::string> get_random_entry(int length = -1){
+        
+
+        std::vector<std::pair<std::string, std::string>> matching_words;
+
+        // Auto& makes it automatically detect the type, & makes it a reference to avoid copying
+        for (const auto& keyvalue : wordmap){
+            if (length == -1  || keyvalue.first.length() == length) {
+                matching_words.push_back(keyvalue);
+            }
+        }
+
+        // Throw error if no matching words found 
+        if (matching_words.empty()){
+            throw std::runtime_error("No matching words found");
+        }
+
+        // Generate random number between 0 and length of matching_words vector
+        int random_index = std::rand() % matching_words.size();
+        return matching_words[random_index];
+
+    }
+
 };
 
