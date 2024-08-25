@@ -6,16 +6,16 @@
 
 
 class DataGenerator{
-
 public:
     std::unordered_map<std::string,std::string> wordmap;
-
+    std::unordered_map<char,double> frequencymap;
 
     /***
      * Constructor calls method to instantiate our word map
     */
     DataGenerator() {
         make_wordmap();
+        calculate_relative_freqs();
     }
 
 
@@ -40,8 +40,6 @@ public:
         bool nextkey {true};
         bool nextdef {false};
         bool addmap {false};
-
-
 
         while (std::getline(file, line)) {
             if (line.empty() || line[0] == '*') {
@@ -102,6 +100,29 @@ public:
         int random_index = std::rand() % matching_words.size();
         return matching_words[random_index];
 
+    }
+
+
+    /***
+     * Method to calculate relative frequencies of every letter used for data
+     * Stores each frequency in a map frequencymap
+     * Key: char
+     * Value: the relative frequency of that letter 
+    */
+    void calculate_relative_freqs(){
+        int total_letters = 0;
+
+        for (const auto& keyvalue : wordmap){
+            const std::string& key = keyvalue.first;
+            for (char ch : key){
+                total_letters++;
+                frequencymap[ch]++;
+            }
+        }
+
+        for (const auto& keyvalue: frequencymap){
+            frequencymap[keyvalue.first] = frequencymap[keyvalue.first] / total_letters;
+        }
     }
 
 };
