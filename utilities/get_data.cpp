@@ -3,19 +3,14 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include "get_data.h"
 
 
-class DataGenerator{
+    
+    std::unordered_map<std::string, std::string> wordmap;
 
-public:
-    std::unordered_map<std::string,std::string> wordmap;
-
-
-    /***
-     * Constructor calls method to instantiate our word map
-    */
-    DataGenerator() {
-        make_wordmap();
+    std::unordered_map<std::string, std::string> getWordMap() {
+        return wordmap;
     }
 
 
@@ -37,7 +32,7 @@ public:
         std::string line;
         std::string key;
         std::string definition;
-        bool nextkey {true};
+        bool nextkey {true}; //this varaiable determines if the next line is a key (true = it is, false = the next line is a def)
         bool nextdef {false};
         bool addmap {false};
 
@@ -104,5 +99,11 @@ public:
 
     }
 
-};
+    /***
+     * Constructor calls method to instantiate our word map
+    */
+    DataGenerator() {
+        make_wordmap();
+    }
+
 

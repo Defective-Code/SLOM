@@ -12,3 +12,4 @@
 
 void start_capture_keypress();
 void end_capture_keypress();
+void eg();
