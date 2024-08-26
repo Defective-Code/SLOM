@@ -10,9 +10,5 @@ Liam (kerli421)
 Max Simes Foster (simma362)
 Seda (Jorse427)
 
-## Ideas
-
-Basic Text Editor
-Calculator
-Vim Shortcut teaching game
-Inventory Management System
+## Documentation 
+https://Defective-Code.github.io/SLOM
