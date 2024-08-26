@@ -11,9 +11,11 @@ target_compile_definitions(Tests PRIVATE TESTING)
 
 # include_directories(${CMAKE_SOURCE_DIR})
 
-target_include_directories(Tests PRIVATE "${${PROJECT_SOURCE_DIR}}/utilities")
+# target_include_directories(Tests PRIVATE "${${PROJECT_SOURCE_DIR}}/utilities")
 
 target_link_libraries(Tests PRIVATE Utilities)
+
+target_include_directories(Tests PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 # Add the test to CTest
 add_test(NAME SLOM_t COMMAND Tests)

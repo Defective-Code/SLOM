@@ -6,3 +6,7 @@ set(SOURCES main.cpp wordle.cpp wordfind.cpp)
 # Add the executable
 add_executable(SLOM ${SOURCES})
 
+target_link_libraries(SLOM PRIVATE Utilities)
+
+target_include_directories(SLOM PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
