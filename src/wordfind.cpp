@@ -12,3 +12,6 @@ int datagentest() {
 	std::cout << "Definition: " << randword.second << "\n";
 	return 0;
 }
+namespace Wordfind {
+
+}

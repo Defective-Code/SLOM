@@ -1,14 +1,16 @@
 #pragma once
 #include <string>
 
-void initialiseGame();
+namespace Wordle {
+	void initialiseGame();
 
-std::string selectWorldeWord();
+	std::string selectWorldeWord();
 
-void receiveUserInput();
+	void receiveUserInput();
 
-void getNextGameState();
+	void getNextGameState();
 
-void displayGameState();
+	void displayGameState();
 
-void startGame();
+	void startGame();
+}
