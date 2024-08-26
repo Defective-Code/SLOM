@@ -5,31 +5,42 @@
 
 namespace Wordle {
 
-    std::string wordleWord = "Test";
-    std::string displayWordleWord = "";
-    const int totalAttemps = 5;
-    int attemptsLeft = totalAttemps;
-    bool wordleComplete = false;
-    std::string attempts[totalAttemps];
+std::string wordleWord = "Test";
+std::string displayWordleWord = "";
+const int totalAttempts = 5;
+int attemptsCount = 0;
+bool wordleComplete = false;
+std::string attempts[totalAttempts];
 
     std::string selectWorldeWord() {
         return "Holiday";
     }
 
-    void displayGameState() {
-        // Code to display game state
-        std::cout << "\n" << displayWordleWord << std::endl;
+void clearLastNLines(int n) {
+    for (int i = 0; i < n; ++i) {
+        // Move cursor up one line and clear the line
+        std::cout << "\033[A\033[2K";
     }
+}
 
-    void initialiseGame() {
-        wordleWord = selectWorldeWord();
-        // std::cout << "\nWordle word set to: " << wordleWord << std::endl;
-        displayWordleWord = "";
-        for (size_t i = 0; i < wordleWord.length(); ++i) {
-            displayWordleWord += "_ ";
-        }
-        displayGameState();
+void displayGameState() {
+    for (size_t i = 0; i < totalAttempts; ++i) {
+        std::cout << attempts[i] << std::endl;
     }
+}
+
+void initialiseGame(){
+    wordleWord = selectWorldeWord();
+    // std::cout << "\nWordle word set to: " << wordleWord << std::endl;
+    displayWordleWord = "";
+    for (size_t i = 0; i < wordleWord.length(); ++i) {
+        displayWordleWord += "_ ";
+    }
+    for (size_t i = 0; i < totalAttempts; ++i) {
+        attempts[i] = displayWordleWord;
+    }
+	displayGameState();
+}
 
     std::string receiveUserInput() {
         std::string userInput;
@@ -61,33 +72,33 @@ namespace Wordle {
             char guessChar = userGuess[i];
             char wordleChar = wordleWord[i];
 
-            if (guessChar == wordleChar) {
-                // Correct character -- colour it green
-                displayWordleWord += "\033[38;5;10m" + std::string(1, guessChar) + "\033[0m ";
-            }
-            else if (wordleWord.find(guessChar) != std::string::npos) {
-                // Correct character by in wrong place -- Colour it yellow
-                displayWordleWord += "\033[38;5;226m" + std::string(1, guessChar) + "\033[0m ";
-            }
-            else {
-                // Incorrect character -- colour it gray
-                displayWordleWord += "\033[38;5;250m" + std::string(1, guessChar) + "\033[0m ";
-            }
+        if (guessChar == wordleChar) {
+            // Correct character -- colour it green
+            displayWordleWord += "\033[38;5;10m" + std::string(1, guessChar) + "\033[0m ";
+        } else if(wordleWord.find(guessChar) != std::string::npos){
+			// Correct character by in wrong place -- Colour it yellow
+			displayWordleWord += "\033[38;5;226m" + std::string(1, guessChar) + "\033[0m ";
+		}else{
+            // Incorrect character -- colour it gray
+            displayWordleWord += "\033[38;5;250m" + std::string(1, guessChar) + "\033[0m ";
         }
     }
+    attempts[attemptsCount] = displayWordleWord;
+}
 
-    void startGame() {
-        initialiseGame();
-        while (attemptsLeft != 0 && !wordleComplete) {
-            getNextGameState(receiveUserInput());
-            displayGameState();
-            attemptsLeft -= 1;
-        }
-        if (wordleComplete) {
-            std::cout << "Congrats Wordle complete!" << std::endl;
-        }
-        else {
-            std::cout << "You've ran out of attempts... better luck next time." << std::endl;
-        }
+void startGame(){
+    clearLastNLines(11);
+	initialiseGame();
+    while(attemptsCount != totalAttempts && !wordleComplete){
+        getNextGameState(receiveUserInput());
+        clearLastNLines(6);
+		displayGameState();
+        attemptsCount += 1;
     }
+	if(wordleComplete){
+		std::cout << "Congrats Wordle complete!" << std::endl;
+	}else{
+		std::cout << "You've ran out of attempts... better luck next time." << std::endl;
+	}
+}
 }
