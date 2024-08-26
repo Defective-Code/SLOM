@@ -63,17 +63,19 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
     - name: Download Doxygen
-      run: choco install doxygen.install
+      #run: choco install doxygen.install
+      run: sudo apt-get install doxygen
 
     - name: Generate Doxygen
-      run: refreshenv; doxygen Doxyfile
+      #run: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1; refreshenv; doxygen Doxyfile #the first two steps are need so that the terminal 
+      run: doxygen Doxyfile
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
