@@ -37,12 +37,13 @@ char getMenuOption(int range) {
 void run() {
 	char ch = '0'; //variable to store user input
 	//Wordle::startGame();
+	Wordle wordle = Wordle();
 	while (ch != 'q') {
 		ch = getMenuOption(2);
 
 		switch (ch) {
 		case '1':
-			Wordle::startGame();
+			wordle.startGame();
 			break;
 		case '2':
 			//Wordfind::startGame();

@@ -1,16 +1,19 @@
 #pragma once
 #include <string>
 
-namespace Wordle {
+class Wordle {
+public:
+
+
 	void initialiseGame();
 
 	std::string selectWorldeWord();
 
-	void receiveUserInput();
+	std::string receiveUserInput();
 
-	void getNextGameState();
+	void getNextGameState(const std::string userGuess);
 
 	void displayGameState();
 
 	void startGame();
-}
+};
