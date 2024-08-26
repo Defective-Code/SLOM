@@ -70,12 +70,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Download Doxygen
-      #run: choco install doxygen.install
-      run: sudo apt-get install doxygen
+      run: choco install doxygen.install
+      #run: sudo apt-get install doxygen
 
     - name: Generate Doxygen
-      #run: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1; refreshenv; doxygen Doxyfile #the first two steps are need so that the terminal 
-      run: doxygen Doxyfile
+      run: echo R | Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1; refreshenv; doxygen Doxyfile #the first two steps are need so that the terminal 
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
