@@ -13,7 +13,7 @@ target_compile_definitions(Tests PRIVATE TESTING)
 
 target_include_directories(Tests PRIVATE "${${PROJECT_SOURCE_DIR}}/utilities")
 
-target_link_libraries(Tests Utilities)
+target_link_libraries(Tests PRIVATE Utilities)
 
 # Add the test to CTest
 add_test(NAME SLOM_t COMMAND Tests)

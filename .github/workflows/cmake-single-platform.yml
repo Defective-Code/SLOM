@@ -74,7 +74,7 @@ jobs:
       #run: sudo apt-get install doxygen
 
     - name: Generate Doxygen
-      run: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1; refreshenv; doxygen -o ${{github.workspace}}/docs Doxyfile #the first two steps are need so that the terminal 
+      run: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1; refreshenv; doxygen Doxyfile #the first two steps are need so that the terminal 
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
