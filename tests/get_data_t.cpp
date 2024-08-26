@@ -6,7 +6,7 @@
 int make_wordmap_t() {
 	//Testing if key contains multiple space seperated words
 	DataGenerator dg_test;
-	return 0;\
+	return 0;
 }
 int get_random_entry_t() {
 	return 0;

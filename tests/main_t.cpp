@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "input_handler_t.h"
 
 int main() {
 
