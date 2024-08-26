@@ -3,14 +3,19 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "get_data.h"
 
 
-    
-    std::unordered_map<std::string, std::string> wordmap;
+class DataGenerator{
+public:
+    std::unordered_map<std::string,std::string> wordmap;
+    std::unordered_map<char,double> frequencymap;
 
-    std::unordered_map<std::string, std::string> getWordMap() {
-        return wordmap;
+    /***
+     * Constructor calls method to instantiate our word map
+    */
+    DataGenerator() {
+        make_wordmap();
+        calculate_relative_freqs();
     }
 
 
@@ -32,11 +37,9 @@
         std::string line;
         std::string key;
         std::string definition;
-        bool nextkey {true}; //this varaiable determines if the next line is a key (true = it is, false = the next line is a def)
+        bool nextkey {true};
         bool nextdef {false};
         bool addmap {false};
-
-
 
         while (std::getline(file, line)) {
             if (line.empty() || line[0] == '*') {
@@ -99,11 +102,28 @@
 
     }
 
+
     /***
-     * Constructor calls method to instantiate our word map
+     * Method to calculate relative frequencies of every letter used for data
+     * Stores each frequency in a map frequencymap
+     * Key: char
+     * Value: the relative frequency of that letter 
     */
-    DataGenerator() {
-        make_wordmap();
+    void calculate_relative_freqs(){
+        int total_letters = 0;
+
+        for (const auto& keyvalue : wordmap){
+            const std::string& key = keyvalue.first;
+            for (char ch : key){
+                total_letters++;
+                frequencymap[ch]++;
+            }
+        }
+
+        for (const auto& keyvalue: frequencymap){
+            frequencymap[keyvalue.first] = frequencymap[keyvalue.first] / total_letters;
+        }
     }
 
+};
 

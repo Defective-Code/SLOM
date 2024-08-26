@@ -1,12 +1,15 @@
 #include <iostream> 
 #include "input_handler.h"
+#include "random.h"
 
 
 // Declare a global variable
+
 std::string wordleWord = "Test";
 std::string displayWordleWord = "";
-int attemptsLeft = 3;
+const int attemptsLeft = 5;
 bool wordleComplete = false;
+std::string attempts[attemptsLeft];
 
 std::string selectWorldeWord(){
     return "Holiday";
@@ -27,11 +30,24 @@ void initialiseGame(){
 	displayGameState();
 }
 
-std::string receiveUserInput(){
-	std::string userInput;
-	std::cin >> userInput;
-	return userInput;
-    // Code to get user key press
+std::string receiveUserInput() {
+    std::string userInput;
+
+    // Prompt user for input
+    std::cout << "Enter a word with " << wordleWord.length() << " characters: ";
+    
+    while (true) {
+        std::cin >> userInput;
+
+        // Check if the length of the input matches the length of wordleWord
+        if (userInput.length() == wordleWord.length()) {
+            break; // Input is valid, exit the loop
+        } else {
+            std::cout << "Invalid input. Please enter a word with exactly " << wordleWord.length() << " characters: ";
+        }
+    }
+
+    return userInput;
 }
 
 void getNextGameState(const std::string userGuess) {
