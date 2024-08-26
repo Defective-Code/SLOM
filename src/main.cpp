@@ -23,6 +23,7 @@ void displayMainMenu() {
 */
 char getMenuOption(int range) {
 	char ch;
+	
 	do {
 		displayMainMenu();
 		ch = getchar();
