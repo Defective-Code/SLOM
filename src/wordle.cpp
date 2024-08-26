@@ -1,15 +1,14 @@
 #include <iostream> 
 #include "input_handler.h"
-#include "random.h"
-
 
 // Declare a global variable
 
 std::string wordleWord = "Test";
 std::string displayWordleWord = "";
-const int attemptsLeft = 5;
+const int totalAttemps = 5;
+int attemptsLeft = totalAttemps;
 bool wordleComplete = false;
-std::string attempts[attemptsLeft];
+std::string attempts[totalAttemps];
 
 std::string selectWorldeWord(){
     return "Holiday";

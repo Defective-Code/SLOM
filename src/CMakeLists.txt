@@ -1,5 +1,5 @@
 # Store list of sources to build into executable
-set(SOURCES main.cpp wordle.cpp)
+set(SOURCES main.cpp wordle.cpp wordfind.cpp)
 
 # add_subdirectory(utilities)
 
