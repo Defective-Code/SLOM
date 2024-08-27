@@ -38,6 +38,7 @@ void run() {
 	char ch = '0'; //variable to store user input
 	//Wordle::startGame();
 	Wordle wordle = Wordle();
+	Wordfind wordfind = Wordfind();
 	while (ch != 'q') {
 		ch = getMenuOption(2);
 
@@ -46,7 +47,7 @@ void run() {
 			wordle.startGame();
 			break;
 		case '2':
-			Wordfind::startGame();
+			wordfind.startGame();
 			break;
 		case 'q':
 			printf("Quitting.....");

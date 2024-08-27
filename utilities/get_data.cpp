@@ -19,7 +19,8 @@ DataGenerator::DataGenerator() {
 void DataGenerator::make_wordmap() {
 	std::cout << "Current working directory: " << std::filesystem::current_path() << "\n";
 
-	std::ifstream file("../../../../../Data/MaoriWordsData.txt");
+	//std::ifstream file("C:\\Users\\Liam\\University\\third-year\\second-sem\\COSC345\\SLOM\\Data\\MaoriWordsData.txt");
+	std::ifstream file(DATA_FILE_PATH);
 
 	// Check if file opened successfully
 	if (!file.is_open()) {

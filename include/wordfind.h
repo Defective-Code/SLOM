@@ -1,4 +1,5 @@
 class Wordfind {
-	int datagentest();
-	int startGame();
-}
+	public:
+		int datagentest();
+		int startGame();
+};

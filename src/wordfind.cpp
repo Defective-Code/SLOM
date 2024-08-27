@@ -5,7 +5,7 @@
 #include "get_data.h"
 #include "wordfind.h"
 
-int datagentest() {
+int Wordfind::datagentest() {
 	DataGenerator dg;
 
 		std::pair < std::string, std::string> randword = dg.get_random_entry();
@@ -14,11 +14,10 @@ int datagentest() {
 		return 0;
 	}
 
-	int startGame() {
-		//DataGenerator dg;
-		//datagentest();
+int Wordfind::startGame() {
+	//DataGenerator dg;
+	//datagentest();
 
-		datagentest();
-		return 0;
-	}
+	datagentest();
+	return 0;
 }
