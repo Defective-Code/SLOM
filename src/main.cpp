@@ -46,7 +46,7 @@ void run() {
 			wordle.startGame();
 			break;
 		case '2':
-			//Wordfind::startGame();
+			Wordfind::startGame();
 			break;
 		case 'q':
 			printf("Quitting.....");

@@ -15,4 +15,12 @@ namespace Wordfind {
 		std::cout << "Definition: " << randword.second << "\n";
 		return 0;
 	}
+
+	int startGame() {
+		//DataGenerator dg;
+		//datagentest();
+
+		datagentest();
+		return 0;
+	}
 }

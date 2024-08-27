@@ -17,7 +17,9 @@ DataGenerator::DataGenerator() {
 
 
 void DataGenerator::make_wordmap() {
-	std::ifstream file("Data/MaoriWordsData.txt");
+	std::cout << "Current working directory: " << std::filesystem::current_path() << "\n";
+
+	std::ifstream file("../../../../../Data/MaoriWordsData.txt");
 
 	// Check if file opened successfully
 	if (!file.is_open()) {
@@ -62,6 +64,7 @@ void DataGenerator::make_wordmap() {
 	}
 
 	file.close();
+	std::cout << wordmap.bucket_count() << "\n";
 }
 
 
@@ -73,6 +76,7 @@ std::pair<std::string, std::string> DataGenerator::get_random_entry(int length) 
 
 	// Auto& makes it automatically detect the type, & makes it a reference to avoid copying
 	for (const auto& keyvalue : wordmap) {
+		std::cout << "Checking word: " << keyvalue.first << "\n";  // Debug line
 		if (length == -1 || keyvalue.first.length() == length) {
 			matching_words.push_back(keyvalue);
 		}
@@ -80,6 +84,7 @@ std::pair<std::string, std::string> DataGenerator::get_random_entry(int length) 
 
 	// Throw error if no matching words found 
 	if (matching_words.empty()) {
+		std::cerr << "No matching words found for length: " << length << "\n";  // Debug line
 		throw std::runtime_error("No matching words found");
 	}
 
@@ -105,4 +110,3 @@ void DataGenerator::calculate_relative_freqs() {
 		frequencymap[keyvalue.first] = frequencymap[keyvalue.first] / total_letters;
 	}
 }
-
