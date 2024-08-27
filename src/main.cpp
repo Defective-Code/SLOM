@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include "wordle.h"
 #include "wordfind.h"
 
@@ -39,8 +40,9 @@ void run() {
 	//Wordle::startGame();
 	Wordle wordle = Wordle();
 	Wordfind wordfind = Wordfind();
-	while (ch != 'q') {
-		ch = getMenuOption(2);
+	while (true) {
+		displayMainMenu();
+		std::cin >> ch;
 
 		switch (ch) {
 		case '1':
@@ -51,11 +53,12 @@ void run() {
 			break;
 		case 'q':
 			printf("Quitting.....");
-			break;
+			return;
 		default:
 			printf("Please select a valid option\n");
 		}
 	}
+	std::cout << std::endl; // Print a blank line for readability
 }
 
 
