@@ -1,3 +1,3 @@
-namespace Wordfind {
+class Wordfind {
 	int datagentest();
-}
+};
