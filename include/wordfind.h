@@ -49,6 +49,9 @@ class Wordfind {
 	private:
 
 		std::vector<std::string> getRandomWords();
+		std::vector<std::string> words;
+		std::vector<std::string> wordsFound;
+
 
 		/**
 		 * Initializes the grid with random letters from A to Z.
@@ -98,4 +101,29 @@ class Wordfind {
 		 * @param words A vector of strings representing the words to be added to the grid.
 		*/
 		void addWordsToGrid(std::vector<std::vector<char>>& grid, const std::vector<std::string>& words);
+
+
+		/**
+		 * Checks if game has ended / all words have been found
+		 * 
+		 * @return bool: whether all words have been found or not
+		*/
+		bool checkGameEnd();
+
+
+		/**
+		 * Moves cursor up and clear line N times
+		 * 
+		 * @param int n the number of lines to clear
+		 * 
+		*/
+		void clearLastNLines(int n);
+
+		/**
+		 * Takes user input and checks if it is amongst words contained within the grid
+		 * 
+		 * If word entered is in grid then returns to reprint grid with word highlighted
+		 * 
+		*/
+		void waitForEnter();
 };
