@@ -4,13 +4,17 @@
 #include <stdio.h>
 #include <iostream>
 #include <cstdlib>  // For rand() and srand()
-#include <ctime>    // For time()
+#include <ctime>    // For time
+#ifdef _WIN32       // Check if windows so that it's cross-platform
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 #include "get_data.h"
 #include "wordfind.h"
 
 
 Wordfind::Wordfind() {
-    
 }
 
 int Wordfind::datagentest() {
@@ -123,39 +127,75 @@ void Wordfind::addWordsToGrid(std::vector<std::vector<char>>& grid, const std::v
     }
 }
 
-void waitForEnter() {
-    std::string dummy = "";
-    std::cout << "Press Enter to continue...";
-
-    while (dummy.empty()) {
-        // Wait for user input
-        std::getline(std::cin, dummy);
+ // Function to clear last N lines in terminal
+void Wordfind::clearLastNLines(int n) {
+    for (int i = 0; i < n; ++i) {
+        // Move cursor up one line and clear the line
+        std::cout << "\033[A\033[2K";
     }
-    
+}
+
+void Wordfind::waitForEnter() {
+    std::cout << "Enter a word...";
+
+    while (true){
+        std::string dummy = "";
+
+        while (dummy.empty()) {
+            // Wait for user input
+            std::getline(std::cin, dummy);
+            // Convert word to uppercase
+            std::transform(dummy.begin(), dummy.end(), dummy.begin(), [](unsigned char c) {return std::toupper(c);  });
+        }
+        int correctGuess = count(words.begin(), words.end(), dummy);
+
+        if (correctGuess > 0) {
+            wordsFound.push_back(dummy);
+            return;
+        }
+        else {
+            clearLastNLines(1);
+        }
+    }
     
 }
 
+ // Function to check if all words have been found
+bool Wordfind::checkGameEnd() {
+    return words.size() == wordsFound.size();
+}
 
 int Wordfind::startGame() {
-	//DataGenerator dg;
-	//datagentest();
 
-	//datagentest();
+    bool runGame = true;
 
     //test strings
-    std::vector<std::string> words = { "HELLO", "WORLD", "PUZZLE", "CPLUSPLUS" };
+
+    words = { "HELLO", "WORLD", "PUZZLE", "CPLUSPLUS" };
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
+
 
     printf("Starting the game up!\n");
 
     initializeGrid(grid);
  
     addWordsToGrid(grid, words);
-    
-    printGrid(grid);
 
-    waitForEnter();
+    while (runGame) {
+        printGrid(grid);
 
+        waitForEnter();
+
+        runGame = !checkGameEnd();
+        int linesToClear = GRID_SIZE + 2;
+        std::cout << "Nice job!";
+        #ifdef _WIN32
+                Sleep(1000);  // Sleep for 1000 milliseconds (2 seconds) on Windows
+        #else
+                sleep(1);     // Sleep for 1 seconds on Unix-based systems
+        #endif
+        clearLastNLines(linesToClear);
+    }
 	return 0;
 }
