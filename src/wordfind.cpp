@@ -36,12 +36,42 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
+    system("CLS"); //clear the terminal screen
+    /*
+    for (int i = 0; i <= grid.size(); i++) {
+        for (int j = 0; j <= grid[i].size(); j++) {
+            if (i == 0 && j == 0) {
+                std::cout << " | " << std::endl;
+            }
+            else if (i == 0 ) {
+                std::cout << " Test " << std::endl;
+            } 
+            else if (j == 0 || j == grid[i].size()) {
+                std::cout << " - " << std::endl;
+            }
+            else {
+                std::cout << grid[i][j] << ' ';
+            }
+        }
+        std::cout << std::endl;
+    }
+    */
+    /*
+    for (int i = 0; i < grid.size(); i++) {
+        for (int j = 0; j < grid[i].size(); j++) {
+            std::cout << grid[i][j] << ' ';
+        }
+        
+    }
+    */
+    
     for (const auto& row : grid) {
         for (char cell : row) {
             std::cout << cell << ' ';
         }
         std::cout << std::endl;
     }
+    
 }
 
 // Function to place a word in the grid
