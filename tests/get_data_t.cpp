@@ -1,4 +1,3 @@
-#include "get_data_t.h"
 #include "get_data.h"
 #include <stdio.h>
 #include <string>
@@ -44,4 +43,12 @@ int get_random_entry_t() {
 	if (test8.first.length() != 8) return 1;
 
 	return 0;
+}
+
+int main() {
+	int test_results = 0;
+	test_results += make_wordmap_t();
+	test_results += get_random_entry_t();
+
+	return test_results;
 }
