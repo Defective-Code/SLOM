@@ -187,39 +187,86 @@ bool Wordfind::isDiacritic(char32_t c) {
 }
 
 // Function to check if the string contains any diacritic
+/*
+bool Wordfind::hasDiacritics(const std::string& input) {
+	std::u32string utf32Str;
+
+	// Convert UTF-8 string to UTF-32 to handle multi-byte characters
+	for (size_t i = 0; i < input.size();) {
+		char32_t c;
+		unsigned char byte = input[i];
+		if (byte < 0x80) {
+			c = byte;
+			++i;
+		}
+		else if (byte < 0xE0) {
+			c = (byte & 0x1F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		else if (byte < 0xF0) {
+			c = (byte & 0x0F) << 12;
+			c |= (input[++i] & 0x3F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		else {
+			c = (byte & 0x07) << 18;
+			c |= (input[++i] & 0x3F) << 12;
+			c |= (input[++i] & 0x3F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		utf32Str += c;
+	}
+
+	// Check each character in the string
+	for (char32_t c : utf32Str) {
+		if (isDiacritic(c)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+*/
+
+// Function to check if the string contains any diacritic
 bool Wordfind::hasDiacritics(const std::string& input) {
     std::u32string utf32Str;
+    size_t i = 0;
 
-    // Convert UTF-8 string to UTF-32 to handle multi-byte characters
-    for (size_t i = 0; i < input.size();) {
-        char32_t c;
+    while (i < input.size()) {
+        char32_t c = 0;
         unsigned char byte = input[i];
+
         if (byte < 0x80) {
             c = byte;
             ++i;
         }
-        else if (byte < 0xE0) {
+        else if ((byte & 0xE0) == 0xC0) {
             c = (byte & 0x1F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
-        else if (byte < 0xF0) {
+        else if ((byte & 0xF0) == 0xE0) {
             c = (byte & 0x0F) << 12;
             c |= (input[++i] & 0x3F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
-        else {
+        else if ((byte & 0xF8) == 0xF0) {
             c = (byte & 0x07) << 18;
             c |= (input[++i] & 0x3F) << 12;
             c |= (input[++i] & 0x3F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
+
         utf32Str += c;
     }
 
-    // Check each character in the string
+    // Check each character in the UTF-32 string
     for (char32_t c : utf32Str) {
         if (isDiacritic(c)) {
             return true;

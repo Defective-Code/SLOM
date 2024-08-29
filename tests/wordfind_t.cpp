@@ -79,6 +79,124 @@ public:
         std::cout << "All test cases passed for placeWord()" << std::endl;
     }
 
+    static void addWordsToGrid_t() {
+        Wordfind wordfind;
+
+        // Initialize the grid
+        std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, '.'));
+
+        // List of words to add
+        std::vector<std::string> words = { "HELLO", "WORLD", "TEST", "GRID" };
+
+        // Call the method to add words to the grid
+        wordfind.addWordsToGrid(grid, words);
+
+        // Output the grid for manual inspection
+        /*
+        std::cout << "Grid after adding words:" << std::endl;
+        for (const auto& row : grid) {
+            for (const auto& cell : row) {
+                std::cout << cell << ' ';
+            }
+            std::cout << std::endl;
+        } 
+        */
+
+        // Basic validation checks
+        for (const auto& word : words) {
+            bool found = false;
+            for (int r = 0; r < Wordfind::GRID_SIZE; ++r) {
+                for (int c = 0; c < Wordfind::GRID_SIZE; ++c) {
+                    if (searchWordInGrid(grid, word, r, c)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+            assert(found && "Word not found in the grid");
+        }
+
+        std::cout << "All words were placed successfully." << std::endl;
+    }
+
+    static void isDiacritic_t() {
+        Wordfind wordfind;
+
+        // Test diacritic characters within the specified ranges
+        // Combining Diacritical Marks
+        assert(wordfind.isDiacritic(0x0300)); // Combining Grave Accent
+        assert(wordfind.isDiacritic(0x036F)); // Combining Double Breve
+
+        // Combining Diacritical Marks for Greek and Coptic
+        assert(wordfind.isDiacritic(0x1DC0)); // Combining Dotted Grave Accent
+        assert(wordfind.isDiacritic(0x1DFF)); // Combining Macron Below
+
+        // Latin Extended-A
+        assert(wordfind.isDiacritic(0x0100)); // Latin Capital Letter A with Macron
+        assert(wordfind.isDiacritic(0x017F)); // Latin Small Letter Long S
+
+        // Non-diacritic characters within the range limits
+        assert(!wordfind.isDiacritic(0x0270)); // Latin Letter Small T with Retroflection Hook (outside Latin Extended-A range)
+        assert(!wordfind.isDiacritic(0x0279)); // Latin Letter Small D with Hook (outside Latin Extended-A range)
+
+        std::cout << "All specified range diacritic tests passed." << std::endl;
+    }
+
+    static void hasDiacritics_t() {
+        Wordfind wordfind;
+
+        // Test strings with diacritical marks
+        assert(wordfind.hasDiacritics("Café")); // 'é' has a diacritic
+        assert(wordfind.hasDiacritics("Résumé")); // 'é' and 'è' have diacritics
+        assert(wordfind.hasDiacritics("naïve")); // 'ï' has a diacritic
+        assert(wordfind.hasDiacritics("São Paulo")); // 'ã' has a diacritic
+
+        // Test strings without diacritical marks
+        assert(!wordfind.hasDiacritics("Cafe")); // No diacritic
+        assert(!wordfind.hasDiacritics("Resume")); // No diacritic
+        assert(!wordfind.hasDiacritics("naive")); // No diacritic
+        assert(!wordfind.hasDiacritics("Sao Paulo")); // No diacritic
+
+        // Test empty string
+        assert(!wordfind.hasDiacritics("")); // No diacritic in an empty string
+
+        // Test string with only diacritical marks
+        assert(wordfind.hasDiacritics("\u0301\u0300")); // Combining Acute Accent and Combining Grave Accent
+
+        std::cout << "All hasDiacritics tests passed." << std::endl;
+    }
+
+    static void resetGameState_t() {
+        Wordfind wordfind;
+
+        // Set initial state with some dummy data
+        wordfind.words = { "word1", "word2" };
+        wordfind.wordsFound = { "word1" };
+        wordfind.wordPositions = { {0, 0}, {1, 1} };
+        wordfind.wordsFoundCoordinates.insert({ 2, 2 });
+        wordfind.wordToPositionMap["word2"] = { {3, 3}, {4, 4} };
+
+        // Ensure the state is set
+        assert(!wordfind.words.empty());
+        assert(!wordfind.wordsFound.empty());
+        assert(!wordfind.wordPositions.empty());
+        assert(!wordfind.wordsFoundCoordinates.empty());
+        assert(!wordfind.wordToPositionMap.empty());
+
+        // Call the resetGameState method
+        wordfind.resetGameState();
+
+        // Test that all internal state variables are cleared
+        assert(wordfind.words.empty());
+        assert(wordfind.wordsFound.empty());
+        assert(wordfind.wordPositions.empty());
+        assert(wordfind.wordsFoundCoordinates.empty());
+        assert(wordfind.wordToPositionMap.empty());
+
+        std::cout << "resetGameState test passed." << std::endl;
+    }
+
 private:
     static void printPositionSet(const Wordfind::PositionSet& posSet) {
         for (const auto& pos : posSet) {
@@ -114,6 +232,13 @@ private:
 int main() {
     WordfindTest::initializeGrid_t();
     WordfindTest::placeWord_t();
+    WordfindTest::addWordsToGrid_t();
+    WordfindTest::isDiacritic_t();
+    WordfindTest::hasDiacritics_t();
+    
+    
+    WordfindTest::resetGameState_t();
+    
 	return 0;
 }
 
