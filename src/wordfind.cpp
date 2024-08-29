@@ -84,7 +84,7 @@ void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
 }
 
 // Function to place a word in the grid
-bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, std::unordered_set<Position, PositionHash, PositionEqual>& occupiedPositions) {
+bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions) {
     int len = word.length();
 
     // Check if the word fits in the grid
@@ -99,7 +99,7 @@ bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string
         wordPositions.push_back(pos);
     }
 
-    wordToPositionMap[word] = std::unordered_set<Position>();
+    wordToPositionMap[word] = PositionSet();
 
     // Place the word in the grid and mark positions
     for (int i = 0; i < len; ++i) {
@@ -119,7 +119,7 @@ void Wordfind::addWordsToGrid(std::vector<std::vector<char>>& grid, const std::v
     std::srand(std::time(0)); // Seed for randomness
     const int directions[8][2] = { {1, 0}, {0, 1}, {1, 1}, {-1, 1}, {0, -1}, {-1, 0}, {1, -1}, {-1, -1} };
 
-    std::unordered_set<Position, PositionHash, PositionEqual> occupiedPositions;
+    std::unordered_set<Position, PositionHash> occupiedPositions;
     
     for (const auto& word : words) {
         bool placed = false;

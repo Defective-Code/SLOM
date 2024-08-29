@@ -14,22 +14,16 @@ class Wordfind {
 	const int GRID_SIZE = 10; // Adjust as needed
 	// A type alias for storing the coordinates of placed words
 	using Position = std::pair<int, int>;
-
-	// Custom hash function for std::pair<int, int>
+	
 	struct PositionHash {
-		std::size_t operator()(const Position& p) const {
-			auto h1 = std::hash<int>{}(p.first);
-			auto h2 = std::hash<int>{}(p.second);
-			return h1 ^ (h2 << 1); // Combine hash values
+		std::size_t operator()(const Position& pos) const {
+			std::size_t h1 = std::hash<int>()(pos.first);
+			std::size_t h2 = std::hash<int>()(pos.second);
+			return h1 ^ (h2 << 1); // Combine the two hash values
 		}
 	};
 
-	// Custom equality function for std::pair<int, int>
-	struct PositionEqual {
-		bool operator()(const Position& lhs, const Position& rhs) const {
-			return lhs == rhs;
-		}
-	};
+	using PositionSet = std::unordered_set<Position, PositionHash>; //use whenever you want to declare a set of unordered Positions
 
 	public:
 
@@ -53,8 +47,8 @@ class Wordfind {
 		std::vector<std::string> words;
 		std::vector<std::string> wordsFound;
 		std::vector<Position> wordPositions;
-		std::unordered_set<Position> wordsFoundCoordinates;
-		std::unordered_map <std::string, std::unordered_set<Position>> wordToPositionMap;
+		PositionSet wordsFoundCoordinates;
+		std::unordered_map <std::string, PositionSet> wordToPositionMap;
 
 
 		/**
@@ -91,7 +85,7 @@ class Wordfind {
 		 *
 		 * @return true if the word was successfully placed in the grid; false otherwise.
 		*/
-		bool placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, std::unordered_set<Position, PositionHash, PositionEqual>& occupiedPositions);
+		bool placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions);
 
 		/**
 		 * Adds a list of words to the grid, placing each word at a random position and direction.
