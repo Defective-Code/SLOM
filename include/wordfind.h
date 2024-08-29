@@ -6,6 +6,7 @@
 #include <string.h>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <utility>  // For std::pair
 
 class Wordfind {
@@ -51,6 +52,9 @@ class Wordfind {
 		std::vector<std::string> getRandomWords();
 		std::vector<std::string> words;
 		std::vector<std::string> wordsFound;
+		std::vector<Position> wordPositions;
+		std::unordered_set<Position> wordsFoundCoordinates;
+		std::unordered_map <std::string, std::unordered_set<Position>> wordToPositionMap;
 
 
 		/**
@@ -109,6 +113,17 @@ class Wordfind {
 		 * @return bool: whether all words have been found or not
 		*/
 		bool checkGameEnd();
+
+
+		/** 
+		 * Takes a word that has been found, and updates vector of positions found for print grid 
+		 * method to utilise / print found words as green
+		 * 
+		 * @param string key the key for the Map of the word that has been found and it's positions 
+		 in the grid
+		*/
+		void updateWordVector(const std::string& key);
+
 
 
 		/**
