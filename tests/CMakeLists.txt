@@ -32,5 +32,6 @@ target_link_libraries(test_get_data Utilities)
 add_test(Get_Data_Test test_get_data)
 
 add_executable(test_wordfind "wordfind_t.cpp")
-target_link_libraries(test_wordfind Utilities) 
+target_link_libraries(test_wordfind PRIVATE Utilities)
+target_link_libraries(test_wordfind PRIVATE Games)
 add_test(Wordfind_Test test_wordfind)

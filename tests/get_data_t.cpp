@@ -16,7 +16,6 @@ void make_wordmap_t() {
 
 	assert(dg_test.wordmap.find("hellos") == dg_test.wordmap.end());
 
-	std::cout << (dg_test.wordmap["multiline"]) << std::endl;
 	assert(dg_test.wordmap["multiline"].compare("a test of multiline definition capture"));
 	
 	//Assuming a key with a multiline definition
