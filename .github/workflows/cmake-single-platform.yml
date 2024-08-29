@@ -47,7 +47,7 @@ jobs:
     - name: Generate CodeCov Report
       working-directory: ${{github.workspace}}/build
       shell: cmd
-      run: OpenCppCoverage.exe --modules Release --export_type cobertura:slom.xml -- ctest -C ${{env.BUILD_TYPE}} 
+      run: OpenCppCoverage.exe --export_type cobertura:slom.xml -- ctest -C ${{env.BUILD_TYPE}} 
     
     - name: Upload Report to Codecov
       uses: codecov/codecov-action@v4
