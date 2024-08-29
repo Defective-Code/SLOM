@@ -6,12 +6,24 @@
 
 int make_wordmap_t() {
 	//Testing if key contains multiple space seperated words
-	DataGenerator dg_test;
+	std::string filepath = TEST_RESOURCES_FILE_PATH + std::string("test_data.txt");
+	std::cout << filepath << std::endl;
+	DataGenerator dg_test = DataGenerator(filepath);
+
+	assert(dg.wordmap["hello"] == "a standard greeting in the English language");
+	assert(dg.wordmap["world"] == "meaning either the earth, together with all of its countries and peoples or a particular region or group of countries");
+	assert(dg.wordmap.size() == 2);
+
+	assert(dg.wordmap.find("keyWithNoDefinition") == dg.wordmap.end());
+	
+	//Assuming a key with a multiline definition
+	dg_test = DataGenerator(TEST_RESOURCES_FILE_PATH + std::string("empty_file.txt"));
+	assert(dg.wordmap["keyWithMultilineDef"] == "This is a multiline definition.");
 
 	return 0;
 }
 int get_random_entry_t() {
-	DataGenerator dg_test = DataGenerator();
+	DataGenerator dg_test = DataGenerator(TEST_RESOURCES_FILE_PATH + std::string("test_data.txt"));
 
 	/*
 	for (int i = 0; i < 20; i++) {

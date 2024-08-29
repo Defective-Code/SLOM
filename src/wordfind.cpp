@@ -71,7 +71,8 @@ void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
     
     for (const auto& row : grid) {
         for (char cell : row) {
-            std::cout << cell << ' ';
+            //std::cout << cell << ' ';
+            std::cout << "\033[31m" << cell << "\033[0m" << ' ';
         }
         std::cout << std::endl;
     }

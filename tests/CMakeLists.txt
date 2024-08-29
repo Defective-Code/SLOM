@@ -25,6 +25,8 @@
 
 #replace the name_of_the_executable, source.cpp, the_library_you_need_to_use, name_of_the_test with whatever is relevant to you
 
+add_definitions(-DTEST_RESOURCES_FILE_PATH="${CMAKE_SOURCE_DIR}/tests/resources/")
+
 add_executable(test_get_data "get_data_t.cpp")
 target_link_libraries(test_get_data Utilities) #this is optional if you don't require an external library
 add_test(Get_Data_Test test_get_data)

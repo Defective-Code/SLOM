@@ -1,0 +1,12 @@
+
+hello
+a standard greeting in the English language
+
+world
+meaning either the earth, together with all of its countries and peoples or a particular region or group of countries
+
+hellos
+
+multiline
+a test of 
+multiline definition capture

@@ -19,12 +19,18 @@ public:
     */
     DataGenerator();
 
+    /***
+    * Constructor that takes in a filepath for building a wordmap from a different source file.
+    * Mainly for testing purpose at the moment
+    */
+    DataGenerator(std::string filepath); 
+
 	/***
      * Method to populate unordered map containing all Maori words and defnitions as key value pairs
      * Set up to handle multi line definitions
      * Key value pairs stored in wordmap
     */
-    void make_wordmap();
+    void make_wordmap(std::string filepath);
 
     /***
      * Get random_entry method

@@ -10,17 +10,22 @@ std::unordered_map<char, double> frequencymap;
 
 
 DataGenerator::DataGenerator() {
-	make_wordmap();
+	make_wordmap(DATA_FILE_PATH);
+	calculate_relative_freqs();
+}
+
+DataGenerator::DataGenerator(std::string filepath) {
+	make_wordmap(filepath);
 	calculate_relative_freqs();
 }
 
 
 
-void DataGenerator::make_wordmap() {
+void DataGenerator::make_wordmap(std::string filepath) {
 	std::cout << "Current working directory: " << std::filesystem::current_path() << "\n";
 
 	//std::ifstream file("C:\\Users\\Liam\\University\\third-year\\second-sem\\COSC345\\SLOM\\Data\\MaoriWordsData.txt");
-	std::ifstream file(DATA_FILE_PATH); //this filepath is defined in the CMakeLists.txt file in the utilities folder
+	std::ifstream file(filepath); //this filepath is defined in the CMakeLists.txt file in the utilities folder
 
 	// Check if file opened successfully
 	if (!file.is_open()) {
