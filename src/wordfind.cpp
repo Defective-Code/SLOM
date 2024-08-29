@@ -1,8 +1,10 @@
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <stdio.h>
 #include <iostream>
+#include <iterator>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
 #ifdef _WIN32       // Check if windows so that it's cross-platform
@@ -60,28 +62,30 @@ void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
         std::cout << std::endl;
     }
     */
-    /*
+    
     for (int i = 0; i < grid.size(); i++) {
         for (int j = 0; j < grid[i].size(); j++) {
+
             std::cout << grid[i][j] << ' ';
         }
         
     }
-    */
     
+    /*
     for (const auto& row : grid) {
         for (char cell : row) {
+
             std::cout << cell << ' ';
         }
         std::cout << std::endl;
     }
+    */
     
 }
 
 // Function to place a word in the grid
 bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, std::unordered_set<Position, PositionHash, PositionEqual>& occupiedPositions) {
     int len = word.length();
-    std::vector<Position> wordPositions;
 
     // Check if the word fits in the grid
     for (int i = 0; i < len; ++i) {
@@ -95,6 +99,8 @@ bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string
         wordPositions.push_back(pos);
     }
 
+    wordToPositionMap[word] = std::unordered_set<Position>();
+
     // Place the word in the grid and mark positions
     for (int i = 0; i < len; ++i) {
         int r = row + i * dRow;
@@ -102,6 +108,7 @@ bool Wordfind::placeWord(std::vector<std::vector<char>>& grid, const std::string
         Position pos = { r, c };
         grid[r][c] = word[i];
         occupiedPositions.insert(pos);
+        wordToPositionMap[word].insert(pos);
     }
 
     return true;
@@ -127,6 +134,7 @@ void Wordfind::addWordsToGrid(std::vector<std::vector<char>>& grid, const std::v
     }
 }
 
+
  // Function to clear last N lines in terminal
 void Wordfind::clearLastNLines(int n) {
     for (int i = 0; i < n; ++i) {
@@ -135,8 +143,9 @@ void Wordfind::clearLastNLines(int n) {
     }
 }
 
+
 void Wordfind::waitForEnter() {
-    std::cout << "Enter a word...";
+    std::cout << "Enter a word...\n";
 
     while (true){
         std::string dummy = "";
@@ -151,6 +160,7 @@ void Wordfind::waitForEnter() {
 
         if (correctGuess > 0) {
             wordsFound.push_back(dummy);
+            updateWordVector(dummy);
             return;
         }
         else {
@@ -159,6 +169,22 @@ void Wordfind::waitForEnter() {
     }
     
 }
+
+
+void Wordfind::updateWordVector(const std::string& key) {
+    auto it = wordToPositionMap.find(key);
+    if (it != wordToPositionMap.end()) {
+        for (const Position& pos : it->second) {
+            wordsFoundCoordinates.insert(pos);
+        }
+    }
+    else {
+        std::cout << "Key not found in wordToPositionMap: " << key << std::endl;
+    }
+}
+
+
+
 
  // Function to check if all words have been found
 bool Wordfind::checkGameEnd() {
@@ -184,7 +210,14 @@ int Wordfind::startGame() {
 
     while (runGame) {
         printGrid(grid);
-
+        for (const auto& entry : wordToPositionMap) {
+            std::cout << "Word: " << entry.first << "\n";
+            std::cout << "Positions:\n";
+            for (const auto& pos : entry.second) {
+                std::cout << "  (" << pos.first << ", " << pos.second << ")\n";
+            }
+            std::cout << "\n";
+        }
         waitForEnter();
 
         runGame = !checkGameEnd();
@@ -195,6 +228,7 @@ int Wordfind::startGame() {
         #else
                 sleep(1);     // Sleep for 1 seconds on Unix-based systems
         #endif
+    
         clearLastNLines(linesToClear);
     }
 	return 0;
