@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <cstdio>
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 #include "wordle.h"
 #include "wordfind.h"
 
@@ -67,6 +71,10 @@ int main() {
 
 	printf("SLOM Started");
 
+	#ifdef _WIN32
+		SetConsoleOutputCP(CP_UTF8);
+		setvbuf(stdout, nullptr, _IOFBF, 1000);
+	#endif
 	run();
     
 	return 0;
