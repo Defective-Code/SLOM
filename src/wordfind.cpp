@@ -30,7 +30,7 @@ int Wordfind::datagentest() {
 
 // Function to initialize the grid with random letters
 void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
-    const char letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const char letters[] = "ABCDEFGHIKLMNOPRSTUVW";
     const int numLetters = sizeof(letters) - 1; // Exclude null terminator
 
     for (int i = 0; i < Wordfind::GRID_SIZE; ++i) {
@@ -42,45 +42,25 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
-    system("CLS"); //clear the terminal screen
-    /*
-    for (int i = 0; i <= grid.size(); i++) {
-        for (int j = 0; j <= grid[i].size(); j++) {
-            if (i == 0 && j == 0) {
-                std::cout << " | " << std::endl;
-            }
-            else if (i == 0 ) {
-                std::cout << " Test " << std::endl;
-            } 
-            else if (j == 0 || j == grid[i].size()) {
-                std::cout << " - " << std::endl;
+    system("CLS"); // Clear the terminal screen
+
+    int r = 0;
+    for (const auto& row : grid) {
+        int c = 0;
+        for (char cell : row) {
+            Position pos = { r, c };
+            auto it = wordsFoundCoordinates.find(pos);
+            if (it != wordsFoundCoordinates.end()) {
+                std::cout << "\033[32m" << cell << "\033[0m" << ' ';
             }
             else {
-                std::cout << grid[i][j] << ' ';
+                std::cout << cell << ' ';
             }
+            c++;
         }
         std::cout << std::endl;
+        r++;
     }
-    */
-    
-    for (int i = 0; i < grid.size(); i++) {
-        for (int j = 0; j < grid[i].size(); j++) {
-
-            std::cout << grid[i][j] << ' ';
-        }
-        
-    }
-    
-    /*
-    for (const auto& row : grid) {
-        for (char cell : row) {
-            //std::cout << cell << ' ';
-            std::cout << "\033[31m" << cell << "\033[0m" << ' ';
-        }
-        std::cout << std::endl;
-    }
-    */
-    
 }
 
 // Function to place a word in the grid
@@ -171,6 +151,7 @@ void Wordfind::waitForEnter() {
 }
 
 
+ // Function to update words found set of positions of chars in the grid
 void Wordfind::updateWordVector(const std::string& key) {
     auto it = wordToPositionMap.find(key);
     if (it != wordToPositionMap.end()) {
@@ -178,11 +159,16 @@ void Wordfind::updateWordVector(const std::string& key) {
             wordsFoundCoordinates.insert(pos);
         }
     }
-    else {
-        std::cout << "Key not found in wordToPositionMap: " << key << std::endl;
-    }
 }
 
+
+ // Function to reset game state
+void Wordfind::resetGameState() {
+    wordsFound.clear();
+    wordPositions.clear();
+    wordsFoundCoordinates.clear();
+    wordToPositionMap.clear();
+}
 
 
 
@@ -195,9 +181,17 @@ int Wordfind::startGame() {
 
     bool runGame = true;
 
-    //test strings
+    DataGenerator dg; 
+    int wordCount = 4;
 
-    words = { "HELLO", "WORLD", "PUZZLE", "CPLUSPLUS" };
+    while (words.size() < wordCount){
+        std::pair wordDef = dg.get_random_entry();
+        std::string nextWord = wordDef.first;
+        if (nextWord.size() < GRID_SIZE && nextWord.size() > 2) {
+            std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) {return std::toupper(c);  });
+            words.push_back(nextWord);
+        }
+    }
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
 
@@ -210,14 +204,7 @@ int Wordfind::startGame() {
 
     while (runGame) {
         printGrid(grid);
-        for (const auto& entry : wordToPositionMap) {
-            std::cout << "Word: " << entry.first << "\n";
-            std::cout << "Positions:\n";
-            for (const auto& pos : entry.second) {
-                std::cout << "  (" << pos.first << ", " << pos.second << ")\n";
-            }
-            std::cout << "\n";
-        }
+        
         waitForEnter();
 
         runGame = !checkGameEnd();
@@ -231,5 +218,12 @@ int Wordfind::startGame() {
     
         clearLastNLines(linesToClear);
     }
+    std::cout << "YOU WIN!" << std::endl;
+    #ifdef _WIN32
+        Sleep(1000);
+    #else
+        sleep(1);
+    #endif
+        resetGameState();
 	return 0;
 }

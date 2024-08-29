@@ -15,7 +15,7 @@ void displayMainMenu() {
 	printf("1) Wordle\n");
 	printf("2) Wordfind\n\n");
 	printf("Press q to quit\n\n");
-	printf("\u001b[31mQ\u001b[0m");
+	//printf("\u001b[31mQ\u001b[0m");
 }
 
 /***

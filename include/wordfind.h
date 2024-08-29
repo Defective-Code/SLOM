@@ -128,6 +128,14 @@ class Wordfind {
 		*/
 		void clearLastNLines(int n);
 
+
+		/**
+		 * Function to reset game state
+		 * 
+		 * Clears all data held within variable from previous game.
+		*/
+		void resetGameState();
+
 		/**
 		 * Takes user input and checks if it is amongst words contained within the grid
 		 * 
