@@ -53,7 +53,7 @@ jobs:
       uses: codecov/codecov-action@v4
       with:
         fail_ci_if_error: true
-        files: ${{github.workspace}}/build/slom.xml
+        files: slom.xml
         token: ${{ secrets.CODECOV_TOKEN }}
 
       
