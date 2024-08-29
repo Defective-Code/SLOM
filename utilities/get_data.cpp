@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <ctime>
 #include "get_data.h"
 
 std::unordered_map<std::string, std::string> wordmap;
@@ -10,11 +11,13 @@ std::unordered_map<char, double> frequencymap;
 
 
 DataGenerator::DataGenerator() {
+	std::srand(std::time(0));
 	make_wordmap(DATA_FILE_PATH);
 	calculate_relative_freqs();
 }
 
 DataGenerator::DataGenerator(std::string filepath) {
+	std::srand(std::time(0));
 	make_wordmap(filepath);
 	calculate_relative_freqs();
 }
@@ -82,7 +85,7 @@ std::pair<std::string, std::string> DataGenerator::get_random_entry(int length) 
 
 	// Auto& makes it automatically detect the type, & makes it a reference to avoid copying
 	for (const auto& keyvalue : wordmap) {
-		std::cout << "Checking word: " << keyvalue.first << "\n";  // Debug line
+		// std::cout << "Checking word: " << keyvalue.first << "\n";  // Debug line
 		if (length == -1 || keyvalue.first.length() == length) {
 			matching_words.push_back(keyvalue);
 		}
