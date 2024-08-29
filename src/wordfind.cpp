@@ -242,13 +242,15 @@ int Wordfind::startGame() {
     DataGenerator dg; 
     int wordCount = 4;
 
-    while (words.size() < wordCount){
-        std::pair wordDef = dg.get_random_entry();
-        std::string nextWord = wordDef.first;
-        if (nextWord.size() < GRID_SIZE && nextWord.size() > 2) {
-            std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) {return std::toupper(c);  });
-            words.push_back(nextWord);
-        }
+    while (words.size() < wordCount) {
+        std::string nextWord = "";
+        do {
+            std::pair<std::string, std::string> wordDef = dg.get_random_entry();
+            nextWord = wordDef.first;
+        } while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+
+        std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::toupper(c); });
+        words.push_back(nextWord);
     }
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
