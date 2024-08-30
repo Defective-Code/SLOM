@@ -36,12 +36,6 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
     system("CLS"); // Clear the terminal screen
-    
-    for (const std::string& str : words) {
-        bool diacrit = hasDiacritics(str);
-        std::cout << str << diacrit << std::endl;
-    }
-
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
         std::cout << "\033[36m" << "__" << "\033[0m";
@@ -133,29 +127,33 @@ void Wordfind::clearLastNLines(int n) {
 }
 
 
+ // Function to receive player input
 void Wordfind::waitForEnter() {
     std::cout << "Enter a word...\n";
 
-    while (true){
-        std::string dummy = "";
+    while (true) {
+        std::string input;
 
-        while (dummy.empty()) {
-            // Wait for user input
-            std::getline(std::cin, dummy);
-            // Convert word to uppercase
-            std::transform(dummy.begin(), dummy.end(), dummy.begin(), [](unsigned char c) {return std::toupper(c);  });
+        std::getline(std::cin, input);
+
+        if (input.empty()) {
+            continue;
         }
-        int correctGuess = count(words.begin(), words.end(), dummy);
+        std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return std::toupper(c);  });
 
+        int correctGuess = count(words.begin(),words.end(), input);
+        
         if (correctGuess > 0) {
-            wordsFound.push_back(dummy);
-            updateWordVector(dummy);
+            wordsFound.push_back(input);
+            updateWordVector(input);
             return;
         }
         else {
-            clearLastNLines(1);
+            clearLastNLines(2);
+            std::cout << "Try again... \n";
         }
     }
+
     
 }
 
@@ -295,13 +293,15 @@ int Wordfind::startGame() {
     DataGenerator dg; 
     int wordCount = 4;
 
-    while (words.size() < wordCount){
-        std::pair wordDef = dg.get_random_entry();
-        std::string nextWord = wordDef.first;
-        if (nextWord.size() < GRID_SIZE && nextWord.size() > 2) {
-            std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) {return std::toupper(c);  });
-            words.push_back(nextWord);
-        }
+    while (words.size() < wordCount) {
+        std::string nextWord = "";
+        do {
+            std::pair<std::string, std::string> wordDef = dg.get_random_entry();
+            nextWord = wordDef.first;
+        } while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+
+        std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::toupper(c); });
+        words.push_back(nextWord);
     }
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
@@ -319,8 +319,8 @@ int Wordfind::startGame() {
         waitForEnter();
 
         runGame = !checkGameEnd();
-        int linesToClear = GRID_SIZE + 2;
-        std::cout << "Nice job!";
+        int linesToClear = GRID_SIZE + 3;
+        std::cout << "Nice job!" << std::endl;
         #ifdef _WIN32
                 Sleep(1000);  // Sleep for 1000 milliseconds (2 seconds) on Windows
         #else
