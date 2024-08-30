@@ -1,7 +1,15 @@
 #pragma once
 #include <string>
+#include <map>
 
 class Wordle {
+	std::string wordleWord = "Test";
+	std::string displayWordleWord = "";
+	const static int totalAttempts = 5;
+	int attemptsCount = 0;
+	bool wordleComplete = false;
+	std::string attempts[totalAttempts];
+	std::map<char, int> charCount;
 public:
 
 	/**
@@ -57,4 +65,6 @@ public:
 		 * 
 		 */
 	void startGame();
+
+	friend class WordleTest;
 };

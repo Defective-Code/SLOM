@@ -1,21 +1,14 @@
 #include <iostream>
-#include "wordle.h"
 #include "get_data.h"
-#include "../include/get_data.h"
 #include <cctype>
 #include <string>
 #include <map>
+#include "wordle.h"
 //#include "input_handler.h"
 
 //Declare a global variable
 
-std::string wordleWord = "Test";
-std::string displayWordleWord = "";
-const int totalAttempts = 5;
-int attemptsCount = 0;
-bool wordleComplete = false;
-std::string attempts[totalAttempts];
-std::map<char, int> charCount;
+
 
 //Function to check if a character is a diacritic
 bool Wordle::isDiacritic(char32_t c) {

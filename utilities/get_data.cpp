@@ -12,7 +12,7 @@ std::unordered_map<char, double> frequencymap;
 
 DataGenerator::DataGenerator() {
 	std::srand(std::time(0));
-	make_wordmap("Data/MaoriWordsData.txt");
+	make_wordmap(DATA_FILE_PATH);
 	calculate_relative_freqs();
 }
 
