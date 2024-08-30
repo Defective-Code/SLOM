@@ -4,6 +4,8 @@
 #include <vector>
 #include <stdio.h>
 #include <iostream>
+#include <locale>
+#include <codecvt>
 #include <iterator>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
@@ -187,7 +189,7 @@ bool Wordfind::isDiacritic(char32_t c) {
 }
 
 // Function to check if the string contains any diacritic
-/*
+
 bool Wordfind::hasDiacritics(const std::string& input) {
 	std::u32string utf32Str;
 
@@ -229,8 +231,9 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 
 	return false;
 }
-*/
 
+
+/*
 // Function to check if the string contains any diacritic
 bool Wordfind::hasDiacritics(const std::string& input) {
     std::u32string utf32Str;
@@ -275,6 +278,9 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 
     return false;
 }
+*/
+
+
 
 
  // Function to check if all words have been found
