@@ -17,7 +17,7 @@ bool wordleComplete = false;
 std::string attempts[totalAttempts];
 std::map<char, int> charCount;
 
-void resetGameState(){
+void Wordle::resetGameState(){
     //Reset global variables
     wordleWord = "Test"; //Or any default word, if applicable
     displayWordleWord = "";

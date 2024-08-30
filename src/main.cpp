@@ -70,6 +70,7 @@ void run() {
 int main() {
 
 	printf("SLOM Started");
+	printf("   ");
 
 	#ifdef _WIN32
 		SetConsoleOutputCP(CP_UTF8);

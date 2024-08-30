@@ -66,5 +66,10 @@ public:
 		 */
 	void startGame();
 
+	/**
+     * Method to reset the game state to its initial configuration.
+     */
+    void resetGameState();
+
 	friend class WordleTest;
 };
