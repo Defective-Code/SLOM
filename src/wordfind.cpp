@@ -4,6 +4,8 @@
 #include <vector>
 #include <stdio.h>
 #include <iostream>
+#include <locale>
+#include <codecvt>
 #include <iterator>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
@@ -34,12 +36,6 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
     system("CLS"); // Clear the terminal screen
-    
-    for (const std::string& str : words) {
-        bool diacrit = hasDiacritics(str);
-        std::cout << str << diacrit << std::endl;
-    }
-
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
         std::cout << "\033[36m" << "__" << "\033[0m";
@@ -131,29 +127,33 @@ void Wordfind::clearLastNLines(int n) {
 }
 
 
+ // Function to receive player input
 void Wordfind::waitForEnter() {
     std::cout << "Enter a word...\n";
 
-    while (true){
-        std::string dummy = "";
+    while (true) {
+        std::string input;
 
-        while (dummy.empty()) {
-            // Wait for user input
-            std::getline(std::cin, dummy);
-            // Convert word to uppercase
-            std::transform(dummy.begin(), dummy.end(), dummy.begin(), [](unsigned char c) {return std::toupper(c);  });
+        std::getline(std::cin, input);
+
+        if (input.empty()) {
+            continue;
         }
-        int correctGuess = count(words.begin(), words.end(), dummy);
+        std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return std::toupper(c);  });
 
+        int correctGuess = count(words.begin(),words.end(), input);
+        
         if (correctGuess > 0) {
-            wordsFound.push_back(dummy);
-            updateWordVector(dummy);
+            wordsFound.push_back(input);
+            updateWordVector(input);
             return;
         }
         else {
-            clearLastNLines(1);
+            clearLastNLines(2);
+            std::cout << "Try again... \n";
         }
     }
+
     
 }
 
@@ -187,39 +187,87 @@ bool Wordfind::isDiacritic(char32_t c) {
 }
 
 // Function to check if the string contains any diacritic
+
+bool Wordfind::hasDiacritics(const std::string& input) {
+	std::u32string utf32Str;
+
+	// Convert UTF-8 string to UTF-32 to handle multi-byte characters
+	for (size_t i = 0; i < input.size();) {
+		char32_t c;
+		unsigned char byte = input[i];
+		if (byte < 0x80) {
+			c = byte;
+			++i;
+		}
+		else if (byte < 0xE0) {
+			c = (byte & 0x1F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		else if (byte < 0xF0) {
+			c = (byte & 0x0F) << 12;
+			c |= (input[++i] & 0x3F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		else {
+			c = (byte & 0x07) << 18;
+			c |= (input[++i] & 0x3F) << 12;
+			c |= (input[++i] & 0x3F) << 6;
+			c |= (input[++i] & 0x3F);
+			++i;
+		}
+		utf32Str += c;
+	}
+
+	// Check each character in the string
+	for (char32_t c : utf32Str) {
+		if (isDiacritic(c)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+/*
+// Function to check if the string contains any diacritic
 bool Wordfind::hasDiacritics(const std::string& input) {
     std::u32string utf32Str;
+    size_t i = 0;
 
-    // Convert UTF-8 string to UTF-32 to handle multi-byte characters
-    for (size_t i = 0; i < input.size();) {
-        char32_t c;
+    while (i < input.size()) {
+        char32_t c = 0;
         unsigned char byte = input[i];
+
         if (byte < 0x80) {
             c = byte;
             ++i;
         }
-        else if (byte < 0xE0) {
+        else if ((byte & 0xE0) == 0xC0) {
             c = (byte & 0x1F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
-        else if (byte < 0xF0) {
+        else if ((byte & 0xF0) == 0xE0) {
             c = (byte & 0x0F) << 12;
             c |= (input[++i] & 0x3F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
-        else {
+        else if ((byte & 0xF8) == 0xF0) {
             c = (byte & 0x07) << 18;
             c |= (input[++i] & 0x3F) << 12;
             c |= (input[++i] & 0x3F) << 6;
             c |= (input[++i] & 0x3F);
             ++i;
         }
+
         utf32Str += c;
     }
 
-    // Check each character in the string
+    // Check each character in the UTF-32 string
     for (char32_t c : utf32Str) {
         if (isDiacritic(c)) {
             return true;
@@ -228,6 +276,9 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 
     return false;
 }
+*/
+
+
 
 
  // Function to check if all words have been found
@@ -268,8 +319,8 @@ int Wordfind::startGame() {
         waitForEnter();
 
         runGame = !checkGameEnd();
-        int linesToClear = GRID_SIZE + 2;
-        std::cout << "Nice job!";
+        int linesToClear = GRID_SIZE + 3;
+        std::cout << "Nice job!" << std::endl;
         #ifdef _WIN32
                 Sleep(1000);  // Sleep for 1000 milliseconds (2 seconds) on Windows
         #else

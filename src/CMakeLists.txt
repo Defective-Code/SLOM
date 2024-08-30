@@ -6,11 +6,13 @@ set(GAMES wordle.cpp wordfind.cpp)
 add_executable(SLOM ${SOURCES})
 target_include_directories(SLOM PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
-add_library(Games STATIC ${GAMES})
+add_library(Games ${GAMES})
 target_link_libraries(Games PUBLIC ${CMAKE_CURRENT_LIST_DIR})
-
+target_include_directories(Games PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
 target_link_libraries(SLOM PUBLIC Utilities)
+
+
 
 
 

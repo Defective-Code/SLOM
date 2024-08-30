@@ -11,7 +11,7 @@
 
 class Wordfind {
 
-	const int GRID_SIZE = 10; // Adjust as needed
+	const static int GRID_SIZE = 10; // Adjust as needed
 	// A type alias for storing the coordinates of placed words
 	using Position = std::pair<int, int>;
 	
@@ -156,4 +156,6 @@ class Wordfind {
 		 * 
 		*/
 		void waitForEnter();
+
+		friend class WordfindTest;
 };
