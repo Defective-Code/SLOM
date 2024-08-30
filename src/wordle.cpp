@@ -1,13 +1,37 @@
 #include <iostream>
+#include "wordle.h"
 #include "get_data.h"
+#include "../include/get_data.h"
 #include <cctype>
 #include <string>
 #include <map>
-#include "wordle.h"
 //#include "input_handler.h"
 
 //Declare a global variable
 
+std::string wordleWord = "Test";
+std::string displayWordleWord = "";
+const int totalAttempts = 5;
+int attemptsCount = 0;
+bool wordleComplete = false;
+std::string attempts[totalAttempts];
+std::map<char, int> charCount;
+
+void resetGameState(){
+    //Reset global variables
+    wordleWord = "Test"; //Or any default word, if applicable
+    displayWordleWord = "";
+    attemptsCount = 0;
+    wordleComplete = false;
+
+    //Clear the attempts array
+    for (int i = 0; i < totalAttempts; ++i) {
+        attempts[i] = std::string(wordleWord.length() * 2, '_'); //Adjust based on your display format
+    }
+
+    //Clear the character count map if necessary
+    charCount.clear();
+}
 
 
 //Function to check if a character is a diacritic
@@ -63,20 +87,25 @@ bool Wordle::hasDiacritics(const std::string& input) {
 }
 
 std::string Wordle::selectWordleWord() {
-	printf("Welcome to Wordle!\n");
+    printf("Welcome to Wordle!\n");
     DataGenerator generator;
     std::string result;
 
-    
     do {
         auto entry = generator.get_random_entry();
         result = entry.first;
-        //result = "toru";
-        printf("%s\n", result.c_str());
-        
     } while (hasDiacritics(result));
-    
-    //return result.substr(0, result.length() - 1);
+
+    //Trim trailing whitespace
+    auto endPos = std::find_if(result.rbegin(), result.rend(), [](char ch) {
+        return !std::isspace(static_cast<unsigned char>(ch));
+    }).base();
+
+    result.erase(endPos, result.end());
+
+    printf("%s\n", result.c_str());
+    //printf("%zu\n", result.length());
+
     return result;
 }
 
@@ -163,7 +192,7 @@ void Wordle::getNextGameState(const std::string userGuess){
 
         if (guessChar == wordleChar)
         {
-            //Correct character -- color it green
+            //Correct char -- color it green
             result[i] = 'G';
             tempWordleWord[i] = '*'; //Mark this character as used
         }
@@ -172,7 +201,7 @@ void Wordle::getNextGameState(const std::string userGuess){
     //Second pass: check for correct characters in wrong positions (yellow)
     for (size_t i = 0; i < userGuess.length(); ++i)
     {
-        if (result[i] == 'G') //Skip already colored characters
+        if (result[i] == 'G') //Skip already coloured characters
             continue;
 
         char guessChar = std::tolower(userGuess[i]);
@@ -180,13 +209,13 @@ void Wordle::getNextGameState(const std::string userGuess){
 
         if (pos != std::string::npos)
         {
-            //Correct character in wrong place -- color it yellow
+            //Correct char, in wrong place -- colour it yellow
             result[i] = 'Y';
-            tempWordleWord[pos] = '*'; //Mark this character as used
+            tempWordleWord[pos] = '*'; //Mark this char as used
         }
         else
         {
-            //Incorrect character -- color it gray
+            //Incorrect char -- colour it grey
             result[i] = 'X';
         }
     }
@@ -214,12 +243,9 @@ void Wordle::getNextGameState(const std::string userGuess){
     attemptsCount += 1;
 }
 
-
-
-
-void Wordle::startGame()
-{
-	clearLastNLines(11);
+void Wordle::startGame(){
+	
+    clearLastNLines(11);
 	initialiseGame();
 	while (attemptsCount != totalAttempts && !wordleComplete)
 	{
@@ -228,11 +254,13 @@ void Wordle::startGame()
 		displayGameState();
 	}
 	if (wordleComplete)
-	{
+	{   
+        resetGameState();
 		std::cout << "Congrats Wordle complete!" << std::endl;
 	}
 	else
 	{
+        resetGameState();
 		std::cout << "You've ran out of attempts... better luck next time." << std::endl;
 	}
 }
