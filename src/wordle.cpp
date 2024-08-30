@@ -83,8 +83,8 @@ std::string Wordle::selectWordleWord() {
         
     } while (hasDiacritics(result));
     
-    return result.substr(0, result.length() - 1);
-    //return result;
+    //return result.substr(0, result.length() - 1);
+    return result;
 }
 
 
