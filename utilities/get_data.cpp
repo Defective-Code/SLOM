@@ -25,7 +25,6 @@ DataGenerator::DataGenerator(std::string filepath) {
 
 
 void DataGenerator::make_wordmap(std::string filepath) {
-	std::cout << "Current working directory: " << std::filesystem::current_path() << "\n";
 
 	//std::ifstream file("C:\\Users\\Liam\\University\\third-year\\second-sem\\COSC345\\SLOM\\Data\\MaoriWordsData.txt");
 	std::ifstream file(filepath); //this filepath is defined in the CMakeLists.txt file in the utilities folder
@@ -73,7 +72,6 @@ void DataGenerator::make_wordmap(std::string filepath) {
 	}
 
 	file.close();
-	std::cout << wordmap.bucket_count() << "\n";
 }
 
 
