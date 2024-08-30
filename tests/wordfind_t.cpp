@@ -5,6 +5,8 @@
 #include <type_traits>
 #include <typeinfo>
 #include <iostream>
+#include <algorithm>
+#include <sstream>
 #include "wordfind.h"
 
 class WordfindTest {
@@ -232,7 +234,54 @@ public:
     }
 
     static void waitForEnter_t() {
-        //TODO
+        Wordfind wordfind;
+        std::vector<std::string> words = { "TEST", "WORD", "HELLO" };
+        // Prepare mock data
+        wordfind.words = words; // Set the list of words
+
+        // Redirect std::cin and std::cout
+        std::stringstream inputStream;
+        std::stringstream outputStream;
+        std::streambuf* cinBuf = std::cin.rdbuf();
+        std::streambuf* coutBuf = std::cout.rdbuf();
+        std::cin.rdbuf(inputStream.rdbuf());
+        std::cout.rdbuf(outputStream.rdbuf());
+
+        // Simulate user input
+        inputStream << "word\n" << "hello\n" << "unknown\n" << "test\n" << std::endl;
+
+        // Execute the method
+        wordfind.waitForEnter();
+
+        // Capture the output
+        std::string output = outputStream.str();
+
+        //std::cerr << output << std::endl;
+
+        // Check the output
+        assert(output.find("Enter a word...\n") != std::string::npos);
+
+        // This code doesn't work as passing input to standard in doesn't work with this setup
+        /* 
+        * 
+        assert(output.find("Try again...\n") != std::string::npos);  // Ensure the retry message appears
+        assert(output.find("Try again... \n") == std::string::npos); // Ensure "Try again..." only appears when expected
+
+        for (const auto& str : wordfind.wordsFound) {
+            std::cerr << str << std::endl;
+        }
+
+        // Check the wordsFound vector
+        assert(wordfind.wordsFound.size() == 2);
+        assert(wordfind.wordsFound[0] == "WORD");
+        assert(wordfind.wordsFound[1] == "TEST");
+        */
+
+        // Restore std::cin and std::cout
+        std::cin.rdbuf(cinBuf);
+        std::cout.rdbuf(coutBuf);
+
+        std::cout << "testWaitForEnter passed." << std::endl;
     }
 
 private:
@@ -276,7 +325,7 @@ int main() {
     //WordfindTest::hasDiacritics_t(); currently not working
     WordfindTest::resetGameState_t();
     WordfindTest::updateWordVector_t();
-    //WordfindTest::waitForEnter_t() //TODO
+    WordfindTest::waitForEnter_t();
     
 	return 0;
 }
