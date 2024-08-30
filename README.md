@@ -1,6 +1,6 @@
 # TEAM SLOM
 
-![example workflow](https://github.com/Defective-Code/github/SLOM/actions/workflows/cmake-single-platform.yml/badge.svg)
+![CI Pipeline](https://github.com/Defective-Code/SLOM/actions/workflows/cmake-single-platform.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Defective-Code/SLOM/graph/badge.svg?token=PX1DD66OIO)](https://codecov.io/gh/Defective-Code/SLOM)
 
 ## Overview
