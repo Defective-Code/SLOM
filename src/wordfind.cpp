@@ -230,57 +230,6 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 	return false;
 }
 
-
-/*
-// Function to check if the string contains any diacritic
-bool Wordfind::hasDiacritics(const std::string& input) {
-    std::u32string utf32Str;
-    size_t i = 0;
-
-    while (i < input.size()) {
-        char32_t c = 0;
-        unsigned char byte = input[i];
-
-        if (byte < 0x80) {
-            c = byte;
-            ++i;
-        }
-        else if ((byte & 0xE0) == 0xC0) {
-            c = (byte & 0x1F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else if ((byte & 0xF0) == 0xE0) {
-            c = (byte & 0x0F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else if ((byte & 0xF8) == 0xF0) {
-            c = (byte & 0x07) << 18;
-            c |= (input[++i] & 0x3F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-
-        utf32Str += c;
-    }
-
-    // Check each character in the UTF-32 string
-    for (char32_t c : utf32Str) {
-        if (isDiacritic(c)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-*/
-
-
-
-
  // Function to check if all words have been found
 bool Wordfind::checkGameEnd() {
     return words.size() == wordsFound.size();
@@ -335,6 +284,6 @@ int Wordfind::startGame() {
     #else
         sleep(1);
     #endif
-        resetGameState();
+    resetGameState();
 	return 0;
 }

@@ -1,0 +1,17 @@
+User Testing Questionnaire:
+
+1. How would you rate the overall experience (1-10)?
+
+2. How likely would you be to play again? (1-10)?
+
+3. Do you think it is a fun way to learn new Maori vocab (Y/N)?
+
+4. Does it make you want to learn more Maori (Y/N)?
+
+5. Are there any features that you think would enhnace the user experience?
+
+6. What game mode is the least enjoyable? What could be done to improve it?
+
+7. What game mode is the most enjoyable? Why is that?
+
+8. How likely would you be to recommend this app to a friend (1-10)?
