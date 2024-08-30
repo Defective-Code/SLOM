@@ -1,5 +1,7 @@
 # TEAM SLOM
 
+[![codecov](https://codecov.io/gh/Defective-Code/SLOM/graph/badge.svg?token=PX1DD66OIO)](https://codecov.io/gh/Defective-Code/SLOM)
+
 ## Overview
 
 A simple terminal based app that contains a handful of word games that use Maori instead of English.
