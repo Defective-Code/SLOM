@@ -321,6 +321,51 @@ public:
         // std::cout << (output == expectedOutput) << std::endl;
     }
 
+    // Test function for clearLastNLines
+    static void clearLastNLines_t() {
+        Wordfind wf;
+
+        // Save the original buffer
+        std::streambuf* originalBuffer = std::cout.rdbuf();
+
+        // Create a string stream to capture the output
+        std::ostringstream outputStream;
+        std::cout.rdbuf(outputStream.rdbuf());
+
+        // Print some lines to the output stream
+        std::vector<std::vector<char>> grid = {
+            {'A', 'B', 'C'},
+            {'D', 'E', 'F'},
+            {'G', 'H', 'I'}
+        };
+
+        wf.printGrid(grid);
+
+        // Clear the last 2 lines
+        wf.clearLastNLines(2);
+
+        // Restore the original buffer
+        std::cout.rdbuf(originalBuffer);
+
+        // Get the output string
+        std::string output = outputStream.str();
+
+        // Check if the output contains the escape sequences for clearing lines
+        std::string clearSequence = "\033[A\033[2K";
+
+        // Assert that the output contains the expected number of clear sequences
+        size_t count = 0;
+        size_t pos = 0;
+        while ((pos = output.find(clearSequence, pos)) != std::string::npos) {
+            count++;
+            pos += clearSequence.length();
+        }
+
+        assert(count >= 2 && "The number of clear sequences does not match the expected value.");
+
+        std::cout << "Test passed!" << std::endl;
+    }
+
 
 private:
     static void printPositionSet(const Wordfind::PositionSet& posSet) {
@@ -366,6 +411,7 @@ int main() {
     WordfindTest::updateWordVector_t();
     WordfindTest::waitForEnter_t();
     WordfindTest::printGrid_t();
+    WordfindTest::clearLastNLines_t();
     
 	return 0;
 }
