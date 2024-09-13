@@ -284,6 +284,44 @@ public:
         std::cout << "testWaitForEnter passed." << std::endl;
     }
 
+    // Method that tests the print method for the wordfind class
+    static void printGrid_t() {
+        Wordfind wf;
+
+        // Define test grid and expected output
+        std::vector<std::vector<char>> grid = {
+            {'A', 'B', 'C'},
+            {'D', 'E', 'F'},
+            {'G', 'H', 'I'}
+        };
+
+        // Redirect cout to a string stream
+        std::stringstream ss;
+        std::streambuf* oldCoutBuffer = std::cout.rdbuf(ss.rdbuf());
+
+        // Call the method
+        wf.printGrid(grid);
+
+        // Reset cout
+        std::cout.rdbuf(oldCoutBuffer);
+
+        // Get the output and check it
+        std::string output = ss.str();
+        std::string expectedOutput =
+            "\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m__\033[0m\033[36m_\033[0m\n"
+            "\033[36m|\033[0m A B C \033[36m|\033[0m\n"
+            "\033[36m|\033[0m D E F \033[36m|\033[0m\n"
+            "\033[36m|\033[0m G H I \033[36m|\033[0m\n"
+            "\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m--\033[0m\033[36m-\033[0m\n";
+
+        assert(output == expectedOutput);
+        // std::cout << (output) << std::endl;
+        // std::cout << (expectedOutput) << std::endl;
+
+        // std::cout << (output == expectedOutput) << std::endl;
+    }
+
+
 private:
     static void printPositionSet(const Wordfind::PositionSet& posSet) {
         for (const auto& pos : posSet) {
@@ -317,6 +355,7 @@ private:
 };
 
 
+
 int main() {
     WordfindTest::initializeGrid_t();
     WordfindTest::placeWord_t();
@@ -326,6 +365,7 @@ int main() {
     WordfindTest::resetGameState_t();
     WordfindTest::updateWordVector_t();
     WordfindTest::waitForEnter_t();
+    WordfindTest::printGrid_t();
     
 	return 0;
 }

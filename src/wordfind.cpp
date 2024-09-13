@@ -63,6 +63,7 @@ void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
     for (int i = 0; i <= GRID_SIZE; i++) {
         std::cout << "\033[36m" << "--" << "\033[0m";
     }
+    std::cout << "\033[36m" << "-" << "\033[0m";
     std::cout << std::endl;
 }
 
