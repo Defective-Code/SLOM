@@ -1,2 +1,11 @@
-.vs/
-out/
+*
+
+!docs/
+!Data/
+!include/
+!src/
+!tests/
+!utilities/
+!CMakeLists.txt
+!Doxyfile
+!UserQuestionnaire.txt
