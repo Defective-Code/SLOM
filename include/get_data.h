@@ -50,6 +50,12 @@ public:
      * Value: the relative frequency of that letter
     */
     void calculate_relative_freqs();
+
+    /***
+    * Method to retrieve and return all words as a vector
+    * @return returns vector of all words in wordmap (first in pair)
+    */
+    std::vector<std::string> get_all_words();
 };
 
 #endif // GET_DATA_H
