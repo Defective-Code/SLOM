@@ -101,7 +101,7 @@ std::pair<std::string, std::string> DataGenerator::get_random_entry(int length) 
 
 }
 
-
+// Method to calculate relative letter frequency of every letter in class 
 void DataGenerator::calculate_relative_freqs() {
 	int total_letters = 0;
 
@@ -116,4 +116,20 @@ void DataGenerator::calculate_relative_freqs() {
 	for (const auto& keyvalue : frequencymap) {
 		frequencymap[keyvalue.first] = frequencymap[keyvalue.first] / total_letters;
 	}
+}
+
+// Method to retrieve all words as a vector
+std::vector<std::string> DataGenerator::get_all_words() {
+	std::vector<std::string> all_words;
+	
+	for (const auto& keyvalue : wordmap) {
+		all_words.push_back(keyvalue.first);
+	}
+
+	return all_words;
+}
+
+ // Method to get wordmap
+std::unordered_map<std::string, std::string> DataGenerator::get_wordmap() {
+	return wordmap;
 }

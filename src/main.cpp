@@ -7,7 +7,7 @@
 #endif
 #include "wordle.h"
 #include "wordfind.h"
-#include "hangman.h"
+#include "wordscapes.h"
 
 /***
  *	Method to render main menu to the console screen
@@ -19,8 +19,7 @@ void displayMainMenu() {
 	printf("To select an option, enter the corresponding letter and press enter, or to quit press q and then enter\n\n");
 	printf("1) Wordle\n");
 	printf("2) Wordfind\n");
-	printf("3) Hangman\n");
-	printf("\n");
+	printf("3) Crossword find\n\n");
 	printf("Press q to quit\n\n");
 	//printf("\u001b[31mQ\u001b[0m");
 }
@@ -48,7 +47,7 @@ void run() {
 	//Wordle::startGame();
 	Wordle wordle = Wordle();
 	Wordfind wordfind = Wordfind();
-	Hangman hangman = Hangman();
+	Wordscapes wordscapes = Wordscapes(15);
 	while (true) {
 		displayMainMenu();
 		std::cin >> ch;
@@ -61,7 +60,7 @@ void run() {
 			wordfind.startGame();
 			break;
 		case '3':
-			hangman.startGame();
+			wordscapes.runGame();
 			break;
 		case 'q':
 			printf("Quitting.....");

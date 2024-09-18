@@ -3,9 +3,13 @@
 !docs/
 !Data/
 !include/
+!include/*
 !src/
+!src/*
 !tests/
+!tests/*
 !utilities/
+!utilities/*
 !CMakeLists.txt
 !Doxyfile
 !UserQuestionnaire.txt
