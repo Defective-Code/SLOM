@@ -128,3 +128,8 @@ std::vector<std::string> DataGenerator::get_all_words() {
 
 	return all_words;
 }
+
+ // Method to get wordmap
+std::unordered_map<std::string, std::string> DataGenerator::get_wordmap() {
+	return wordmap;
+}

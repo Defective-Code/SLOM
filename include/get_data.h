@@ -56,6 +56,12 @@ public:
     * @return returns vector of all words in wordmap (first in pair)
     */
     std::vector<std::string> get_all_words();
+
+    /***
+    * @briefMethod to get wordmap 
+    * @return wordmap of Maori words to definitions
+    */
+    std::unordered_map<std::string, std::string> get_wordmap();
 };
 
 #endif // GET_DATA_H

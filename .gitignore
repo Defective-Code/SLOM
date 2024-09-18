@@ -9,3 +9,5 @@
 !CMakeLists.txt
 !Doxyfile
 !UserQuestionnaire.txt
+!src/wordscapes.cpp
+!include/wordscapes.h

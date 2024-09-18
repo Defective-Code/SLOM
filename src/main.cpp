@@ -7,6 +7,7 @@
 #endif
 #include "wordle.h"
 #include "wordfind.h"
+#include "wordscapes.h"
 
 /***
  *	Method to render main menu to the console screen
@@ -17,7 +18,8 @@ void displayMainMenu() {
 	printf("The following list is of the functions available to you, with the associated number to enter in before the brancket.\n");
 	printf("To select an option, enter the corresponding letter and press enter, or to quit press q and then enter\n\n");
 	printf("1) Wordle\n");
-	printf("2) Wordfind\n\n");
+	printf("2) Wordfind\n");
+	printf("3) Crossword find\n\n");
 	printf("Press q to quit\n\n");
 	//printf("\u001b[31mQ\u001b[0m");
 }
@@ -45,6 +47,7 @@ void run() {
 	//Wordle::startGame();
 	Wordle wordle = Wordle();
 	Wordfind wordfind = Wordfind();
+	Wordscapes wordscapes = Wordscapes(15);
 	while (true) {
 		displayMainMenu();
 		std::cin >> ch;
@@ -56,6 +59,8 @@ void run() {
 		case '2':
 			wordfind.startGame();
 			break;
+		case '3':
+			wordscapes.runGame();
 		case 'q':
 			printf("Quitting.....");
 			return;
