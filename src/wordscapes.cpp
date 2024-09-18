@@ -9,11 +9,6 @@
 #include "get_data.h"
 #include "wordscapes.h"
 
-
-std::vector<std::vector<char>>crossword;
-std::vector<char> letterSubset;
-DataGenerator dg;
-
 // Constructor to initialise crossword
 Wordscapes::Wordscapes(int size) {
 	crossword.resize(size, std::vector<char>(size, '.'));

@@ -61,6 +61,7 @@ void run() {
 			break;
 		case '3':
 			wordscapes.runGame();
+			break;
 		case 'q':
 			printf("Quitting.....");
 			return;
