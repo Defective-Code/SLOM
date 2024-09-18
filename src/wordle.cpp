@@ -1,7 +1,6 @@
 #include <iostream>
 #include "wordle.h"
 #include "get_data.h"
-#include "../include/get_data.h"
 #include <cctype>
 #include <string>
 #include <map>
