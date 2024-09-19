@@ -28,19 +28,18 @@ void Hangman::display(int stage) {
 	vector<string> seen_letters_box;
 	seen_letters_box.push_back("+---------+");
 
+	vector<string> letters;
+	for (const char& seen_letter : seen_letters) {
+
+	}
+
 	vector<char> temp;
 	for (const char& seen_letter : seen_letters) {
 		temp.push_back(seen_letter);
+	}
 
-		if (temp.size() >= 4) {
-			string temp2 = "| ";
-			for each (char c in temp)
-			{
-				temp2 += (c + " ");
-			}
-			temp2 += "|";
-			seen_letters_box.push_back(temp2);
-		}
+	while (temp.size() < 26) {
+		
 	}
 
 	//std::cout << hangman_stages[stage] << std::endl;
