@@ -87,7 +87,7 @@ void WordMatchBingo::selectBingoCard(){
     
 }
 
-void clearLastNLines(int n)
+void WordMatchBingo::clearLastNLines(int n)
 {
 	for (int i = 0; i < n; ++i)
 	{

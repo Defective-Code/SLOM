@@ -4,21 +4,13 @@
 #include <vector>
 #include <set>
 
-using namespace std;
+//using namespace std;
 
 class Hangman {
 
     const int MAX_STAGE = 7;
 
-    std::set<char> seen_letters;
-       
-	public:
-		void startGame();
-
-	private:
-		void display(int stage);
-
-        std::vector<std::string> hangman_stages = {
+    const std::vector<std::string> hangman_stages = {
             R"(
                    +---+
                    |   |
@@ -88,74 +80,25 @@ class Hangman {
                        |
                 =========
             )"
-        };
+    };
 
-        std::vector<std::string> flower_stages = {
-             R"(
-                 _
-               _(_)_ 
-              (_)@(_)
-                (_)
-                | |
-              ======
-             )",  // Full healthy flower
+    const std::vector<char> alphabet = {
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+        'U', 'V', 'W', 'X', 'Y', 'Z'
+    };
 
-            R"(
-                 _
-               _(_)_ 
-              (_)@(_)
-                (_)
-                | 
-              ======
-             )",  // One leaf missing
+    std::set<char> seen_letters;
 
-            R"(
-                 _
-               _(_)_ 
-              (_)@(_)
-                (_)
-        
-              ======
-             )",  // No leaves
+    public:
+        void startGame();
 
-            R"(
-                 _
-               _(_)_ 
-              (_)@(_)
-        
-      
-              ======
-             )",  // Flower stem only
+    private:
+        void display(int stage);
 
-            R"(
-                 _
-               _(_)_ 
-        
-        
-      
-              ======
-             )",  // Just the upper part of the stem
+        std::vector<std::string> splitStringOnNewline(const std::string& input);
 
-            R"(
-                 _
-         
-        
-        
-      
-              ======
-             )",  // Top of the stem gone
-
-            R"(
-         
-         
-        
-        
-      
-              ======
-            )"  // Completely wilted (game over)
-        };
-
-
+};
         
 
 

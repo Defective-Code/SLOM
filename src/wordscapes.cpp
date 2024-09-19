@@ -39,7 +39,7 @@ void Wordscapes::selectRandomLetters(int numLetters) {
  // Checks if word is valid (i.e. formed from randomly chosen letters)
 bool Wordscapes::isValid(const std::string& word) {
 	std::unordered_map<char, int> letterCount;
-	if (word.length < 3) {
+	if (word.length() < 3) {
 		return false;
 	}
 	for (char c : letterSubset) {

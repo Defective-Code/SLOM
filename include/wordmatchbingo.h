@@ -10,16 +10,19 @@ class WordMatchBingo {
 	bool wordleComplete = false;
 	std::string attempts[totalAttempts];
 	std::map<char, int> charCount;
-public:
-    bool  WordMatchBingo::isDiacritic(char32_t c);
+
+	public:
+		bool  WordMatchBingo::isDiacritic(char32_t c);
 	
-    bool  WordMatchBingo::hasDiacritics(const std::string &input);
+		bool  WordMatchBingo::hasDiacritics(const std::string &input);
 
-    void  WordMatchBingo::selectBingoWordPool();
+		void  WordMatchBingo::selectBingoWordPool();
 
-    void WordMatchBingo::selectBingoCard();
+		void WordMatchBingo::selectBingoCard();
 
-    void startGame(){}
+		void startGame();
 
-    friend class WordleTest;
+		void clearLastNLines(int n);
+
+		friend class WordleTest;
 };

@@ -7,6 +7,19 @@
 #include "hangman.h"
 #include "get_data.h"
 
+std::vector<std::string> Hangman::splitStringOnNewline(const std::string& input) {
+	std::vector<std::string> lines;
+	std::stringstream ss(input);
+	std::string line;
+
+	// Use std::getline to extract lines
+	while (std::getline(ss, line, '\n')) {
+		lines.push_back(line);
+	}
+
+	return lines;
+}
+
 
 void Hangman::display(int stage) {
 	// system("CLS"); // Clear the terminal screen
@@ -25,29 +38,51 @@ void Hangman::display(int stage) {
 
 	)" << std::endl;
 
-	vector<string> seen_letters_box;
+	std::vector<std::string> seen_letters_box;
 	seen_letters_box.push_back("+---------+");
 
-	vector<string> letters;
-	for (const char& seen_letter : seen_letters) {
-
-	}
-
-	vector<char> temp;
+	std::vector<char> temp;
 	for (const char& seen_letter : seen_letters) {
 		temp.push_back(seen_letter);
 	}
 
 	while (temp.size() < 26) {
-		
+
 	}
+
+	
+	int counter = 0;
+	std::string line = "| ";
+	for (int i = 0; i < 26; i++)
+	{	
+		auto it = seen_letters.find(alphabet[i]);
+		if (it != seen_letters.end()) {
+			line += (alphabet[i] + " ");
+		}
+		else {
+			line += "  ";
+		}
+
+		if (counter >= 4) {
+			line += "|";
+			seen_letters_box.push_back(line);
+			line = "| ";
+		}
+
+	}
+
+	line += "|";
+	seen_letters_box.push_back(line);
 
 	//std::cout << hangman_stages[stage] << std::endl;
 	std::vector<std::string> split = splitStringOnNewline(hangman_stages[stage]);
-	for each (string line in split)
+
+	for (int i = 0; i < split.size(); i++)
 	{
-		cout << 
+		std::cout << split[i] << "		" << seen_letters_box[i] << std::endl;
 	}
+	
+	
 }
 
 void Hangman::startGame() {
@@ -83,16 +118,3 @@ void Hangman::startGame() {
 
 }
 
-std::vector<std::string> splitStringOnNewline(const std::string& input) {
-	std::vector<std::string> lines;
-	std::stringstream ss(input);
-	std::string line;
-
-	// Use std::getline to extract lines
-	while (std::getline(ss, line, '\n')) {
-		lines.push_back(line);
-	}
-
-	return lines;
-}
-};

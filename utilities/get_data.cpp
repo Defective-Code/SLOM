@@ -6,8 +6,8 @@
 #include <ctime>
 #include "get_data.h"
 
-std::unordered_map<std::string, std::string> wordmap;
-std::unordered_map<char, double> frequencymap;
+//std::unordered_map<std::string, std::string> wordmap;
+//std::unordered_map<char, double> frequencymap;
 
 
 DataGenerator::DataGenerator() {

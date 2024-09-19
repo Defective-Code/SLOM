@@ -6,10 +6,7 @@
 #include <unordered_map>
 #include "get_data.h"
 
-/**
- * @brief A map containing words as keys and their definitions as values.
- */
-extern std::unordered_map<std::string, std::string> wordmap;
+
 
 
 /**
@@ -23,6 +20,11 @@ private:
      */
     std::vector<std::vector<char>> crossword;
 
+
+    /**
+     * @brief A map containing words as keys and their definitions as values.
+     */
+        std::unordered_map<std::string, std::string> wordmap;
 
     /**
      * @brief The subset of letters that the player can use to form words.

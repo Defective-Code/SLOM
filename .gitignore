@@ -2,6 +2,7 @@
 
 !docs/
 !Data/
+!Data/*
 !include/
 !include/*
 !src/
