@@ -10,8 +10,10 @@ class Hangman {
 
     const int MAX_STAGE = 7;
 
+    std::string answer;
+
     const std::vector<std::string> hangman_stages = {
-            R"(
+            R"(                             
                    +---+
                    |   |
                        |
@@ -19,29 +21,29 @@ class Hangman {
                        |
                        |
                 =========
-            )",
+                              )",
 
-            R"(
-                   +---+
-                   |   |
-                   O   |
-                       |
-                       |
-                       |
-                =========
-            )",
-
-            R"(
+            R"(                             
                    +---+
                    |   |
                    O   |
+                       |
+                       |
+                       |
+                =========
+                             )",
+
+            R"(                             
+                   +---+
+                   |   |
+                   O   |
                    |   |
                        |
                        |
                 =========
-            )",
+                             )",
 
-            R"(
+            R"(                             
                    +---+
                    |   |
                    O   |
@@ -49,9 +51,9 @@ class Hangman {
                        |
                        |
                 =========
-            )",
+                             )",
 
-            R"(
+            R"(                             
                    +---+
                    |   |
                    O   |
@@ -59,9 +61,9 @@ class Hangman {
                        |
                        |
                 =========
-            )",
+                             )",
 
-            R"(
+            R"(                             
                    +---+
                    |   |
                    O   |
@@ -69,9 +71,9 @@ class Hangman {
                   /    |
                        |
                 =========
-            )",
+                             )",
 
-            R"(
+            R"(                             
                    +---+
                    |   |
                    O   |
@@ -79,7 +81,7 @@ class Hangman {
                   / \  |
                        |
                 =========
-            )"
+                             )"
     };
 
     const std::vector<char> alphabet = {
@@ -88,16 +90,18 @@ class Hangman {
         'U', 'V', 'W', 'X', 'Y', 'Z'
     };
 
-    std::set<char> seen_letters;
+    
 
     public:
         void startGame();
 
     private:
         void display(int stage);
-
+        std::set<char> seen_letters;
+        std::set<char> correct_letters;
         std::vector<std::string> splitStringOnNewline(const std::string& input);
-
+        bool get_letter();
+        bool guess_word();
 };
         
 
