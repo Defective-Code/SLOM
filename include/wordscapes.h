@@ -51,15 +51,6 @@ private:
     bool isValid(const std::string& word);
 
     /**
-     * @brief Attempts to place a word into the crossword grid.
-     *
-     * @param word The word to place in the grid.
-     * @return true If the word was successfully placed in the grid.
-     * @return false If the word could not be placed in the grid.
-     */
-    bool placeWord(const std::string& word);
-
-    /**
      * @brief Generates the crossword grid by placing valid words from the word map.
      */
     void makeCrossword();
@@ -71,6 +62,48 @@ public:
      * @param size The size of the crossword grid (both width and height).
      */
     Wordscapes(int size);
+
+    /**
+     * @brief Removes macrons from characters, converting them to their non-diacritic equivalent.
+     *
+     * @param c The character to be normalized.
+     * @return char The character with the macron removed, or the original character if no macron is present.
+     */
+    char removeMacron(char c);
+
+    /***
+    * @ brief Method to place first word, centred in grid
+    * 
+    * @param word to plac
+    */
+    void placeFirstWord(const std::string& word);
+
+    /***
+    * @brief Method to place word horizontally
+    * 
+    * @param word to place
+    */
+    bool placeWordHorizontally(const std::string& word);
+
+    bool canIntersect(const std::string& word, bool& isHorizontal, int& row, int& col);
+
+    bool Wordscapes::placeWordWithIntersection(const std::string& word);
+
+    /***
+    * @brief Method to place word vertically
+    *
+    * @param word to place
+    */
+    bool placeWordVertically(const std::string& word);
+
+
+    /**
+     * @brief Converts a word to its normalized form by removing diacritics (such as macrons).
+     *
+     * @param word The word to be normalized.
+     * @return std::string The normalized word without diacritics.
+     */
+    std::string convertWord(const std::string& word);
 
     /**
      * @brief Displays the current crossword grid on the console.
