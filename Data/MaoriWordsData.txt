@@ -1522,7 +1522,7 @@ mahere
 map, plan
 
 *
-mahi 
+mahi
 to do, work, make
 
 *
@@ -2271,7 +2271,7 @@ pae
 circumference
 
 
-paepae 
+paepae
 container
 
 
@@ -4011,11 +4011,11 @@ fourth
 
 
 *
-tuhi 
+tuhi
 to write, to draw
 
 *
-tuhi 
+tuh
 to indicate, point out
 
 *
@@ -4413,7 +4413,7 @@ wawe
 early, soon, quickly
 
 
-wehe 
+wehe
 to separate, divide
 
 

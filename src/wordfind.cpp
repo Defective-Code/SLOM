@@ -17,6 +17,18 @@
 #include "get_data.h"
 #include "wordfind.h"
 
+#pragma execution_character_set( "utf-8" )
+
+// Function to remove all whitespaces from a string
+std::string removeWhitespace(const std::string& input) {
+    std::string output;
+    // Copy all non-whitespace characters to the output string
+    std::copy_if(input.begin(), input.end(), std::back_inserter(output), [](char c) {
+        return !std::isspace(c);  // Check if the character is not a whitespace
+        });
+    return output;
+}
+
 
 Wordfind::Wordfind() {
 }
@@ -35,7 +47,13 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
-    system("CLS"); // Clear the terminal screen
+    //system("CLS"); // Clear the terminal screen
+    /*
+    for each (std::string word in words)
+    {
+        std::cout << word << std::endl;
+    }
+    */
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
         std::cout << "\033[36m" << "__" << "\033[0m";
@@ -231,6 +249,35 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 	return false;
 }
 
+
+// Function to convert a character with a macron to a normal character
+char convertMacronToNormal(char c) {
+    // Map of macron characters to their normal counterparts
+    std::unordered_map<char, char> macronMap = {
+        {'ā', 'a'}, {'ē', 'e'}, {'ī', 'i'}, {'ō', 'o'}, {'ū', 'u'}, // Lowercase
+        {'Ā', 'A'}, {'Ē', 'E'}, {'Ī', 'I'}, {'Ō', 'O'}, {'Ū', 'U'}  // Uppercase
+    };
+
+    // Check if the character has a macron equivalent and return it
+    if (macronMap.find(c) != macronMap.end()) {
+        return macronMap[c];
+    }
+
+    // If no macron equivalent, return the original character
+    return c;
+}
+
+// Function to convert a word with macrons to a normal word
+std::string convertMacronWordToNormal(const std::string& word) {
+    std::string result;
+    for (char c : word) {
+        result += convertMacronToNormal(c);
+    }
+    return result;
+}
+
+
+
  // Function to check if all words have been found
 bool Wordfind::checkGameEnd() {
     return words.size() == wordsFound.size();
@@ -238,21 +285,39 @@ bool Wordfind::checkGameEnd() {
 
 int Wordfind::startGame() {
 
+    std::string macronWord = "kōrero";
+    std::string normalWord = convertMacronWordToNormal(macronWord);
+
+    std::cout << "Original word: " << macronWord << std::endl;
+    std::cout << "Converted word: " << normalWord << std::endl;
+    std::cout << normalWord.length() << std::endl;
+
     bool runGame = true;
-
     DataGenerator dg; 
-    int wordCount = 4;
-
+    int wordCount = 1;
+    /*
     while (words.size() < wordCount) {
         std::string nextWord = "";
         do {
             std::pair<std::string, std::string> wordDef = dg.get_random_entry();
-            nextWord = wordDef.first;
-        } while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+            //nextWord = wordDef.first;
+            std::cout << "|" + wordDef.first + "|" << std::endl;
+            nextWord = convertMacronWordToNormal(wordDef.first);
+            
+            nextWord = removeWhitespace(nextWord); //remove spaces before and after the word to prevent display errors
+
+            std::cout << "|" + nextWord + "|" << std::endl;
+        } //while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+        while (nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
 
         std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::toupper(c); });
+        std::cout << nextWord << std::endl;;
         words.push_back(nextWord);
     }
+    */
+    //words.push_back("KORERO");
+    //std::transform(normalWord.begin(), normalWord.end(), normalWord.begin(), [](unsigned char c) { return std::toupper(c); });
+    words.push_back(normalWord); //using the converted removed macron version
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
 
@@ -260,6 +325,8 @@ int Wordfind::startGame() {
     printf("Starting the game up!\n");
 
     initializeGrid(grid);
+
+    printGrid(grid);
  
     addWordsToGrid(grid, words);
 
