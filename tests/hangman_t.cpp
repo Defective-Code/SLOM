@@ -241,7 +241,7 @@ Press q to quit...
 
     //writeStringToFile("output.txt", actual_output);
 
-    assert(compareFileContentToString(filepath, actual_output));
+    assert(compareFileContentToString(filepath, hangman.display(0)));
 }
 
 void HangmanTest::runTests() {
