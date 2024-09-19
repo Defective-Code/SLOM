@@ -4,6 +4,9 @@
 #include <sstream>
 #include <algorithm>
 #include <locale>
+#include <fstream>
+
+std::string filepath = TEST_RESOURCES_FILE_PATH + std::string("output.txt");
 
 // Utility function to trim leading and trailing whitespace
 std::string trim(const std::string& s) {
@@ -18,6 +21,76 @@ void printCharValues(const std::string& s) {
     }
     std::cout << std::endl;
 }
+
+/*
+// Function to write a string to a file
+void writeStringToFile(const std::string& filename, const std::string& content) {
+    // Create an output file stream object
+    std::ofstream outFile(filename);
+
+    // Check if the file was opened successfully
+    if (!outFile) {
+        std::cerr << "Error: Could not open the file " << filename << std::endl;
+        return;
+    }
+
+    // Write the string content to the file
+    outFile << content;
+
+    // Check if writing succeeded
+    if (!outFile.good()) {
+        std::cerr << "Error: Failed to write to the file " << filename << std::endl;
+    }
+
+    // Close the file
+    outFile.close();
+
+    // Create a text string, which is used to output the text file
+    std::string myText;
+
+    // Read from the text file
+    std::ifstream MyReadFile(filename);
+
+    // Use a while loop together with the getline() function to read the file line by line
+    while (getline(MyReadFile, myText)) {
+        // Output the text from the file
+        std::cout << myText;
+    }
+
+    // Close the file
+    MyReadFile.close();
+}
+*/
+
+// Function to read the entire content of a file into a string
+std::string readFileToString(const std::string& filename) {
+    std::ifstream file(filename);
+    std::stringstream buffer;
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open the file " << filename << std::endl;
+        return "";
+    }
+
+    buffer << file.rdbuf();
+    file.close();
+
+    return buffer.str();
+}
+
+
+// Function to compare file content with a string
+bool compareFileContentToString(const std::string& filename, const std::string& contentToCompare) {
+    std::string fileContent = readFileToString(filename);
+
+    if (fileContent.empty()) {
+        std::cerr << "Error: File is empty or could not be read." << std::endl;
+        return false;
+    }
+
+    return fileContent == contentToCompare;
+}
+
 
 // Definition of HangmanTest class
 class HangmanTest {
@@ -114,8 +187,8 @@ void HangmanTest::testDisplay() {
     // This would be more complex since `display` involves I/O operations.
     // Here we'll assume it's tested manually or using other methods.
     // This function can be enhanced to capture and compare the console output.
-    std::cout << "testDisplay needs to be tested manually or by capturing output." << std::endl;
-
+    //std::cout << "testDisplay needs to be tested manually or by capturing output." << std::endl;
+    /*
     std::string expected_output =
         R"(
 
@@ -128,7 +201,7 @@ void HangmanTest::testDisplay() {
        |                     |___/                         |
        +===================================================+
 
-
+    
                                       Used Letters
                                       +---------+
                    +---+              |         |
@@ -148,33 +221,33 @@ Press the corresponding key in the bracket to select that option.
 2) Guess the word
 
 Press q to quit...
+
 )";
+*/
 
     std::string actual_output = hangman.display(0);
 
-    expected_output = trim(expected_output);
-    actual_output = trim(actual_output);
-
-
-    std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
-    std::cout << expected_output << std::endl;
-    std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
-    std::cout << actual_output << std::endl;
-    std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
+    //std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
+    //std::cout << expected_output << std::endl;
+    //std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
+    //std::cout << actual_output << std::endl;
+    //std::cout << "-----------------------------------------------------------------------------------------" << std::endl;
 
     // Output ASCII values for debugging
-    std::cout << "Expected Output ASCII Values:\n";
-    printCharValues(expected_output);
-    std::cout << "Actual Output ASCII Values:\n";
-    printCharValues(actual_output);
+    //std::cout << "Expected Output ASCII Values:\n";
+    //printCharValues(expected_output);
+    //std::cout << "Actual Output ASCII Values:\n";
+    //printCharValues(actual_output);
 
-    assert(expected_output.compare(actual_output) == 0);
+    //writeStringToFile("output.txt", actual_output);
+
+    assert(compareFileContentToString(filepath, actual_output));
 }
 
 void HangmanTest::runTests() {
     testGuessWord();
     testGetLetter();
-    //testDisplay(); //TODO: Curretnly the expected output is missing some features
+    testDisplay(); //TODO: Curretnly the expected output is missing some features
 }
 
 // To execute the tests, you can call HangmanTest::runTests() from your main function or another driver.
