@@ -8,6 +8,7 @@
 !src/*
 !tests/
 !tests/*
+!/tests/resources/*
 !utilities/
 !utilities/*
 !CMakeLists.txt
