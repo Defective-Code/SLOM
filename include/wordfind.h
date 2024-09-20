@@ -155,7 +155,7 @@ class Wordfind {
 		 * If word entered is in grid then returns to reprint grid with word highlighted
 		 * 
 		*/
-		void waitForEnter();
+		bool waitForEnter();
 
 		friend class WordfindTest;
 };
