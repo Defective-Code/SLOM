@@ -9,6 +9,22 @@
 #include <sstream>
 #include "wordfind.h"
 
+// Helper function to redirect std::cout and std::cin
+class StreamRedirector {
+public:
+    StreamRedirector(std::streambuf* new_cin, std::streambuf* new_cout)
+        : old_cin(std::cin.rdbuf(new_cin)), old_cout(std::cout.rdbuf(new_cout)) {}
+
+    ~StreamRedirector() {
+        std::cin.rdbuf(old_cin);
+        std::cout.rdbuf(old_cout);
+    }
+
+private:
+    std::streambuf* old_cin;
+    std::streambuf* old_cout;
+};
+
 class WordfindTest {
 public:
     static void initializeGrid_t() {
@@ -235,53 +251,62 @@ public:
 
     static void waitForEnter_t() {
         Wordfind wordfind;
-        std::vector<std::string> words = { "TEST", "WORD", "HELLO" };
-        // Prepare mock data
-        wordfind.words = words; // Set the list of words
 
-        // Redirect std::cin and std::cout
-        std::stringstream inputStream;
-        std::stringstream outputStream;
-        std::streambuf* cinBuf = std::cin.rdbuf();
-        std::streambuf* coutBuf = std::cout.rdbuf();
-        std::cin.rdbuf(inputStream.rdbuf());
-        std::cout.rdbuf(outputStream.rdbuf());
+        // Set up mock data
+        wordfind.words = { "WORD", "TEST", "GAME" };
 
-        // Simulate user input
-        inputStream << "word\n" << "hello\n" << "unknown\n" << "test\n" << std::endl;
+        // Test: Simulate valid input
+        {
+            std::string input = "word\n"; // Simulated input
+            std::istringstream input_stream(input);
+            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
 
-        // Execute the method
-        wordfind.waitForEnter();
+            bool quit = wordfind.waitForEnter();
 
-        // Capture the output
-        std::string output = outputStream.str();
-
-        //std::cerr << output << std::endl;
-
-        // Check the output
-        assert(output.find("Enter a word...\n") != std::string::npos);
-
-        // This code doesn't work as passing input to standard in doesn't work with this setup
-        /* 
-        * 
-        assert(output.find("Try again...\n") != std::string::npos);  // Ensure the retry message appears
-        assert(output.find("Try again... \n") == std::string::npos); // Ensure "Try again..." only appears when expected
-
-        for (const auto& str : wordfind.wordsFound) {
-            std::cerr << str << std::endl;
+            assert(wordfind.wordsFound.size() == 1);
+            assert(wordfind.wordsFound[0] == "WORD");
+            assert(!quit);
+            std::cout << "testWaitForEnter (valid input) passed." << std::endl;
         }
+        
+        // Test: Simulate quit input
+        {
+            std::string input = "q\n"; // Simulated input
+            std::istringstream input_stream(input);
+            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
 
-        // Check the wordsFound vector
-        assert(wordfind.wordsFound.size() == 2);
-        assert(wordfind.wordsFound[0] == "WORD");
-        assert(wordfind.wordsFound[1] == "TEST");
-        */
+            bool quit = wordfind.waitForEnter();
 
-        // Restore std::cin and std::cout
-        std::cin.rdbuf(cinBuf);
-        std::cout.rdbuf(coutBuf);
+            assert(quit);
+            std::cout << "testWaitForEnter (quit input) passed." << std::endl;
+        }
+        /*
+        // Test: Simulate invalid input
+        {
+            std::string input = "invalid\n"; // Simulated input
+            std::istringstream input_stream(input);
+            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
 
-        std::cout << "testWaitForEnter passed." << std::endl;
+            bool quit = wordfind.waitForEnter();
+
+            assert(wordfind.wordsFound.empty());
+            assert(!quit);
+            std::cout << "testWaitForEnter (invalid input) passed." << std::endl;
+        }
+        
+        // Test: Simulate empty input
+        {
+            std::string input = "\n"; // Simulated input
+            std::istringstream input_stream(input);
+            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
+
+            bool quit = wordfind.waitForEnter();
+
+            assert(wordfind.wordsFound.empty());
+            assert(!quit);
+            std::cout << "testWaitForEnter (empty input) passed." << std::endl;
+        }*/
+        
     }
 
     // Method that tests the print method for the wordfind class

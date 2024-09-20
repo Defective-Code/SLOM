@@ -90,6 +90,18 @@ std::string Wordle::selectWordleWord() {
     DataGenerator generator;
     std::string result;
 
+    system("cls");
+    std::cout << R"(
++======================================+
+|   __        __            _ _        |
+|   \ \      / /__  _ __ __| | | ___   |
+|    \ \ /\ / / _ \| '__/ _` | |/ _ \  |
+|     \ V  V / (_) | | | (_| | |  __/  |
+|      \_/\_/ \___/|_|  \__,_|_|\___|  |
+|                                      |
++======================================+
+)" << std::endl;
+
     do {
         auto entry = generator.get_random_entry();
         result = entry.first;
@@ -128,6 +140,7 @@ void Wordle::displayGameState()
 
 void Wordle::initialiseGame()
 {
+    
 	wordleWord = selectWordleWord();
 	//std::cout << "\nWordle word set to: " << wordleWord << std::endl;
 	displayWordleWord = "";

@@ -17,6 +17,30 @@
 #include "get_data.h"
 #include "wordfind.h"
 
+#pragma execution_character_set( "utf-8" )
+
+// Function to remove all whitespaces from a string
+std::string removeWhitespace(const std::string& input) {
+    std::string output;
+    // Copy all non-whitespace characters to the output string
+    std::copy_if(input.begin(), input.end(), std::back_inserter(output), [](char c) {
+        return !std::isspace(c);  // Check if the character is not a whitespace
+        });
+    return output;
+}
+
+std::string wstringToString(const std::wstring& wstr) {
+    // Use wstring_convert to convert wstring (wide string) to string (narrow string)
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+    return converter.to_bytes(wstr);
+}
+
+std::wstring stringToWstring(const std::string& str) {
+    // Use wstring_convert to convert string (narrow string) to wstring (wide string)
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+    return converter.from_bytes(str);
+}
+
 
 Wordfind::Wordfind() {
 }
@@ -35,7 +59,8 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
-    system("CLS"); // Clear the terminal screen
+    
+
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
         std::cout << "\033[36m" << "__" << "\033[0m";
@@ -128,35 +153,45 @@ void Wordfind::clearLastNLines(int n) {
 }
 
 
- // Function to receive player input
-void Wordfind::waitForEnter() {
-    std::cout << "Enter a word...\n";
+// Function to receive player input
+bool Wordfind::waitForEnter() {
+    std::cout << "Enter a word (or 'q' to quit)...\n";
 
     while (true) {
         std::string input;
 
         std::getline(std::cin, input);
 
+        // Check if the user wants to quit
+        if (input == "q" || input == "Q") {
+            std::cout << "Quitting...\n";
+            return true; // Exit the function
+        }
+
+        // Continue if input is empty
         if (input.empty()) {
             continue;
         }
-        std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return std::toupper(c);  });
 
-        int correctGuess = count(words.begin(),words.end(), input);
-        
+        // Convert input to uppercase
+        std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::toupper(c); });
+
+        // Check if the input matches any word in the list
+        int correctGuess = std::count(words.begin(), words.end(), input);
+
         if (correctGuess > 0) {
             wordsFound.push_back(input);
             updateWordVector(input);
-            return;
+            return false; // Exit the function after successful input
         }
         else {
             clearLastNLines(2);
             std::cout << "Try again... \n";
         }
     }
-
-    
+    return true;
 }
+
 
 
  // Function to update words found set of positions of chars in the grid
@@ -231,6 +266,42 @@ bool Wordfind::hasDiacritics(const std::string& input) {
 	return false;
 }
 
+
+// Mapping of macronized characters to their normal equivalents
+std::unordered_map<wchar_t, wchar_t> macron_map = {
+    {L'ā', L'a'}, {L'ē', L'e'}, {L'ī', L'i'},
+    {L'ō', L'o'}, {L'ū', L'u'}, {L'Ā', L'A'},
+    {L'Ē', L'E'}, {L'Ī', L'I'}, {L'Ō', L'O'},
+    {L'Ū', L'U'}
+};
+
+// Function to convert a string with macrons to a normal string
+std::wstring convertMacronsToNormal(const std::wstring& input) {
+    std::wstring output;
+    for (wchar_t ch : input) {
+        // Check if the character is in the macron map and replace it
+        if (macron_map.find(ch) != macron_map.end()) {
+            output += macron_map[ch];
+        }
+        else {
+            output += ch;  // Keep the character if it's not macronized
+        }
+    }
+    return output;
+}
+
+// Function to remove invisible characters (like extra bytes, combining marks)
+std::wstring removeInvisibleCharacters(const std::wstring& input) {
+    std::wstring output;
+    for (wchar_t ch : input) {
+        if (ch >= 32) {  // Remove control characters and invisible characters (below 32 in Unicode)
+            output += ch;
+        }
+    }
+    return output;
+}
+
+
  // Function to check if all words have been found
 bool Wordfind::checkGameEnd() {
     return words.size() == wordsFound.size();
@@ -238,21 +309,36 @@ bool Wordfind::checkGameEnd() {
 
 int Wordfind::startGame() {
 
-    bool runGame = true;
+    //std::wstring macronWord = L"kōrero";
+    //std::wstring normalWord = convertMacronsToNormal(macronWord);
 
+    //std::cout << "Original word: " << wstringToString(macronWord) << std::endl;
+    //std::cout << "Converted word: " << wstringToString(normalWord) << std::endl;
+    //std::cout << normalWord.length() << std::endl;
+
+    bool runGame = true;
     DataGenerator dg; 
     int wordCount = 4;
-
+    
     while (words.size() < wordCount) {
+        std::wstring temp = L"";
         std::string nextWord = "";
         do {
             std::pair<std::string, std::string> wordDef = dg.get_random_entry();
-            nextWord = wordDef.first;
-        } while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+            //nextWord = wordDef.first;
+            //std::cout << "|" + wordDef.first + "|" << std::endl;
+            temp = convertMacronsToNormal(stringToWstring(wordDef.first));
+            nextWord = wstringToString(temp);
+            nextWord = removeWhitespace(nextWord); //remove spaces before and after the word to prevent display errors
+
+            //std::cout << "|" + nextWord + "|" << std::endl;
+        } //while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
+        while (nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
 
         std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::toupper(c); });
+        std::cout << nextWord << std::endl;;
         words.push_back(nextWord);
-    }
+    }   
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
 
@@ -260,13 +346,33 @@ int Wordfind::startGame() {
     printf("Starting the game up!\n");
 
     initializeGrid(grid);
+
+    printGrid(grid);
  
     addWordsToGrid(grid, words);
 
     while (runGame) {
+
+        system("CLS"); // Clear the terminal screen
+
+        std::cout << R"(
++=================================================+
+|   __        __            _  __ _           _   |
+|   \ \      / /__  _ __ __| |/ _(_)_ __   __| |  |
+|    \ \ /\ / / _ \| '__/ _` | |_| | '_ \ / _` |  |
+|     \ V  V / (_) | | | (_| |  _| | | | | (_| |  |
+|      \_/\_/ \___/|_|  \__,_|_| |_|_| |_|\__,_|  |
+|                                                 |
++=================================================+
+)" << std::endl;
         printGrid(grid);
         
-        waitForEnter();
+        bool value = waitForEnter();
+
+        if (value) {
+            std::cout << "See you later!" << std::endl;
+            return 0;
+        }
 
         runGame = !checkGameEnd();
         int linesToClear = GRID_SIZE + 3;
