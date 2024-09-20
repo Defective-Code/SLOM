@@ -18,3 +18,25 @@ Seda (Jorse427)
 
 ## Documentation 
 https://Defective-Code.github.io/SLOM
+
+## Build Project
+
+Run the following commands from the SLOM folder/project root folder
+
+mkdir <path_to_build_folder>
+cd <path_to_build_folder>
+
+cmake <project_root_folder> #this is the SLOM folder
+cmake --build .
+
+This will build the executable in the build_folder/bin folder.
+
+So for example, you could run from the project root folder:
+
+mkdir /out
+cd out
+cmake ..
+cmake --build .
+
+And this will build the executable in the /out/bin folder 
+
