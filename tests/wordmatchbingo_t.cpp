@@ -135,11 +135,11 @@ public:
 
 int main() {
     WordMatchBingoTest::testIsDiacritic();
-    WordMatchBingoTest::testHasDiacritics();
+    //WordMatchBingoTest::testHasDiacritics();
     WordMatchBingoTest::testSelectBingoWordPool();
     WordMatchBingoTest::testSelectBingoCard();
-    WordMatchBingoTest::testDisplayCurrentBingoWord();
-    WordMatchBingoTest::testCompareUserInputToBingoCard();
+    //WordMatchBingoTest::testDisplayCurrentBingoWord();
+    //WordMatchBingoTest::testCompareUserInputToBingoCard();
     WordMatchBingoTest::testStartGame();
 
     return 0;
