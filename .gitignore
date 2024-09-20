@@ -1,5 +1,9 @@
 *
-
+!.git/
+!.git/*
+!.github
+!.github/*
+!.github/workflows/*
 !docs/
 !Data/
 !Data/*
