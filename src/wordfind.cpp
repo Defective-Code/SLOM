@@ -59,23 +59,7 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
-    system("CLS"); // Clear the terminal screen
-    /*
-    for each (std::string word in words)
-    {
-        std::cout << word << std::endl;
-    }
-    */
-    std::cout << R"(
-+=================================================+
-|   __        __            _  __ _           _   |
-|   \ \      / /__  _ __ __| |/ _(_)_ __   __| |  |
-|    \ \ /\ / / _ \| '__/ _` | |_| | '_ \ / _` |  |
-|     \ V  V / (_) | | | (_| |  _| | | | | (_| |  |
-|      \_/\_/ \___/|_|  \__,_|_| |_|_| |_|\__,_|  |
-|                                                 |
-+=================================================+
-)" << std::endl;
+    
 
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
@@ -181,7 +165,7 @@ bool Wordfind::waitForEnter() {
         // Check if the user wants to quit
         if (input == "q" || input == "Q") {
             std::cout << "Quitting...\n";
-            break; // Exit the function
+            return true; // Exit the function
         }
 
         // Continue if input is empty
@@ -368,6 +352,19 @@ int Wordfind::startGame() {
     addWordsToGrid(grid, words);
 
     while (runGame) {
+
+        system("CLS"); // Clear the terminal screen
+
+        std::cout << R"(
++=================================================+
+|   __        __            _  __ _           _   |
+|   \ \      / /__  _ __ __| |/ _(_)_ __   __| |  |
+|    \ \ /\ / / _ \| '__/ _` | |_| | '_ \ / _` |  |
+|     \ V  V / (_) | | | (_| |  _| | | | | (_| |  |
+|      \_/\_/ \___/|_|  \__,_|_| |_|_| |_|\__,_|  |
+|                                                 |
++=================================================+
+)" << std::endl;
         printGrid(grid);
         
         bool value = waitForEnter();
