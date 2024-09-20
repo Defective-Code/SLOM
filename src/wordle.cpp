@@ -9,7 +9,7 @@
 //Declare a global variable
 
 std::string wordleWord = "Test";
-std::string displayWordleWord = "";
+std::string displayWordleWord = ""; 
 const int totalAttempts = 5;
 int attemptsCount = 0;
 bool wordleComplete = false;
@@ -165,6 +165,9 @@ std::string Wordle::receiveUserInput()
 		}
 		else
 		{
+            if(lastWasError){
+				clearLastNLines(1);
+			}
 			std::cout << "Invalid input. Please enter a word with exactly " << wordleWord.length() << " characters: ";
 			lastWasError = true;
 		}
