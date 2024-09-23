@@ -1,4 +1,4 @@
-#include "Hangman.h"
+#include "hangman.h"
 #include <cassert>
 #include <iostream>
 #include <sstream>

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <cassert>
+#include <algorithm>
 #include "wordmatchbingo.h"
 
 class WordMatchBingoTest {

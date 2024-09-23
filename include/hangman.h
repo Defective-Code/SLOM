@@ -121,7 +121,7 @@ class Hangman {
          *
          * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
          */
-        std::string Hangman::display(int stage);
+        std::string display(int stage);
 
         /**
          * @brief Set of letters that have been guessed by the player.

@@ -89,7 +89,7 @@ public:
 
     bool canIntersect(const std::string& word, bool& isHorizontal, int& row, int& col);
 
-    bool Wordscapes::placeWordWithIntersection(const std::string& word);
+    bool placeWordWithIntersection(const std::string& word);
 
     /***
     * @brief Method to place word vertically

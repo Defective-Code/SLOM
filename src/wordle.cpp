@@ -4,6 +4,7 @@
 #include <cctype>
 #include <string>
 #include <map>
+#include <algorithm>
 //#include "input_handler.h"
 
 //Declare a global variable

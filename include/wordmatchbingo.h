@@ -43,10 +43,10 @@ class WordMatchBingo {
 		bool compareUserInputToBingoCard(const std::string& userInput);
 		void updateWordWithStrikethrough(std::string& word);
 		void clearLastNLines(int n);
-	 	bool  WordMatchBingo::isDiacritic(char32_t c);
-	 	bool  WordMatchBingo::hasDiacritics(const std::string &input);
-		void WordMatchBingo::reset();
-		void WordMatchBingo::getHint();
+	 	bool isDiacritic(char32_t c);
+	 	bool hasDiacritics(const std::string &input);
+		void reset();
+		void getHint();
 
 		friend class WordMatchBingoTest;
 };

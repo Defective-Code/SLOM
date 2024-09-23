@@ -7,6 +7,7 @@
 #include <locale>
 #include <codecvt>
 #include <iterator>
+#include <algorithm>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
 #ifdef _WIN32       // Check if windows so that it's cross-platform
