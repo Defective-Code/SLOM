@@ -4,11 +4,13 @@
 #include <vector>
 #include <set>
 
+#include <game.h> //extends this class
+
 /**
  * @class Hangman
  * @brief The Hangman class encapsulates the logic and functionality for the Hangman game.
  */
-class Hangman {
+class Hangman : private Game {
 
     /**
      * @brief Maximum number of incorrect guesses allowed before losing the game.
@@ -113,7 +115,7 @@ class Hangman {
          *
          * Initializes the game state and enters the game loop, allowing the player to guess letters or the entire word.
         */
-        void startGame();
+        int startGame();
 
     private:
         /**
@@ -121,7 +123,9 @@ class Hangman {
          *
          * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
          */
-        std::string display(int stage);
+        void display();
+
+        std::string generate();
 
         /**
          * @brief Set of letters that have been guessed by the player.
@@ -137,13 +141,9 @@ class Hangman {
 
         char char_input;
 
-        /**
-         * @brief Splits a string into a vector of strings based on newline characters.
-         *
-         * @param input The input string to be split.
-         * @return A vector of strings, each representing a line from the input.
-         */
-        std::vector<std::string> splitStringOnNewline(const std::string& input);
+        int current_stage; //tracks the current stage of the hangman game
+
+        
 
         /**
          * @brief Processes a letter guess by the player.

@@ -3,7 +3,7 @@
 # Define the path to the data file as a preprocessor macro
 add_definitions(-DDATA_FILE_PATH="${CMAKE_SOURCE_DIR}/Data/MaoriWordsData.txt")
 
-set(SOURCES get_data.cpp)
+set(SOURCES get_data.cpp io_handler.cpp)
 
 add_library(Utilities STATIC ${SOURCES})
 #target_link_libraries(SLOM PUBLIC Utilities)
