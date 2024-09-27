@@ -9,9 +9,16 @@
 #include <unordered_map>
 #include <utility>  // For std::pair
 
-class Wordfind {
+#include "Game.h"
+
+class Wordfind : private Game {
+
+	//Here just defining some more useful names to certain data structures.
 
 	const static int GRID_SIZE = 10; // Adjust as needed
+
+	const static int WORD_COUNT = 4;
+
 	// A type alias for storing the coordinates of placed words
 	using Position = std::pair<int, int>;
 	
@@ -33,20 +40,18 @@ class Wordfind {
 		*/
 		int startGame();
 
-		/**
-		* The default constructor, initializes the game state
-		*/
-		Wordfind();
-
 	private:
 
-		std::vector<std::string> getRandomWords();
-		std::vector<std::string> words;
-		std::vector<std::string> wordsFound;
-		std::vector<Position> wordPositions;
-		PositionSet wordsFoundCoordinates;
-		std::unordered_map <std::string, PositionSet> wordToPositionMap;
+		std::vector<std::string> words; //vector of the words to find
+		std::vector<std::string> wordsFound; //vector of the words that have been found
+		std::vector<Position> wordPositions; //vector of each corresponding words position in the grid. Each position is the x,y of the first 
+		PositionSet wordsFoundCoordinates;  //set of positions that have been found.
+		std::unordered_map <std::string, PositionSet> wordToPositionMap; 
 
+		std::vector<std::vector<char>> grid; //the grid of letters
+
+
+		std::vector<std::string> getRandomWords();
 
 		/**
 		 * Initializes the grid with random letters from A to Z.
@@ -54,7 +59,7 @@ class Wordfind {
 		 *
 		 * @param grid A reference to a 2D vector of characters representing the grid to be initialized.
 		*/
-		void initializeGrid(std::vector<std::vector<char>>& grid);
+		void initializeGrid();
 
 		/**
 		 * Prints the grid to the standard output.
@@ -62,7 +67,7 @@ class Wordfind {
 		 *
 		 * @param grid A constant reference to a 2D vector of characters representing the grid to be printed.
 		 */
-		void printGrid(const std::vector<std::vector<char>>& grid);
+		std::string printGrid();
 
 		/**
 		 * Tries to place a word in the grid at a specified position and direction.
@@ -82,7 +87,7 @@ class Wordfind {
 		 *
 		 * @return true if the word was successfully placed in the grid; false otherwise.
 		*/
-		bool placeWord(std::vector<std::vector<char>>& grid, const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions);
+		bool placeWord(const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions);
 
 		/**
 		 * Adds a list of words to the grid, placing each word at a random position and direction.
@@ -95,32 +100,9 @@ class Wordfind {
 		 * @param grid A reference to a 2D vector of characters representing the word search grid.
 		 * @param words A vector of strings representing the words to be added to the grid.
 		*/
-		void addWordsToGrid(std::vector<std::vector<char>>& grid, const std::vector<std::string>& words);
+		void addWordsToGrid();
 
-
-		/**
-		 * Method to check if character is a diacritic
-		 * 
-		 * @param char32_t the char to be checked
-		 * @return bool whether the 
-		*/
-		bool isDiacritic(char32_t c);
-
-		/**
-		 * Method to check if string contains diacritics
-		 * 
-		 * @param string input word
-		 * return bool whether the string contains diacritics
-		*/
-		bool hasDiacritics(const std::string& input);
-
-		/**
-		 * Checks if game has ended / all words have been found
-		 * 
-		 * @return bool: whether all words have been found or not
-		*/
-		bool checkGameEnd();
-
+		void guessWord(std::string input);
 
 		/** 
 		 * Takes a word that has been found, and updates vector of positions found for print grid 
@@ -131,17 +113,6 @@ class Wordfind {
 		*/
 		void updateWordVector(const std::string& key);
 
-
-
-		/**
-		 * Moves cursor up and clear line N times
-		 * 
-		 * @param int n the number of lines to clear
-		 * 
-		*/
-		void clearLastNLines(int n);
-
-
 		/**
 		 * Function to reset game state
 		 * 
@@ -149,13 +120,13 @@ class Wordfind {
 		*/
 		void resetGameState();
 
-		/**
-		 * Takes user input and checks if it is amongst words contained within the grid
-		 * 
-		 * If word entered is in grid then returns to reprint grid with word highlighted
-		 * 
-		*/
-		bool waitForEnter();
+		void menu();
+
+		void setup();
+
+		std::string generate();
+
+		void display();
 
 		friend class WordfindTest;
 };

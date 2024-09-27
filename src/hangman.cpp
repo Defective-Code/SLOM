@@ -94,77 +94,91 @@ std::string Hangman::generate() {
 }
 
 void Hangman::display() {
+	clearScreen();
 	std::string output = generate();
 	std::cout << output << std::endl;
 }
 
-bool Hangman::guess_word() {
-	std::cin >> word_input; // Get user input from the keyboard
-	std::transform(word_input.begin(), word_input.end(), word_input.begin(), [](unsigned char c) { return std::tolower(c); });
 
-	return word_input.compare(answer) == 0;
+
+void Hangman::setup() {
+	DataGenerator dg = DataGenerator();
+	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
+
+	answer = answer_pair.first;
 }
 
-bool Hangman::get_letter() {
+void Hangman::menu() {
+	char ch = getSingleCharacter();
+	bool result; //variable to store the result of a guess
+	switch (ch) {
+	case '1':
+		char input = getSingleCharacter();
+		result = guessLetter(input);
+		if (!result) {
+			current_stage++;
+		}
+		break;
+	case '2':
+	{
+		std::string input = getWord();
+		result = guessWord(input);
+		if (result != true) {
+			current_stage++;
+			break;
+		}
+		else {
+			printf("Well done!");
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			return;
+		}
+	}
+	case 'q':
+		printf("Quitting.....");
+		return;
+	default:
+		printf("Please select a valid option\n");
+	}
+}
+
+//function to handle getting a word in lowercase
+bool Hangman::guessWord(std::string input) {
+
+	return input.compare(answer) == 0;
+}
+
+bool Hangman::guessLetter(char input) {
+
 	
-	std::cin >> char_input;
-	char_input = tolower(char_input);
 	//seen_letters.insert(input);
 
-	int x = std::count(answer.begin(), answer.end(), char_input);
+	int x = std::count(answer.begin(), answer.end(), input);
 
+	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
-		correct_letters.insert(toupper(char_input));
+		correct_letters.insert(input);
 		return true;
 	}
 	else {
-		seen_letters.insert(toupper(char_input));
+		seen_letters.insert(input);
 		return false;
 	}
 }
 
 int Hangman::startGame() {
-	bool result;
-	seen_letters.clear(); //clear the set between games;
-	DataGenerator dg = DataGenerator();
-	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
+	
+	//seen_letters.clear(); //clear the set between games
+	setup();
 
-	answer = answer_pair.first;
-
+	//loop until the stage is the max stage and the hangman is done
 	while (current_stage != MAX_STAGE) {
 		//system("CLS"); // Clear the terminal screen
+		
 		std::cout << answer << std::endl; //here for testing purposes
 
 		display();
-
-		char ch = '0'; //variable to store user input
-
-		std::cin >> ch;
-
-		switch (ch) {
-		case '1':
-			result = get_letter();
-			if (!result) {
-				current_stage++;
-			}
-			break;
-		case '2':
-			result = guess_word();
-			if (result != true) {
-				current_stage++;
-				break;
-			}
-			else {
-				printf("Well done!");
-				std::this_thread::sleep_for(std::chrono::seconds(3));
-				return;
-			}
-		case 'q':
-			printf("Quitting.....");
-			return;
-		default:
-			printf("Please select a valid option\n");
-		}
+		menu();
+		
 
 	}
 	

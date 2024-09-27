@@ -101,10 +101,11 @@ class Hangman : private Game {
      * @brief Vector of characters representing the English alphabet.
      */
     const std::vector<char> alphabet = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-        'U', 'V', 'W', 'X', 'Y', 'Z'
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+    'u', 'v', 'w', 'x', 'y', 'z', 'ā', 'ē', 'ī', 'ō', 'ū'
     };
+
 
     
 
@@ -119,6 +120,18 @@ class Hangman : private Game {
 
     private:
         /**
+        * @brief Set of correctly guessed letters in the answer.
+        */
+        std::set<char> correct_letters;
+
+        int current_stage; //tracks the current stage of the hangman game
+
+        /**
+         * @brief Set of letters that have been guessed by the player.
+         */
+        std::set<char> seen_letters;
+
+        /**
          * @brief Displays the current state of the game, including the hangman stage, used letters, and the word with guessed letters.
          *
          * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
@@ -127,37 +140,23 @@ class Hangman : private Game {
 
         std::string generate();
 
-        /**
-         * @brief Set of letters that have been guessed by the player.
-         */
-        std::set<char> seen_letters;
+        void setup(); //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
 
-        /**
-        * @brief Set of correctly guessed letters in the answer.
-        */
-        std::set<char> correct_letters;
-
-        std::string word_input;
-
-        char char_input;
-
-        int current_stage; //tracks the current stage of the hangman game
-
-        
+        void menu();
 
         /**
          * @brief Processes a letter guess by the player.
          *
          * @return True if the guessed letter is in the answer, otherwise false.
          */
-        bool get_letter();
+        bool guessLetter(char input);
 
         /**
          * @brief Processes a word guess by the player.
          *
          * @return True if the guessed word matches the answer, otherwise false.
          */
-        bool guess_word();
+        bool guessWord(std::string input);
         
     friend class HangmanTest;
 };
