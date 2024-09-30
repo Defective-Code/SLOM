@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <utility>  // For std::pair
 
-#include "Game.h"
+#include "game.h" //extend the this abstract class
 
 class Wordfind : private Game {
 

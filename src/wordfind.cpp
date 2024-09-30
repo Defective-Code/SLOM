@@ -36,42 +36,6 @@ void Wordfind::initializeGrid() {
 
 }
 
-// Function to print the grid
-std::string Wordfind::printGrid() {
-    std::ostringstream oss;
-    int r = 0;
-    for (int i = 0; i <= GRID_SIZE; i++) {
-        oss << "\033[36m" << "__" << "\033[0m";
-    }
-    oss << "\033[36m" << "_" << "\033[0m";
-    
-    oss << std::endl;
-    for (const auto& row : grid) {
-        int c = 0;
-        oss << "\033[36m" << "|" << "\033[0m" << ' ';
-        for (char cell : row) {
-            Position pos = { r, c };
-            auto it = wordsFoundCoordinates.find(pos);
-            if (it != wordsFoundCoordinates.end()) {
-                oss << "\033[32m" << cell << "\033[0m" << ' ';
-            }
-            else {
-                oss << cell << ' ';
-            }
-            c++;
-        }
-        oss << "\033[36m" << "|" << "\033[0m" << std::endl;
-        r++;
-    }
-    for (int i = 0; i <= GRID_SIZE; i++) {
-        oss << "\033[36m" << "--" << "\033[0m";
-    }
-    oss << "\033[36m" << "-" << "\033[0m";
-    oss << std::endl;
-
-    return oss.str();
-}
-
 // Function to place a word in the grid
 bool Wordfind::placeWord(const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions) {
     int len = word.length();
@@ -123,7 +87,7 @@ void Wordfind::addWordsToGrid() {
     }
 }
 
-//this method takes in user input, and checks 
+//this method checks if a given input string is in the words vector
 void Wordfind::guessWord(std::string input) {
    
     int correctGuess = std::count(words.begin(), words.end(), input);
@@ -147,15 +111,9 @@ void Wordfind::updateWordVector(const std::string& key) {
     }
 }
 
- // Function to reset game state
-void Wordfind::resetGameState() {
-    wordsFound.clear();
-    wordPositions.clear();
-    wordsFoundCoordinates.clear();
-    wordToPositionMap.clear();
-}
 
 
+// Function that sets up initial game state
 void Wordfind::setup() {
     DataGenerator dg;
     while (words.size() < Wordfind::WORD_COUNT) {
@@ -178,8 +136,6 @@ void Wordfind::setup() {
         words.push_back(nextWord);
     }
 
-    
-
     initializeGrid();
 
     //printGrid(grid); this is a test print to check if the grid has been filled with random letters correctly
@@ -187,6 +143,43 @@ void Wordfind::setup() {
     addWordsToGrid();
 }
 
+// Function to print the grid
+std::string Wordfind::printGrid() {
+    std::ostringstream oss;
+    int r = 0;
+    for (int i = 0; i <= GRID_SIZE; i++) {
+        oss << "\033[36m" << "__" << "\033[0m";
+    }
+    oss << "\033[36m" << "_" << "\033[0m";
+    
+    oss << std::endl;
+    for (const auto& row : grid) {
+        int c = 0;
+        oss << "\033[36m" << "|" << "\033[0m" << ' ';
+        for (char cell : row) {
+            Position pos = { r, c };
+            auto it = wordsFoundCoordinates.find(pos);
+            if (it != wordsFoundCoordinates.end()) {
+                oss << "\033[32m" << cell << "\033[0m" << ' ';
+            }
+            else {
+                oss << cell << ' ';
+            }
+            c++;
+        }
+        oss << "\033[36m" << "|" << "\033[0m" << std::endl;
+        r++;
+    }
+    for (int i = 0; i <= GRID_SIZE; i++) {
+        oss << "\033[36m" << "--" << "\033[0m";
+    }
+    oss << "\033[36m" << "-" << "\033[0m";
+    oss << std::endl;
+
+    return oss.str();
+}
+
+// Function that generates the string to be displayed, this is seperate from the display method for testing purposes
 std::string Wordfind::generate() {
     std::ostringstream oss;
 
@@ -207,6 +200,7 @@ std::string Wordfind::generate() {
 
     return oss.str();
 }
+
 
 void Wordfind::display() {
     clearScreen();
@@ -253,4 +247,12 @@ int Wordfind::startGame() {
     std::this_thread::sleep_for(std::chrono::seconds(3));
     resetGameState();
 	return 0;
+}
+
+ // Function to reset game state
+void Wordfind::resetGameState() {
+    wordsFound.clear();
+    wordPositions.clear();
+    wordsFoundCoordinates.clear();
+    wordToPositionMap.clear();
 }

@@ -100,7 +100,7 @@ class Hangman : private Game {
     /**
      * @brief Vector of characters representing the English alphabet.
      */
-    const std::vector<char> alphabet = {
+    const std::vector<int> alphabet = {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
     'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
     'u', 'v', 'w', 'x', 'y', 'z', 'ā', 'ē', 'ī', 'ō', 'ū'
