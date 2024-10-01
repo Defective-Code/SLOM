@@ -1,9 +1,10 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cctype>
 #include <string>
 #include <map>
 #include <algorithm>
 #include <thread>
+#include <sstream>
 
 #include "io_handler.h"
 #include "wordle.h"
@@ -45,6 +46,8 @@ std::string Wordle::generate() {
 	}
 
     oss << "Press 1) to guess a word\n Press q to quit" << std::endl;
+
+    return oss.str();
 }
 
 void Wordle::display() {
@@ -53,17 +56,20 @@ void Wordle::display() {
     std::cout << generate() << std::endl;
 }
 
-void Wordle::menu() {
+bool Wordle::menu() {
     char ch = getSingleCharacter();
     switch (ch) {
     case '1':
     {
         std::string input = receiveUserInput();
         getNextGameState(input);
+        break;
     }
     case 'q':
+    {
         printf("Quitting.....");
-        return;
+        return false;
+    }
     default:
         printf("Please select a valid option\n");
     }
@@ -71,7 +77,7 @@ void Wordle::menu() {
 
 std::string Wordle::receiveUserInput()
 {
-	std::string userInput;
+	std::string userInput = "test";
 	int lastWasError = false;
 
 	//Prompt user for input
@@ -79,7 +85,7 @@ std::string Wordle::receiveUserInput()
 
 	while (true)
 	{
-		std::string userInput = getWord();
+		userInput = getWord();
 
 		//Check if the length of the input matches the length of wordleWord
 		if (userInput.length() == wordleWord.length())
@@ -99,7 +105,7 @@ std::string Wordle::receiveUserInput()
 			lastWasError = true;
 		}
 	}
-
+    //std::cout << userInput << std::endl;
 	return userInput;
 }
 
@@ -168,23 +174,27 @@ void Wordle::getNextGameState(const std::string userGuess){
         }
     }
 
+    //std::cout << displayWordleWord << std::endl;
+
     attempts[attemptsCount] = displayWordleWord;
     attemptsCount += 1;
 }
 
 void Wordle::setup() {
     DataGenerator generator;
+
+    //std::string test = "rūma";
+
+    //std::cout << utf8Length(test) << std::endl;
     
-    //get a word and remove the preceeding and trailing whitespace
-    wordToGuess = generator.get_random_entry().first;
-    wordToGuess = removeWhitespace(wordToGuess);
+    wordToGuess = "";
+    //get a word and loop until the word is of the correct length
+    while (utf8Length(wordToGuess) != WORD_LENGTH) {
+        wordToGuess = removeWhitespace(generator.get_random_entry().first);
+    }
+    //wordToGuess = removeWhitespace(wordToGuess);
 
-    // //Trim trailing whitespace
-    // auto endPos = std::find_if(result.rbegin(), result.rend(), [](char ch) {
-    //     return !std::isspace(static_cast<unsigned char>(ch));
-    // }).base();
-
-    // result.erase(endPos, result.end());
+    wordleWord = wordToGuess;
 
     printf("%s\n", wordToGuess.c_str());
     //printf("%zu\n", result.length());
@@ -211,7 +221,7 @@ int Wordle::startGame() {
 	while (attemptsCount != MAX_ATTEMPTS && !wordleComplete)
 	{
 		display();
-        menu();
+        if (menu() == false) return 0;
 	}
 	if (wordleComplete)
 	{   
@@ -224,4 +234,6 @@ int Wordle::startGame() {
 
     std::this_thread::sleep_for(std::chrono::seconds(3));
     reset();
+
+    return 0;
 }

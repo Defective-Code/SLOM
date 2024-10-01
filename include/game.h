@@ -16,5 +16,5 @@ private:
 	virtual std::string generate() = 0; //this function generates a string of the current game state, with the idea it is called by display(); This is for testing purpose
 	virtual void setup() = 0; //method that sets up a games initial state
 	virtual void reset() = 0; //method to reset the state of the game
-	virtual void menu() = 0; //this fucntion should present a menu on the screen, and take in the user input to select the menu option. All games should have an option to guess (some games may have more than one such as hangman with guess a lettter and a word), a hint option, and a quit game option., 
+	virtual bool menu() = 0; //this fucntion should present a menu on the screen, and take in the user input to select the menu option. All games should have an option to guess (some games may have more than one such as hangman with guess a lettter and a word), a hint option, and a quit game option., 
 };

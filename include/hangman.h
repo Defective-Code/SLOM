@@ -146,7 +146,7 @@ class Hangman : private Game {
 
         void reset() override;
 
-        void menu() override;
+        bool menu() override;
 
         /**
          * @brief Processes a letter guess by the player.

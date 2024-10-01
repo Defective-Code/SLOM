@@ -5,6 +5,7 @@
 
 class Wordle : private Game{
 	const static int MAX_ATTEMPTS = 5;
+	const int WORD_LENGTH = 5;
 
 	std::string wordleWord = "Test";
 	std::string displayWordleWord = "";
@@ -46,7 +47,7 @@ private:
      */
     void reset() override;
 
-	void menu() override;
+	bool menu() override;
 
 	std::string generate() override;
 

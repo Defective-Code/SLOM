@@ -108,7 +108,7 @@ void Hangman::setup() {
 	answer = answer_pair.first;
 }
 
-void Hangman::menu() {
+bool Hangman::menu() {
 	char ch = getSingleCharacter();
 	bool result; //variable to store the result of a guess
 	switch (ch) {
@@ -131,13 +131,13 @@ void Hangman::menu() {
 		else {
 			printf("Well done!");
 			std::this_thread::sleep_for(std::chrono::seconds(3));
-			return;
+			return true;
 		}
 	}
 	case 'q':
 	{
 		printf("Quitting.....");
-		return;
+		return false;
 	}
 	default:
 	{
@@ -190,7 +190,7 @@ int Hangman::startGame() {
 		
 
 	}
-	
+	return 0;
 }
 
 void Hangman::reset() {

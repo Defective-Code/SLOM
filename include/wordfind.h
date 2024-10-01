@@ -115,7 +115,7 @@ class Wordfind : private Game {
 		*/
 		void updateWordVector(const std::string& key);
 
-		void menu() override;
+		bool menu() override;
 
 		void setup() override;
 

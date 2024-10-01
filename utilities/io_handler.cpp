@@ -17,7 +17,7 @@ extern std::unordered_map<wchar_t, wchar_t> macron_map = {
 };
 
 void clearScreen() {
-	std::cout << "\033[2" << std::endl; //clear the terminal screen
+	std::cout << "\033[2J" << std::endl; //clear the terminal screen
 }
 
 std::vector<std::string> splitStringOnNewline(const std::string& input) {
@@ -85,12 +85,27 @@ std::wstring removeInvisibleCharacters(const std::wstring& input) {
 // Function to remove all whitespaces from a string
 std::string removeWhitespace(const std::string& input) {
 	std::string output;
-	// Copy all non-whitespace characters to the output string
-	std::copy_if(input.begin(), input.end(), std::back_inserter(output), [](char c) {
-		return !std::isspace(c);  // Check if the character is not a whitespace
+	std::copy_if(input.begin(), input.end(), std::back_inserter(output), [](unsigned char c) {
+		// Only apply std::isspace to ASCII characters (single-byte characters < 128)
+		return !(c < 128 && std::isspace(c));
 		});
 	return output;
 }
+
+std::size_t utf8Length(const std::string& input) {
+	std::size_t length = 0;
+	for (std::size_t i = 0; i < input.size(); ++i) {
+		// Check if the byte is a starting byte of a UTF-8 character
+		unsigned char c = input[i];
+		if ((c & 0xC0) != 0x80) {
+			// It's not a continuation byte (0x80 to 0xBF), so it's the start of a new character
+			++length;
+		}
+	}
+	return length;
+}
+
+
 
 // Helper function to convert a string to lowercase
 std::string toLowerCase(const std::string& str) {
@@ -113,3 +128,4 @@ std::wstring stringToWstring(const std::string& str) {
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 	return converter.from_bytes(str);
 }
+

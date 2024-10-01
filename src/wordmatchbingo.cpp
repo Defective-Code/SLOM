@@ -183,12 +183,12 @@ void WordMatchBingo::display() {
     
 }
 
-void WordMatchBingo::menu() {
-
+bool WordMatchBingo::menu() {
+    return false;
 }
 
 std::string WordMatchBingo::generate() {
-
+    return " ";
 }
 
 void WordMatchBingo::giveHint() {
@@ -211,4 +211,6 @@ int WordMatchBingo::startGame() {
 
     std::cout << "Game over! All words have been guessed.\n\n";
     reset();
+
+    return 0;
 }

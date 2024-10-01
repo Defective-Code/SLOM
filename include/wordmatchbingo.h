@@ -60,7 +60,7 @@ class WordMatchBingo : private Game {
 		void setup() override;
 		std::string generate() override; 
 		void display() override;
-		void menu() override;
+		bool menu() override;
 
 		friend class WordMatchBingoTest;
 };

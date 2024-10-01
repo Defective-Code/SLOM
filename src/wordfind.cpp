@@ -208,7 +208,7 @@ void Wordfind::display() {
 
 }
 
-void Wordfind::menu() {
+bool Wordfind::menu() {
     char ch = getSingleCharacter();
     switch (ch) {
     case '1':
@@ -219,7 +219,7 @@ void Wordfind::menu() {
     }
     case 'q':
         printf("Quitting.....");
-        return;
+        return false;
     default:
         printf("Please select a valid option\n");
     }
