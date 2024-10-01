@@ -3,6 +3,8 @@
 #include <map>
 #include <vector>
 
+#include "game.h"
+
 
 class WordMatchBingo : private Game {
 	const static int totalAttempts = 5;
@@ -37,7 +39,7 @@ class WordMatchBingo : private Game {
 
 	// 	friend class WordleTest;
 	public:
-		void startGame();
+		int startGame() override;
 		void getHint();
 		
 	private:
@@ -53,10 +55,12 @@ class WordMatchBingo : private Game {
 		bool compareUserInputToBingoCard(const std::string& userInput);
 		void updateWordWithStrikethrough(std::string& word);
 		
-		void reset();
-		void setup();
-		std::string generate();
-		void menu();
+		void giveHint() override;
+		void reset() override;
+		void setup() override;
+		std::string generate() override; 
+		void display() override;
+		void menu() override;
 
 		friend class WordMatchBingoTest;
 };

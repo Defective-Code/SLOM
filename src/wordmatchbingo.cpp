@@ -179,12 +179,25 @@ void WordMatchBingo::getHint() {
     }
 }
 
+void WordMatchBingo::display() {
+    
+}
 
+void WordMatchBingo::menu() {
 
-void WordMatchBingo::startGame() {
+}
+
+std::string WordMatchBingo::generate() {
+
+}
+
+void WordMatchBingo::giveHint() {
+
+}
+
+int WordMatchBingo::startGame() {
     clearLastNLines(13); 
-    selectBingoWordPool();
-    selectBingoCard();
+    setup();
     while (!bingoCard.empty() && !bingoWordPool.empty() && wordsFound < bingoCardCount) {
         displayCurrentBingoWord();
         displayBingoCard();

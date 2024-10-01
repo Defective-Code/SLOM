@@ -1,13 +1,11 @@
 ﻿
 #pragma execution_character_set( "utf-8" )
 
+#include <unordered_map>
+#include <vector>
+
 // Mapping of macronized characters to their normal equivalents
-std::unordered_map<wchar_t, wchar_t> macron_map = {
-    {L'ā', L'a'}, {L'ē', L'e'}, {L'ī', L'i'},
-    {L'ō', L'o'}, {L'ū', L'u'}, {L'Ā', L'A'},
-    {L'Ē', L'E'}, {L'Ī', L'I'}, {L'Ō', L'O'},
-    {L'Ū', L'U'}
-};
+extern std::unordered_map<wchar_t, wchar_t> macron_map;
 
 void clearScreen();
 /**

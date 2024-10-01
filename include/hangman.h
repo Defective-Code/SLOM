@@ -116,7 +116,7 @@ class Hangman : private Game {
          *
          * Initializes the game state and enters the game loop, allowing the player to guess letters or the entire word.
         */
-        int startGame();
+        int startGame() override;
 
     private:
         /**
@@ -131,20 +131,22 @@ class Hangman : private Game {
          */
         std::set<char> seen_letters;
 
+        void giveHint() override;
+
         /**
          * @brief Displays the current state of the game, including the hangman stage, used letters, and the word with guessed letters.
          *
          * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
          */
-        void display();
+        void display() override;
 
-        std::string generate();
+        std::string generate() override;
 
-        void setup(); //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
+        void setup() override; //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
 
-        void reset();
+        void reset() override;
 
-        void menu();
+        void menu() override;
 
         /**
          * @brief Processes a letter guess by the player.

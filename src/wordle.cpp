@@ -201,7 +201,11 @@ void Wordle::setup() {
 	}
 }
 
-int Wordle::startGame(){
+void Wordle::giveHint() {
+
+}
+
+int Wordle::startGame() {
 
 	setup();
 	while (attemptsCount != MAX_ATTEMPTS && !wordleComplete)

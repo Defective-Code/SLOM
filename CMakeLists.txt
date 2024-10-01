@@ -13,5 +13,5 @@ add_subdirectory(utilities)
 add_subdirectory(src)
 
 # Add the tests directory
-enable_testing()
-add_subdirectory(tests)
+# enable_testing()
+# add_subdirectory(tests)

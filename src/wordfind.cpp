@@ -225,22 +225,15 @@ void Wordfind::menu() {
     }
 }
 
+void Wordfind::giveHint() {
+
+}
+
 int Wordfind::startGame() {
 
     while (wordsFound.size() < words.size()) { //looping until player has found all words
         display();
         menu();
-        /*
-        int linesToClear = GRID_SIZE + 3;
-        std::cout << "Nice job!" << std::endl;
-        #ifdef _WIN32
-                Sleep(1000);  // Sleep for 1000 milliseconds (2 seconds) on Windows
-        #else
-                sleep(1);     // Sleep for 1 seconds on Unix-based systems
-        #endif
-    
-        clearLastNLines(linesToClear);
-        */
     }
 
     printf("Well done!");

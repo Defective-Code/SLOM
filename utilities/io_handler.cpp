@@ -4,9 +4,17 @@
 #include <iostream>
 #include <algorithm>  // For std::remove
 #include <unordered_map>
+#include <locale>
 #include <codecvt>
 
 #include "io_handler.h"
+
+extern std::unordered_map<wchar_t, wchar_t> macron_map = {
+    {L'ā', L'a'}, {L'ē', L'e'}, {L'ī', L'i'},
+    {L'ō', L'o'}, {L'ū', L'u'}, {L'Ā', L'A'},
+    {L'Ē', L'E'}, {L'Ī', L'I'}, {L'Ō', L'O'},
+    {L'Ū', L'U'}
+};
 
 void clearScreen() {
 	std::cout << "\033[2" << std::endl; //clear the terminal screen

@@ -16,13 +16,14 @@ public:
 		 * Method used to start the game. This is called when the user selects Wordle as their game of choice.
 		 * 
 		 */
-	int startGame();
-
+	int startGame() override;
 
 private:
 	int attemptsCount = 0;
 	bool wordleComplete = false;
 	std::string wordToGuess;
+
+	void giveHint() override;
 
 		/**
 		 * Method used to receive user input (their Wordle guess).
@@ -38,18 +39,18 @@ private:
 		 */
 	void getNextGameState(const std::string userGuess);
 
-	void setup();
+	void setup() override;
 
 	/**
      * Method to reset the game state to its initial configuration.
      */
-    void reset();
+    void reset() override;
 
-	void menu();
+	void menu() override;
 
-	std::string generate();
+	std::string generate() override;
 
-	void display();
+	void display() override;
 
 	friend class WordleTest;
 };

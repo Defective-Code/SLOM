@@ -2,6 +2,7 @@
 * Class to encapsulate Wordfind game functionality.
 * Contains methods to display the game, handle input, and generate the set of words to use.
 */
+#pragma once
 
 #include <string.h>
 #include <vector>
@@ -38,7 +39,7 @@ class Wordfind : private Game {
 		*
 		* @param words The real words to be placed in the wordfind
 		*/
-		int startGame();
+		int startGame() override;
 
 	private:
 
@@ -50,6 +51,7 @@ class Wordfind : private Game {
 
 		std::vector<std::vector<char>> grid; //the grid of letters
 
+		void giveHint() override;
 
 		std::vector<std::string> getRandomWords();
 
@@ -113,20 +115,20 @@ class Wordfind : private Game {
 		*/
 		void updateWordVector(const std::string& key);
 
-		void menu();
+		void menu() override;
 
-		void setup();
+		void setup() override;
 
 		/**
 		 * Function to reset game state
 		 * 
 		 * Clears all data held within variable from previous game.
 		*/
-		void reset();
+		void reset() override; 
 
-		std::string generate();
+		std::string generate() override;
 
-		void display();
+		void display() override;
 
 		friend class WordfindTest;
 };

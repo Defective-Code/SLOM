@@ -112,17 +112,18 @@ void Hangman::menu() {
 	char ch = getSingleCharacter();
 	bool result; //variable to store the result of a guess
 	switch (ch) {
-	case '1':
-		char input = getSingleCharacter();
-		result = guessLetter(input);
+	case '1': {
+		char c_input = getSingleCharacter();
+		result = guessLetter(c_input);
 		if (!result) {
 			current_stage++;
 		}
 		break;
+	}
 	case '2':
 	{
-		std::string input = getWord();
-		result = guessWord(input);
+		std::string w_input = getWord();
+		result = guessWord(w_input);
 		if (result != true) {
 			current_stage++;
 			break;
@@ -134,10 +135,14 @@ void Hangman::menu() {
 		}
 	}
 	case 'q':
+	{
 		printf("Quitting.....");
 		return;
+	}
 	default:
+	{
 		printf("Please select a valid option\n");
+	}
 	}
 }
 
@@ -163,6 +168,10 @@ bool Hangman::guessLetter(char input) {
 		seen_letters.insert(input);
 		return false;
 	}
+}
+
+void Hangman::giveHint() {
+
 }
 
 int Hangman::startGame() {
