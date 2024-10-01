@@ -182,9 +182,12 @@ int Hangman::startGame() {
 
 	}
 	
-	
-	
+}
 
+void Hangman::reset() {
+	correct_letters.clear();
+	current_stage = 0;
+	seen_letters.clear();
 }
 
 

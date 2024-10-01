@@ -32,6 +32,8 @@ std::wstring removeInvisibleCharacters(const std::wstring& input);
 
 std::string removeWhitespace(const std::string& input);
 
+std::string toLowerCase(const std::string& str);
+
 std::string wstringToString(const std::wstring& wstr);
 
 std::wstring stringToWstring(const std::string& str);

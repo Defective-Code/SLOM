@@ -245,12 +245,12 @@ int Wordfind::startGame() {
 
     printf("Well done!");
     std::this_thread::sleep_for(std::chrono::seconds(3));
-    resetGameState();
+    reset();
 	return 0;
 }
 
  // Function to reset game state
-void Wordfind::resetGameState() {
+void Wordfind::reset() {
     wordsFound.clear();
     wordPositions.clear();
     wordsFoundCoordinates.clear();

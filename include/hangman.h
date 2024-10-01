@@ -142,6 +142,8 @@ class Hangman : private Game {
 
         void setup(); //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
 
+        void reset();
+
         void menu();
 
         /**

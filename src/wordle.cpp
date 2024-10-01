@@ -1,23 +1,15 @@
 #include <iostream>
-#include "wordle.h"
-#include "get_data.h"
 #include <cctype>
 #include <string>
 #include <map>
 #include <algorithm>
-//#include "input_handler.h"
+#include <thread>
 
-//Declare a global variable
+#include "io_handler.h"
+#include "wordle.h"
+#include "get_data.h"
 
-std::string wordleWord = "Test";
-std::string displayWordleWord = ""; 
-const int totalAttempts = 5;
-int attemptsCount = 0;
-bool wordleComplete = false;
-std::string attempts[totalAttempts];
-std::map<char, int> charCount;
-
-void Wordle::resetGameState(){
+void Wordle::reset(){
     //Reset global variables
     wordleWord = "Test"; //Or any default word, if applicable
     displayWordleWord = "";
@@ -25,7 +17,7 @@ void Wordle::resetGameState(){
     wordleComplete = false;
 
     //Clear the attempts array
-    for (int i = 0; i < totalAttempts; ++i) {
+    for (int i = 0; i < MAX_ATTEMPTS; ++i) {
         attempts[i] = std::string(wordleWord.length() * 2, '_'); //Adjust based on your display format
     }
 
@@ -33,66 +25,10 @@ void Wordle::resetGameState(){
     charCount.clear();
 }
 
-
-//Function to check if a character is a diacritic
-bool Wordle::isDiacritic(char32_t c) {
-    if (c >= 0x0300 && c <= 0x036F) return true;
-    if (c >= 0x1DC0 && c <= 0x1DFF) return true;
-    //Latin Extended-A (includes macrons)
-    if (c >= 0x0100 && c <= 0x017F) return true;
-    return false;
-}
-
-//Function to check if the string contains any diacritic
-bool Wordle::hasDiacritics(const std::string& input) {
-    std::u32string utf32Str;
-
-    //Convert UTF-8 string to UTF-32 to handle multi-byte characters
-    for (size_t i = 0; i < input.size();) {
-        char32_t c;
-        unsigned char byte = input[i];
-        if (byte < 0x80) {
-            c = byte;
-            ++i;
-        }
-        else if (byte < 0xE0) {
-            c = (byte & 0x1F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else if (byte < 0xF0) {
-            c = (byte & 0x0F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else {
-            c = (byte & 0x07) << 18;
-            c |= (input[++i] & 0x3F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        utf32Str += c;
-    }
-
-    //Check each character in the string
-    for (char32_t c : utf32Str) {
-        if (isDiacritic(c)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-std::string Wordle::selectWordleWord() {
-    printf("Welcome to Wordle!\n");
-    DataGenerator generator;
-    std::string result;
-
-    system("cls");
-    std::cout << R"(
+std::string Wordle::generate() {
+    std::ostringstream oss;
+    
+    oss << R"(
 +======================================+
 |   __        __            _ _        |
 |   \ \      / /__  _ __ __| | | ___   |
@@ -103,57 +39,34 @@ std::string Wordle::selectWordleWord() {
 +======================================+
 )" << std::endl;
 
-    do {
-        auto entry = generator.get_random_entry();
-        result = entry.first;
-    } while (hasDiacritics(result));
+    for (size_t i = 0; i < MAX_ATTEMPTS; ++i)
+	{
+		oss << attempts[i] << std::endl;
+	}
 
-    //Trim trailing whitespace
-    auto endPos = std::find_if(result.rbegin(), result.rend(), [](char ch) {
-        return !std::isspace(static_cast<unsigned char>(ch));
-    }).base();
-
-    result.erase(endPos, result.end());
-
-    printf("%s\n", result.c_str());
-    //printf("%zu\n", result.length());
-
-    return result;
+    oss << "Press 1) to guess a word\n Press q to quit" << std::endl;
 }
 
+void Wordle::display() {
+    clearScreen();
 
-void clearLastNLines(int n)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		//Move cursor up one line and clear the line
-		std::cout << "\033[A\033[2K";
-	}
+    std::cout << generate() << std::endl;
 }
 
-void Wordle::displayGameState()
-{
-	for (size_t i = 0; i < totalAttempts; ++i)
-	{
-		std::cout << attempts[i] << std::endl;
-	}
-}
-
-void Wordle::initialiseGame()
-{
-    
-	wordleWord = selectWordleWord();
-	//std::cout << "\nWordle word set to: " << wordleWord << std::endl;
-	displayWordleWord = "";
-	for (size_t i = 0; i < wordleWord.length(); ++i)
-	{
-		displayWordleWord += "_ ";
-	}
-	for (size_t i = 0; i < totalAttempts; ++i)
-	{
-		attempts[i] = displayWordleWord;
-	}
-	displayGameState();
+void Wordle::menu() {
+    char ch = getSingleCharacter();
+    switch (ch) {
+    case '1':
+    {
+        std::string input = receiveUserInput();
+        getNextGameState(input);
+    }
+    case 'q':
+        printf("Quitting.....");
+        return;
+    default:
+        printf("Please select a valid option\n");
+    }
 }
 
 std::string Wordle::receiveUserInput()
@@ -166,13 +79,13 @@ std::string Wordle::receiveUserInput()
 
 	while (true)
 	{
-		std::cin >> userInput;
+		std::string userInput = getWord();
 
 		//Check if the length of the input matches the length of wordleWord
 		if (userInput.length() == wordleWord.length())
 		{
 			if(lastWasError){
-				clearLastNLines(1);
+				clearLastNLines(1); //clear the user entered word if the input doesn't match the required number of characters
 			}
 				
 			break; //Input is valid, exit the loop
@@ -259,24 +172,52 @@ void Wordle::getNextGameState(const std::string userGuess){
     attemptsCount += 1;
 }
 
-void Wordle::startGame(){
-	
-    clearLastNLines(11);
-	initialiseGame();
-	while (attemptsCount != totalAttempts && !wordleComplete)
+void Wordle::setup() {
+    DataGenerator generator;
+    
+    //get a word and remove the preceeding and trailing whitespace
+    wordToGuess = generator.get_random_entry().first;
+    wordToGuess = removeWhitespace(wordToGuess);
+
+    // //Trim trailing whitespace
+    // auto endPos = std::find_if(result.rbegin(), result.rend(), [](char ch) {
+    //     return !std::isspace(static_cast<unsigned char>(ch));
+    // }).base();
+
+    // result.erase(endPos, result.end());
+
+    printf("%s\n", wordToGuess.c_str());
+    //printf("%zu\n", result.length());
+
+    //this code initializes the initial state of the display word (e.g the _ initially displayed)
+    displayWordleWord = "";
+	for (size_t i = 0; i < wordleWord.length(); ++i)
 	{
-		getNextGameState(receiveUserInput());
-		clearLastNLines(6);
-		displayGameState();
+		displayWordleWord += "_ ";
+	}
+	for (size_t i = 0; i < MAX_ATTEMPTS; ++i)
+	{
+		attempts[i] = displayWordleWord;
+	}
+}
+
+int Wordle::startGame(){
+
+	setup();
+	while (attemptsCount != MAX_ATTEMPTS && !wordleComplete)
+	{
+		display();
+        menu();
 	}
 	if (wordleComplete)
 	{   
-        resetGameState();
 		std::cout << "Congrats Wordle complete!" << std::endl;
 	}
 	else
 	{
-        resetGameState();
 		std::cout << "You've ran out of attempts... better luck next time." << std::endl;
 	}
+
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    reset();
 }

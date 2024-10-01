@@ -4,30 +4,10 @@
 #include <algorithm>
 #include <utility> // For std::pair
 #include <random>  // For std::shuffle and random number engine
+
 #include "wordmatchbingo.h"
 #include "get_data.h"
-
-// class WordMatchBingo {
-// public:
-//     void selectBingoCard();
-//     void startGame();
-//     void selectBingoWordPool();
-//     void receiveUserInput();
-//     void displayBingoCard();
-//     void displayCurrentBingoWord();
-//     bool compareUserInputToBingoCard(const std::string& userInput);
-//     void updateWordWithStrikethrough(std::string& word);
-
-// private:
-//     std::vector<std::pair<std::string, std::string>> bingoWordPool;
-//     std::vector<std::pair<std::string, std::string>> bingoCard; a
-//     std::pair<std::string, std::string> currentBingoWord = {"", ""};
-//     std::string userGuess = "";
-// };
-
-// Define constants
-// In WordMatchBino.cpp
-
+#include "io_handler.h"
 
 // Function definitions
 
@@ -44,60 +24,8 @@ void WordMatchBingo::reset() {
     wordsFound = 0;
 }
 
-
-//Function to check if a character is a diacritic
-bool WordMatchBingo::isDiacritic(char32_t c) {
-    if (c >= 0x0300 && c <= 0x036F) return true;
-    if (c >= 0x1DC0 && c <= 0x1DFF) return true;
-    //Latin Extended-A (includes macrons)
-    if (c >= 0x0100 && c <= 0x017F) return true;
-    return false;
-}
-
-//Function to check if the string contains any diacritic
-bool WordMatchBingo::hasDiacritics(const std::string& input) {
-    std::u32string utf32Str;
-
-    //Convert UTF-8 string to UTF-32 to handle multi-byte characters
-    for (size_t i = 0; i < input.size();) {
-        char32_t c;
-        unsigned char byte = input[i];
-        if (byte < 0x80) {
-            c = byte;
-            ++i;
-        }
-        else if (byte < 0xE0) {
-            c = (byte & 0x1F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else if (byte < 0xF0) {
-            c = (byte & 0x0F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        else {
-            c = (byte & 0x07) << 18;
-            c |= (input[++i] & 0x3F) << 12;
-            c |= (input[++i] & 0x3F) << 6;
-            c |= (input[++i] & 0x3F);
-            ++i;
-        }
-        utf32Str += c;
-    }
-
-    //Check each character in the string
-    for (char32_t c : utf32Str) {
-        if (isDiacritic(c)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-void WordMatchBingo::selectBingoWordPool() {
+// Function that selects random words and generates the wordpool of bingo words.
+void WordMatchBingo::generateBingoWordPool() {
     std::vector<std::pair<std::string, std::string>> allWords;
 
     DataGenerator generator; // Assuming DataGenerator is defined and accessible
@@ -109,16 +37,11 @@ void WordMatchBingo::selectBingoWordPool() {
         result = entry.first;
 
         // Check if the word has diacritics
-        if (!hasDiacritics(result)) {
-            // Trim trailing whitespace
-            auto endPos = std::find_if(result.rbegin(), result.rend(), [](char ch) {
-                return !std::isspace(static_cast<unsigned char>(ch));
-            }).base();
-            result.erase(endPos, result.end());
 
-            // Add the valid entry to allWords
-            allWords.push_back(entry);
-        }
+        result = removeWhitespace(result);        
+
+        // Add the valid entry to allWords
+        allWords.push_back(entry);
     }
 
     // Shuffle the collected valid words
@@ -128,6 +51,11 @@ void WordMatchBingo::selectBingoWordPool() {
 
     // Assign the selected words to bingoWordPool
     bingoWordPool.assign(allWords.begin(), allWords.begin() + bingoWordPoolCount);
+}
+
+void WordMatchBingo::setup() {
+    generateBingoWordPool();
+    selectBingoCard();
 }
 
 void WordMatchBingo::updateWordWithStrikethrough(std::string& word) {
@@ -222,14 +150,6 @@ void WordMatchBingo::receiveUserInput() {
 }
 
 
-// Helper function to convert a string to lowercase
-std::string toLowerCase(const std::string& str) {
-    std::string lowerStr;
-    for (char ch : str) {
-        lowerStr += std::tolower(static_cast<unsigned char>(ch));  // Ensure correct conversion for all characters
-    }
-    return lowerStr;
-}
 
 bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
     // Check if the userInput matches the currentBingoWord.first
@@ -248,16 +168,6 @@ bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
     }
 
     return false;
-}
-
-
-void WordMatchBingo::clearLastNLines(int n)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		//Move cursor up one line and clear the line
-		std::cout << "\033[A\033[2K";
-	}
 }
 
 void WordMatchBingo::getHint() {
@@ -289,11 +199,3 @@ void WordMatchBingo::startGame() {
     std::cout << "Game over! All words have been guessed.\n\n";
     reset();
 }
-
-// int main() {
-//     WordMatchBingo game;
-//     game.selectBingoWordPool(); // Populate the word pool
-//     game.selectBingoCard(); // Populate the bingo card
-//     game.startGame(); // Start the game
-//     return 0;
-// }"

@@ -113,16 +113,16 @@ class Wordfind : private Game {
 		*/
 		void updateWordVector(const std::string& key);
 
+		void menu();
+
+		void setup();
+
 		/**
 		 * Function to reset game state
 		 * 
 		 * Clears all data held within variable from previous game.
 		*/
-		void resetGameState();
-
-		void menu();
-
-		void setup();
+		void reset();
 
 		std::string generate();
 

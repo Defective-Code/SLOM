@@ -21,9 +21,8 @@ void displayMainMenu() {
 	printf("To select an option, enter the corresponding letter and press enter, or to quit press q and then enter\n\n");
 	printf("1) Wordle\n");
 	printf("2) Wordfind\n");
-	printf("3) Crossword find\n");
-	printf("4) Word Match Bingo\n");
-	printf("5) Hangman\n\n");
+	printf("3) Word Match Bingo\n");
+	printf("4) Hangman\n\n");
 	printf("Press q to quit\n\n");
 
 	//printf("\u001b[31mQ\u001b[0m");
@@ -52,7 +51,7 @@ void run() {
 	//Wordle::startGame();
 	Wordle wordle = Wordle();
 	Wordfind wordfind = Wordfind();
-	Wordscapes wordscapes = Wordscapes(15);
+	//Wordscapes wordscapes = Wordscapes(15);
 	WordMatchBingo wordmatchbingo = WordMatchBingo();
 	Hangman hangman = Hangman();
 	while (true) {
@@ -66,13 +65,13 @@ void run() {
 		case '2':
 			wordfind.startGame();
 			break;
+		//case '3':
+		//	wordscapes.runGame();
+		//	break;
 		case '3':
-			wordscapes.runGame();
-			break;
-		case '4':
 			wordmatchbingo.startGame();
 			break;
-		case '5':
+		case '4':
 			hangman.startGame();
 			break;
 		case 'q':

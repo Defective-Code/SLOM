@@ -84,6 +84,16 @@ std::string removeWhitespace(const std::string& input) {
 	return output;
 }
 
+// Helper function to convert a string to lowercase
+std::string toLowerCase(const std::string& str) {
+    std::string lowerStr;
+    for (char ch : str) {
+        lowerStr += std::tolower(static_cast<unsigned char>(ch));  // Ensure correct conversion for all characters
+    }
+    return lowerStr;
+}
+
+
 std::string wstringToString(const std::wstring& wstr) {
 	// Use wstring_convert to convert wstring (wide string) to string (narrow string)
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
