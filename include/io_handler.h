@@ -36,6 +36,8 @@ std::string toLowerCase(const std::string& str);
 
 std::size_t utf8Length(const std::string& input);
 
+int countSubstringOccurrences(const std::string& str, const std::string& substr);
+
 std::string wstringToString(const std::wstring& wstr);
 
 std::wstring stringToWstring(const std::string& str);

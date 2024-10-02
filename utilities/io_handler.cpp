@@ -9,14 +9,14 @@
 
 #include "io_handler.h"
 
-/*
+
 extern std::unordered_map<wchar_t, wchar_t> macron_map = {
     {L'ā', L'a'}, {L'ē', L'e'}, {L'ī', L'i'},
     {L'ō', L'o'}, {L'ū', L'u'}, {L'Ā', L'A'},
     {L'Ē', L'E'}, {L'Ī', L'I'}, {L'Ō', L'O'},
     {L'Ū', L'U'}
 };
-*/
+
 
 void clearScreen() {
 	std::cout << "\033[2J" << std::endl; //clear the terminal screen
@@ -132,6 +132,19 @@ std::string toLowerCase(const std::string& str) {
         lowerStr += std::tolower(static_cast<unsigned char>(ch));  // Ensure correct conversion for all characters
     }
     return lowerStr;
+}
+
+int countSubstringOccurrences(const std::string& str, const std::string& substr) {
+	int count = 0;
+	std::size_t pos = str.find(substr);
+
+	// Loop until no more occurrences are found
+	while (pos != std::string::npos) {
+		++count;
+		pos = str.find(substr, pos + substr.length());  // Search from the next position
+	}
+
+	return count;
 }
 
 

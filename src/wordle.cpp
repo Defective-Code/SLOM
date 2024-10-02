@@ -45,7 +45,7 @@ std::string Wordle::generate() {
 		oss << attempts[i] << std::endl;
 	}
 
-    oss << "Press 1) to guess a word\n Press q to quit" << std::endl;
+    oss << "Press 1) to guess a word\nPress q to quit" << std::endl;
 
     return oss.str();
 }

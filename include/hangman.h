@@ -17,6 +17,8 @@ class Hangman : private Game {
      */
     const int MAX_STAGE = 7;
 
+    const int COIN_AMOUNT = 5;
+
     /**
      * @brief The word to be guessed by the player.
      */

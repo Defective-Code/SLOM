@@ -113,9 +113,12 @@ bool Hangman::menu() {
 	bool result; //variable to store the result of a guess
 	switch (ch) {
 	case '1': {
-		std::string c_input = getSingleUtf8Character();
-		std::cout << c_input << std::endl;
-		result = guessLetter(c_input);
+		//std::cout << "In character" << std::endl;
+		//std::string c_input = getSingleUtf8Character();
+		char input = getSingleCharacter();
+		//std::cout << c_input << std::endl;
+		std::cout << input << std::endl;
+		//result = guessLetter(c_input);
 		if (!result) {
 			current_stage++;
 		}
@@ -132,13 +135,12 @@ bool Hangman::menu() {
 		else {
 			printf("Well done!");
 			std::this_thread::sleep_for(std::chrono::seconds(3));
-			return true;
 		}
 	}
 	case 'q':
 	{
 		printf("Quitting.....");
-		return false;
+		return true;
 	}
 	default:
 	{
@@ -158,7 +160,7 @@ bool Hangman::guessLetter(std::string input) {
 	
 	//seen_letters.insert(input);
 
-	int x = std::count(answer.begin(), answer.end(), input);
+	int x = countSubstringOccurrences(answer, input);
 
 	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
@@ -187,11 +189,18 @@ int Hangman::startGame() {
 		std::cout << answer << std::endl; //here for testing purposes
 
 		display();
-		if (!menu()) return 0; // return 0 coins as user quit and did not finish game
-		
+		bool val = menu();
+		std::cout << val << std::endl;
+		if (val) {
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			reset();
+			return 0; // return 0 coins as user quit and did not finish game
+		}
 
 	}
-	return 0;
+
+	reset();
+	return COIN_AMOUNT;
 }
 
 void Hangman::reset() {

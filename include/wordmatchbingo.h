@@ -6,7 +6,7 @@
 #include "game.h"
 
 
-class WordMatchBingo : private Game {
+class WordMatchBingo {
 	const static int totalAttempts = 5;
 	const int bingoWordPoolCount = 10;
 	
@@ -39,7 +39,7 @@ class WordMatchBingo : private Game {
 
 	// 	friend class WordleTest;
 	public:
-		int startGame() override;
+		int startGame();
 		void getHint();
 		
 	private:
@@ -55,12 +55,8 @@ class WordMatchBingo : private Game {
 		bool compareUserInputToBingoCard(const std::string& userInput);
 		void updateWordWithStrikethrough(std::string& word);
 		
-		void giveHint() override;
-		void reset() override;
-		void setup() override;
-		std::string generate() override; 
-		void display() override;
-		bool menu() override;
+		void reset();
+		void setup();
 
 		friend class WordMatchBingoTest;
 };
