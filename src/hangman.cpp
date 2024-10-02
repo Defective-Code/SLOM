@@ -1,3 +1,5 @@
+﻿#pragma execution_character_set( "utf-8" )
+
 #include <stdio.h>
 #include <iostream> 
 #include <chrono>
@@ -32,8 +34,8 @@ std::string Hangman::generate() {
 	std::vector<std::string> seen_letters_box;
 	seen_letters_box.push_back("+---------+");
 
-	std::vector<std::string> temp;
-	for (const std::string& seen_letter : seen_letters) {
+	std::vector<char> temp;
+	for (const char& seen_letter : seen_letters) {
 		temp.push_back(seen_letter);
 	}
 
@@ -76,9 +78,9 @@ std::string Hangman::generate() {
 
 	// Building the underscore_word
 	std::string underscore_word;
-	for (int i = 0; i < utf8Length(answer); i++) {
-		if (correct_letters.count(answer.substr(i, 1))!= 0) {
-			underscore_word += answer.substr(i, 1);
+	for (int i = 0; i < (answer.length()); i++) {
+		if (correct_letters.count(answer[i]) != 0) {
+			underscore_word += answer[i];
 		}
 		else {
 			underscore_word += "_";
@@ -155,12 +157,13 @@ bool Hangman::guessWord(std::string input) {
 	return input.compare(answer) == 0;
 }
 
-bool Hangman::guessLetter(std::string input) {
+bool Hangman::guessLetter(char input) {
 
 	
 	//seen_letters.insert(input);
 
-	int x = countSubstringOccurrences(answer, input);
+	//int x = countSubstringOccurrences(answer, input);
+	int x = std::count(answer.begin(), answer.end(), input);
 
 	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
@@ -189,6 +192,7 @@ int Hangman::startGame() {
 		std::cout << answer << std::endl; //here for testing purposes
 
 		display();
+
 		bool val = menu();
 		std::cout << val << std::endl;
 		if (val) {

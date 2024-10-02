@@ -1,7 +1,7 @@
 # Creating libraries of files to be tested
 
 # Define the path to the data file as a preprocessor macro
-add_definitions(-DDATA_FILE_PATH="${CMAKE_SOURCE_DIR}/Data/MaoriWordsData.txt")
+add_definitions(-DDATA_FILE_PATH="${CMAKE_SOURCE_DIR}/Data/converted.txt")
 
 set(SOURCES get_data.cpp io_handler.cpp)
 

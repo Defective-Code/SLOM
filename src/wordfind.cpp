@@ -117,14 +117,11 @@ void Wordfind::updateWordVector(const std::string& key) {
 void Wordfind::setup() {
     DataGenerator dg;
     while (words.size() < Wordfind::WORD_COUNT) {
-        std::wstring temp = L"";
         std::string nextWord = "";
         do {
             std::pair<std::string, std::string> wordDef = dg.get_random_entry();
-            //nextWord = wordDef.first;
+            nextWord = wordDef.first;
             //std::cout << "|" + wordDef.first + "|" << std::endl;
-            temp = convertMacronsToNormal(stringToWstring(wordDef.first));
-            nextWord = wstringToString(temp);
             nextWord = removeWhitespace(nextWord); //remove spaces before and after the word to prevent display errors
 
             //std::cout << "|" + nextWord + "|" << std::endl;
