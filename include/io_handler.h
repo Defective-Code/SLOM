@@ -19,6 +19,8 @@ std::vector<std::string> splitStringOnNewline(const std::string& input);
 //This method takes in a single character input by the user, and returns it in lowercase.
 char getSingleCharacter();
 
+std::string getSingleUtf8Character();
+
 //This method takes in a word input by the user, and returns it in lower cases removing any preceeding whitespace and/or newline characters
 std::string getWord();
 

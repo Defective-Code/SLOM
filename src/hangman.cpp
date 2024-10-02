@@ -32,8 +32,8 @@ std::string Hangman::generate() {
 	std::vector<std::string> seen_letters_box;
 	seen_letters_box.push_back("+---------+");
 
-	std::vector<char> temp;
-	for (const char& seen_letter : seen_letters) {
+	std::vector<std::string> temp;
+	for (const std::string& seen_letter : seen_letters) {
 		temp.push_back(seen_letter);
 	}
 
@@ -76,9 +76,9 @@ std::string Hangman::generate() {
 
 	// Building the underscore_word
 	std::string underscore_word;
-	for (char c : answer) {
-		if (correct_letters.count(toupper(c))) {
-			underscore_word += c;
+	for (int i = 0; i < utf8Length(answer); i++) {
+		if (correct_letters.count(answer.substr(i, 1))!= 0) {
+			underscore_word += answer.substr(i, 1);
 		}
 		else {
 			underscore_word += "_";
@@ -105,7 +105,7 @@ void Hangman::setup() {
 	DataGenerator dg = DataGenerator();
 	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
 
-	answer = answer_pair.first;
+	answer = toLowerCase(removeWhitespace(answer_pair.first));
 }
 
 bool Hangman::menu() {
@@ -113,7 +113,8 @@ bool Hangman::menu() {
 	bool result; //variable to store the result of a guess
 	switch (ch) {
 	case '1': {
-		char c_input = getSingleCharacter();
+		std::string c_input = getSingleUtf8Character();
+		std::cout << c_input << std::endl;
 		result = guessLetter(c_input);
 		if (!result) {
 			current_stage++;
@@ -152,7 +153,7 @@ bool Hangman::guessWord(std::string input) {
 	return input.compare(answer) == 0;
 }
 
-bool Hangman::guessLetter(char input) {
+bool Hangman::guessLetter(std::string input) {
 
 	
 	//seen_letters.insert(input);
@@ -186,7 +187,7 @@ int Hangman::startGame() {
 		std::cout << answer << std::endl; //here for testing purposes
 
 		display();
-		menu();
+		if (!menu()) return 0; // return 0 coins as user quit and did not finish game
 		
 
 	}

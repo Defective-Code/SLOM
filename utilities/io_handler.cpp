@@ -9,12 +9,14 @@
 
 #include "io_handler.h"
 
+/*
 extern std::unordered_map<wchar_t, wchar_t> macron_map = {
     {L'ā', L'a'}, {L'ē', L'e'}, {L'ī', L'i'},
     {L'ō', L'o'}, {L'ū', L'u'}, {L'Ā', L'A'},
     {L'Ē', L'E'}, {L'Ī', L'I'}, {L'Ō', L'O'},
     {L'Ū', L'U'}
 };
+*/
 
 void clearScreen() {
 	std::cout << "\033[2J" << std::endl; //clear the terminal screen
@@ -36,7 +38,23 @@ std::vector<std::string> splitStringOnNewline(const std::string& input) {
 char getSingleCharacter() {
 	char input;
 	std::cin >> input;  // This skips leading whitespace
-	input = tolower(input);
+	//input = tolower(input);
+	return input;
+}
+
+std::string getSingleUtf8Character() {
+	std::string input;
+	char c;
+
+	// Read one character from input (including multibyte UTF-8 characters)
+	while (std::cin.get(c)) {
+		input += c;
+		// Break when a valid multibyte character has been read
+		if ((c & 0xC0) != 0x80) {  // Stop reading when we get a non-continuation byte
+			break;
+		}
+	}
+
 	return input;
 }
 
@@ -44,7 +62,7 @@ std::string getWord() {
 	std::string input;
 	std::cin >> input;  // Reads input until the first space or newline
 	input = removeWhitespace(input);
-	std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::tolower(c); });
+	//std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) { return std::tolower(c); });
 	return input;
 }
 

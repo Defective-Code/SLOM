@@ -100,11 +100,12 @@ class Hangman : private Game {
     /**
      * @brief Vector of characters representing the English alphabet.
      */
-    const std::vector<int> alphabet = {
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-    'u', 'v', 'w', 'x', 'y', 'z', 'ā', 'ē', 'ī', 'ō', 'ū'
+    const std::vector<std::string> alphabet = {
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+    "u", "v", "w", "x", "y", "z", "ā", "ē", "ī", "ō", "ū"
     };
+
 
 
     
@@ -122,14 +123,14 @@ class Hangman : private Game {
         /**
         * @brief Set of correctly guessed letters in the answer.
         */
-        std::set<char> correct_letters;
+        std::set<std::string> correct_letters;
 
         int current_stage; //tracks the current stage of the hangman game
 
         /**
          * @brief Set of letters that have been guessed by the player.
          */
-        std::set<char> seen_letters;
+        std::set<std::string> seen_letters;
 
         void giveHint() override;
 
@@ -153,7 +154,7 @@ class Hangman : private Game {
          *
          * @return True if the guessed letter is in the answer, otherwise false.
          */
-        bool guessLetter(char input);
+        bool guessLetter(std::string input);
 
         /**
          * @brief Processes a word guess by the player.
