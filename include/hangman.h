@@ -109,10 +109,6 @@ class Hangman : private Game {
     'u', 'v', 'w', 'x', 'y', 'z'
     };
 
-
-
-    
-
     public:
 
         /**
@@ -151,6 +147,8 @@ class Hangman : private Game {
         void reset() override;
 
         bool menu() override;
+
+        bool checkGameEnd();
 
         /**
          * @brief Processes a letter guess by the player.

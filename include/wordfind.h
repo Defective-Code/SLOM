@@ -20,6 +20,8 @@ class Wordfind : private Game {
 
 	const static int WORD_COUNT = 4;
 
+	const static int COIN_AMOUNT = 8;
+
 	// A type alias for storing the coordinates of placed words
 	using Position = std::pair<int, int>;
 	

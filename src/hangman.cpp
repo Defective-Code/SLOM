@@ -90,7 +90,7 @@ std::string Hangman::generate() {
 	oss << "\n          Guess: " + underscore_word + "\n" << std::endl;
 
 	// Append options for the user
-	oss << "\nPress the corresponding key in the bracket to select that option.\n1) Guess a letter\n2) Guess the word\n\nPress q to quit..." << std::endl;
+	oss << "\nPress the corresponding key in the bracket to select that option.\n1) Guess a letter\n2) Guess the word\n\nPress q to quit...";
 
 	return oss.str();
 }
@@ -115,12 +115,8 @@ bool Hangman::menu() {
 	bool result; //variable to store the result of a guess
 	switch (ch) {
 	case '1': {
-		//std::cout << "In character" << std::endl;
-		//std::string c_input = getSingleUtf8Character();
-		char input = getSingleCharacter();
-		//std::cout << c_input << std::endl;
-		std::cout << input << std::endl;
-		//result = guessLetter(c_input);
+		char c_input = getSingleCharacter();
+		result = guessLetter(c_input);
 		if (!result) {
 			current_stage++;
 		}
@@ -139,8 +135,7 @@ bool Hangman::menu() {
 			std::this_thread::sleep_for(std::chrono::seconds(3));
 		}
 	}
-	case 'q':
-	{
+	case 'q':{
 		printf("Quitting.....");
 		return true;
 	}
@@ -149,6 +144,7 @@ bool Hangman::menu() {
 		printf("Please select a valid option\n");
 	}
 	}
+	return false;
 }
 
 //function to handle getting a word in lowercase
@@ -168,12 +164,24 @@ bool Hangman::guessLetter(char input) {
 	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
 		correct_letters.insert(input);
+		
 		return true;
 	}
 	else {
 		seen_letters.insert(input);
 		return false;
 	}
+}
+
+bool Hangman::checkGameEnd() {
+	// Iterate over each character in the word
+	for (char c : answer) {
+		// Check if the character is not in the set
+		if (correct_letters.find(c) == correct_letters.end()) {
+			return false; // Return false if any character is not in the set
+		}
+	}
+	return true; // Return true if all characters are found in the set
 }
 
 void Hangman::giveHint() {
@@ -194,7 +202,12 @@ int Hangman::startGame() {
 		display();
 
 		bool val = menu();
-		std::cout << val << std::endl;
+
+		//if all letters in the word are contained in correct letters, then we know the game is done
+		if (checkGameEnd()) {
+			break;
+		}
+
 		if (val) {
 			std::this_thread::sleep_for(std::chrono::seconds(3));
 			reset();
@@ -203,6 +216,7 @@ int Hangman::startGame() {
 
 	}
 
+	std::this_thread::sleep_for(std::chrono::seconds(3));
 	reset();
 	return COIN_AMOUNT;
 }

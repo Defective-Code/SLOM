@@ -11,8 +11,11 @@
 
 
 void clearScreen() {
-	std::cout << "\033[2J" << std::endl; //clear the terminal screen
+	std::cout << "\n\n\n\n\n\n\n\n\n";
+	std::cout << "\033[2J\033[1;1H"; //clear the terminal screen
 }
+
+
 
 std::vector<std::string> splitStringOnNewline(const std::string& input) {
 	std::vector<std::string> lines;
