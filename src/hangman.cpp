@@ -133,6 +133,7 @@ bool Hangman::menu() {
 		else {
 			printf("Well done!");
 			std::this_thread::sleep_for(std::chrono::seconds(3));
+			break;
 		}
 	}
 	case 'q':{
