@@ -1,5 +1,5 @@
 # Store list of sources to build into executable
-set(GAMES wordle.cpp wordfind.cpp wordscapes.cpp hangman.cpp wordmatchbingo.cpp)
+set(GAMES wordle.cpp wordfind.cpp hangman.cpp wordmatchbingo.cpp)
 
 # Set output directory for executables
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
