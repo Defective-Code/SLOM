@@ -45,7 +45,7 @@ std::string Wordle::generate() {
 		oss << attempts[i] << std::endl;
 	}
 
-    oss << "Press 1) to guess a word\n Press q to quit" << std::endl;
+    oss << "Press 1) to guess a word\nPress q to quit" << std::endl;
 
     return oss.str();
 }
@@ -189,7 +189,7 @@ void Wordle::setup() {
     
     wordToGuess = "";
     //get a word and loop until the word is of the correct length
-    while (utf8Length(wordToGuess) != WORD_LENGTH) {
+    while (wordToGuess.length() != WORD_LENGTH) {
         wordToGuess = removeWhitespace(generator.get_random_entry().first);
     }
     //wordToGuess = removeWhitespace(wordToGuess);

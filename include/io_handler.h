@@ -4,8 +4,6 @@
 #include <unordered_map>
 #include <vector>
 
-// Mapping of macronized characters to their normal equivalents
-extern std::unordered_map<wchar_t, wchar_t> macron_map;
 
 void clearScreen();
 /**
@@ -19,23 +17,13 @@ std::vector<std::string> splitStringOnNewline(const std::string& input);
 //This method takes in a single character input by the user, and returns it in lowercase.
 char getSingleCharacter();
 
-std::string getSingleUtf8Character();
-
 //This method takes in a word input by the user, and returns it in lower cases removing any preceeding whitespace and/or newline characters
 std::string getWord();
 
 void clearLastNLines(int n);
 
-std::wstring convertMacronsToNormal(const std::wstring& input);
-
-std::wstring removeInvisibleCharacters(const std::wstring& input);
-
 std::string removeWhitespace(const std::string& input);
 
 std::string toLowerCase(const std::string& str);
 
-std::size_t utf8Length(const std::string& input);
 
-std::string wstringToString(const std::wstring& wstr);
-
-std::wstring stringToWstring(const std::string& str);

@@ -179,21 +179,6 @@ void WordMatchBingo::getHint() {
     }
 }
 
-void WordMatchBingo::display() {
-    
-}
-
-bool WordMatchBingo::menu() {
-    return false;
-}
-
-std::string WordMatchBingo::generate() {
-    return " ";
-}
-
-void WordMatchBingo::giveHint() {
-
-}
 
 int WordMatchBingo::startGame() {
     clearLastNLines(13); 

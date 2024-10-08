@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <cstdio>
@@ -15,6 +15,8 @@
  *	Method to render main menu to the console screen
 */
 void displayMainMenu() {
+	clearScreen();
+	/*
 	system("CLS"); //clear the terminal screen
 	printf("Hi, welcome to SLOM, our application that has Maori twists on common word games.\n");
 	printf("The following list is of the functions available to you, with the associated number to enter in before the brancket.\n");
@@ -24,6 +26,52 @@ void displayMainMenu() {
 	printf("3) Word Match Bingo\n");
 	printf("4) Hangman\n\n");
 	printf("Press q to quit\n\n");
+
+	*/
+	std::string menuText = R"(
+	>>=========================<<
+	|| ____  _     ___  __  __ ||
+	||/ ___|| |   / _ \|  \/  |||
+	||\___ \| |  | | | | |\/| |||
+	|| ___) | |__| |_| | |  | |||
+	|||____/|_____\___/|_|  |_|||
+	>>=========================<<
+
+	========================================
+	🎉 WELCOME TO SLOM!🎉
+	Your ultimate destination for Māori
+	twists on classic word games!
+	========================================
+
+Are you ready to test your skills and have some fun ? 🌟
+
+Here’s what we have in store for you :
+
+1) Wordle				2) Wordfind
+---------------------------------- -	---------------------------------- -
+Can you guess the hidden word		Dive into a sea of letters and
+in just six tries ? Use your wits	discover hidden words!Can you
+and sharpen your vocabulary as you	find them all ?
+uncover the mystery!
+
+3) Word Match Bingo			4) Hangman
+---------------------------------- -	---------------------------------- -
+Match your words and fill your		Can you save the word from the
+bingo card for a thrilling race		gallows ? Guess the letters before
+against the clock!Get ready to		time runs out!
+shout “Bingo!”
+
+========================================
+🚀 To make your selection, enter the
+corresponding number and press Enter.
+🛑 Press 'q' to quit anytime.
+========================================
+
+Let the games begin!🎮
+)";
+	
+	std::cout << menuText << std::endl;
+
 
 	//printf("\u001b[31mQ\u001b[0m");
 }
@@ -87,7 +135,7 @@ void run() {
 
 int main() {
 
-	printf("SLOM Started");
+	//printf("SLOM Started");
 	printf("   ");
 
 	#ifdef _WIN32

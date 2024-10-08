@@ -12,11 +12,7 @@
 #include <thread>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
-#ifdef _WIN32       // Check if windows so that it's cross-platform
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
+
 #include "get_data.h"
 #include "io_handler.h"
 #include "wordfind.h"
@@ -97,7 +93,10 @@ void Wordfind::guessWord(std::string input) {
     }
     else {
         clearLastNLines(2);
-        std::cout << "Try again... \n";
+        
+        std::cout << "Try again... \n" << std::flush;
+
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
 }
 
@@ -117,21 +116,19 @@ void Wordfind::updateWordVector(const std::string& key) {
 void Wordfind::setup() {
     DataGenerator dg;
     while (words.size() < Wordfind::WORD_COUNT) {
-        std::wstring temp = L"";
         std::string nextWord = "";
         do {
             std::pair<std::string, std::string> wordDef = dg.get_random_entry();
-            //nextWord = wordDef.first;
+            nextWord = wordDef.first;
             //std::cout << "|" + wordDef.first + "|" << std::endl;
-            temp = convertMacronsToNormal(stringToWstring(wordDef.first));
-            nextWord = wstringToString(temp);
             nextWord = removeWhitespace(nextWord); //remove spaces before and after the word to prevent display errors
 
             //std::cout << "|" + nextWord + "|" << std::endl;
         } //while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
         while (nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
 
-        std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::tolower(c); });
+        //std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::tolower(c); });
+        nextWord = toLowerCase(nextWord);
         std::cout << nextWord << std::endl;;
         words.push_back(nextWord);
     }
@@ -159,11 +156,12 @@ std::string Wordfind::printGrid() {
         for (char cell : row) {
             Position pos = { r, c };
             auto it = wordsFoundCoordinates.find(pos);
+            char up_cell = toupper(cell);
             if (it != wordsFoundCoordinates.end()) {
-                oss << "\033[32m" << cell << "\033[0m" << ' ';
+                oss << "\033[32m" << up_cell << "\033[0m" << ' ';
             }
             else {
-                oss << cell << ' ';
+                oss << up_cell << ' ';
             }
             c++;
         }
@@ -196,7 +194,7 @@ std::string Wordfind::generate() {
 
     oss << printGrid() << std::endl;
 
-    oss << "Press 1) to guess a word\n Press q to quit" << std::endl;
+    oss << "Press 1) to guess a word\nPress q to quit" << std::endl;
 
     return oss.str();
 }
@@ -231,15 +229,18 @@ void Wordfind::giveHint() {
 
 int Wordfind::startGame() {
 
+    setup();
+
     while (wordsFound.size() < words.size()) { //looping until player has found all words
         display();
-        menu();
+        if(!menu()) return 0;
     }
+    display();
 
-    printf("Well done!");
+    std::cout << "Well done for finding all the words!" << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(3));
     reset();
-	return 0;
+	return COIN_AMOUNT;
 }
 
  // Function to reset game state
