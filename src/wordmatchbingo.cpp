@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <utility> // For std::pair
 #include <random>  // For std::shuffle and random number engine
+#include <chrono>  // For std::chrono to track time
+#include <thread>  // For std::this_thread::sleep_for to implement a delay
 
 #include "wordmatchbingo.h"
 #include "get_data.h"
@@ -13,7 +15,6 @@
 
 void WordMatchBingo::reset() {
     // Clear the bingo word pool and bingo card
-    bingoWordPool.clear();
     bingoCard.clear();
     
     // Reset the current bingo word and user guess
@@ -22,10 +23,11 @@ void WordMatchBingo::reset() {
 
     // Reset the count of words found
     wordsFound = 0;
+    remainingTime = totalTime;
 }
 
 // Function that selects random words and generates the wordpool of bingo words.
-void WordMatchBingo::generateBingoWordPool() {
+void WordMatchBingo::selectBingoCard() {
     std::vector<std::pair<std::string, std::string>> allWords;
 
     DataGenerator generator; // Assuming DataGenerator is defined and accessible
@@ -50,11 +52,11 @@ void WordMatchBingo::generateBingoWordPool() {
     std::shuffle(allWords.begin(), allWords.end(), g);
 
     // Assign the selected words to bingoWordPool
-    bingoWordPool.assign(allWords.begin(), allWords.begin() + bingoWordPoolCount);
+    bingoCard.assign(allWords.begin(), allWords.begin() + bingoWordPoolCount);
+    bingoCardPool = bingoCard;
 }
 
 void WordMatchBingo::setup() {
-    generateBingoWordPool();
     selectBingoCard();
 }
 
@@ -63,13 +65,6 @@ void WordMatchBingo::updateWordWithStrikethrough(std::string& word) {
 }
 
 
-void WordMatchBingo::selectBingoCard() {
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(bingoWordPool.begin(), bingoWordPool.end(), g);
-    bingoCard.assign(bingoWordPool.begin(), bingoWordPool.begin() + bingoCardCount);
-
-}
 
 size_t getDisplayLength(const std::string& word) {
     size_t length = 0;
@@ -87,23 +82,20 @@ size_t getDisplayLength(const std::string& word) {
 }
 
 void WordMatchBingo::displayCurrentBingoWord() {
-    if (bingoWordPool.empty()) {
-        std::cout << "No more words in the pool.\n";
-        return;
-    }
 
     std::random_device rd;
     std::mt19937 g(rd());
-    std::uniform_int_distribution<> dis(0, bingoWordPool.size() - 1);
+    std::uniform_int_distribution<> dis(0, bingoCardPool.size() - 1);
     int index = dis(g);
 
-    auto selectedWord = bingoWordPool[index];
+    auto selectedWord = bingoCardPool[index];
     currentBingoWord = selectedWord;
 
     std::cout << "\nSelected Word: " << selectedWord.first << std::endl;
     std::cout << "Definition: " << selectedWord.second << std::endl;
 
-    bingoWordPool.erase(bingoWordPool.begin() + index);
+    bingoCardPool.erase(bingoCardPool.begin() + index);
+
 }
 
 void WordMatchBingo::displayBingoCard() {
@@ -129,27 +121,26 @@ void WordMatchBingo::displayBingoCard() {
 
 void WordMatchBingo::receiveUserInput() {
     bool lastWasHint = false;
+    std::string userInput;
+
     while (true) {
-        std::string userInput;
         std::cout << "Enter a word (or 'Hint' for a hint): ";
         std::cin >> userInput;
 
         // Check for valid input or commands
-        if (userInput == "Hint"){
-            if(lastWasHint){
-               clearLastNLines(1); 
+        if (userInput == "Hint") {
+            if (lastWasHint) {
+                clearLastNLines(1);
             }
             clearLastNLines(1);
             getHint();
             lastWasHint = true;
-        }else{
+        } else {
             userGuess = userInput;
             break;
         }
     }
 }
-
-
 
 bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
     // Check if the userInput matches the currentBingoWord.first
@@ -179,22 +170,34 @@ void WordMatchBingo::getHint() {
     }
 }
 
-
 int WordMatchBingo::startGame() {
-    clearLastNLines(13); 
+    clearLastNLines(13);
     setup();
-    while (!bingoCard.empty() && !bingoWordPool.empty() && wordsFound < bingoCardCount) {
+
+    // Start the timer
+    auto startTime = std::chrono::steady_clock::now();
+    auto elapsedTime = 0;
+
+    while (!bingoCard.empty() && !bingoCardPool.empty() && bingoWordPoolCount && remainingTime > 0) {
+        // Check the elapsed time
+        auto currentTime = std::chrono::steady_clock::now();
+        elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+
+        remainingTime = std::max(0, totalTime - elapsedTime);
         displayCurrentBingoWord();
         displayBingoCard();
+        printf("Time left: %d seconds\n", remainingTime);
         receiveUserInput();
         
-        
+
+        // Print the remaining time
+
         bool matchResult = compareUserInputToBingoCard(userGuess);
-        
         clearLastNLines(15);
+        remainingTime = totalTime - elapsedTime;
     }
 
-    std::cout << "Game over! All words have been guessed.\n\n";
+    std::cout << "Game over! You found " << wordsFound << " words.\n\n";
     reset();
 
     return 0;
