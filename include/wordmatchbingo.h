@@ -9,13 +9,15 @@
 class WordMatchBingo {
 	const static int totalAttempts = 5;
 	const int bingoWordPoolCount = 10;
+	int totalTime = 30; // 60 seconds for guessing
+	int remainingTime = totalTime;
 	
 	std::string wordleWord = "Test";
 	std::string displayWordleWord = ""; 
 	
 	int attemptsCount = 0;
 	int wordsFound = 0;
-	int bingoCardCount = 4;
+	int bingoCardCount = 10;
 	
 	bool wordleComplete = false;
 	std::string attempts[totalAttempts];
@@ -44,11 +46,10 @@ class WordMatchBingo {
 		
 	private:
 
-		std::vector<std::pair<std::string, std::string>> bingoWordPool;
 		std::vector<std::pair<std::string, std::string>> bingoCard;
+		std::vector<std::pair<std::string, std::string>> bingoCardPool;
 
 		void selectBingoCard();
-		void generateBingoWordPool();
 		void receiveUserInput();
 		void displayBingoCard();
 		void displayCurrentBingoWord();
