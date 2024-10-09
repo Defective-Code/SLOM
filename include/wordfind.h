@@ -46,6 +46,7 @@ class Wordfind : private Game {
 	private:
 
 		std::vector<std::string> words; //vector of the words to find
+		std::unordered_map<std::string, std::string> wordDefs; //vector of word and definition pairs
 		std::vector<std::string> wordsFound; //vector of the words that have been found
 		std::vector<Position> wordPositions; //vector of each corresponding words position in the grid. Each position is the x,y of the first 
 		PositionSet wordsFoundCoordinates;  //set of positions that have been found.

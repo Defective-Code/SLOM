@@ -116,19 +116,24 @@ void Wordfind::setup() {
     DataGenerator dg;
     while (words.size() < Wordfind::WORD_COUNT) {
         std::string nextWord = "";
+        std::string nextDef = "";
         do {
             std::pair<std::string, std::string> wordDef = dg.get_random_entry();
             nextWord = wordDef.first;
+            nextDef = wordDef.second;
             //std::cout << "|" + wordDef.first + "|" << std::endl;
             nextWord = removeWhitespace(nextWord); //remove spaces before and after the word to prevent display errors
-
+            
             //std::cout << "|" + nextWord + "|" << std::endl;
         } //while (hasDiacritics(nextWord) || nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
         while (nextWord.size() >= GRID_SIZE || nextWord.size() <= 2);
 
         //std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::tolower(c); });
         nextWord = toLowerCase(nextWord);
-        std::cout << nextWord << std::endl;;
+        //std::cout << nextWord << std::endl;
+        
+        wordDefs.insert({ nextWord, nextDef }); //add to definition map
+
         words.push_back(nextWord);
     }
 
@@ -181,6 +186,11 @@ std::string Wordfind::printGrid() {
 std::string Wordfind::generate() {
     std::ostringstream oss;
 
+    for each (auto word in words)
+    {
+        oss << word << "\n";
+    }
+
     oss << R"(
 +=================================================+
 |   __        __            _  __ _           _   |
@@ -194,6 +204,12 @@ std::string Wordfind::generate() {
 
     size_t wordsRemaining = words.size() - wordsFound.size();
     oss << "Words left to find: " << wordsRemaining << "\n";
+
+    oss << "Words Found so far :\n";
+    for each (std::string word in wordsFound)
+    {
+        oss << word << " : " << wordDefs.at(word) << "\n";
+    }
 
     oss << printGrid() << std::endl;
 
