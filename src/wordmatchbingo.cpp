@@ -85,7 +85,7 @@ void WordMatchBingo::displayCurrentBingoWord() {
 
     std::random_device rd;
     std::mt19937 g(rd());
-    std::uniform_int_distribution<> dis(0, bingoCardPool.size() - 1);
+    std::uniform_int_distribution<> dis(0, static_cast<int>(bingoCardPool.size() - 1)); //static cast due to size() returning size_t and uniform_int_dist seeking an int
     int index = dis(g);
 
     auto selectedWord = bingoCardPool[index];

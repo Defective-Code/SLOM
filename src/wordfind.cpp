@@ -33,7 +33,7 @@ void Wordfind::initializeGrid() {
 
 // Function to place a word in the grid
 bool Wordfind::placeWord(const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions) {
-    int len = word.length();
+    size_t len = word.length();
 
     // Check if the word fits in the grid
     for (int i = 0; i < len; ++i) {
@@ -64,7 +64,7 @@ bool Wordfind::placeWord(const std::string& word, int row, int col, int dRow, in
 
 // Function to add words to the grid
 void Wordfind::addWordsToGrid() {
-    std::srand(std::time(0)); // Seed for randomness
+    std::srand(static_cast<unsigned int>(std::time(0)));; // Seed for randomness
     const int directions[8][2] = { {1, 0}, {0, 1}, {1, 1}, {-1, 1}, {0, -1}, {-1, 0}, {1, -1}, {-1, -1} };
 
     std::unordered_set<Position, PositionHash> occupiedPositions;
@@ -85,7 +85,7 @@ void Wordfind::addWordsToGrid() {
 //this method checks if a given input string is in the words vector
 void Wordfind::guessWord(std::string input) {
    
-    int correctGuess = std::count(words.begin(), words.end(), input);
+    int64_t correctGuess = std::count(words.begin(), words.end(), input);
     if (correctGuess > 0) {
         wordsFound.push_back(input);
         updateWordVector(input);
@@ -192,7 +192,7 @@ std::string Wordfind::generate() {
 +=================================================+
 )" << std::endl;
 
-    int wordsRemaining = words.size() - wordsFound.size();
+    size_t wordsRemaining = words.size() - wordsFound.size();
     oss << "Words left to find: " << wordsRemaining << "\n";
 
     oss << printGrid() << std::endl;

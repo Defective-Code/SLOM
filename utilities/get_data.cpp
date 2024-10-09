@@ -11,13 +11,13 @@
 
 
 DataGenerator::DataGenerator() {
-	std::srand(std::time(0));
+	std::srand(static_cast<unsigned int>(std::time(0))); //explicit cast to avoid warning. Should be ok, but if the OS returns time as 64 bit this could lead to truncation.
 	make_wordmap(DATA_FILE_PATH);
 	calculate_relative_freqs();
 }
 
 DataGenerator::DataGenerator(std::string filepath) {
-	std::srand(std::time(0));
+	std::srand(static_cast<unsigned int>(std::time(0))); //explicit cast to avoid warning. Should be ok, but if the OS returns time as 64 bit this could lead to truncation.
 	make_wordmap(filepath);
 	calculate_relative_freqs();
 }
