@@ -9,8 +9,8 @@
 class WordMatchBingo {
 	const static int totalAttempts = 5;
 	const int bingoWordPoolCount = 10;
-	int totalTime = 30; // 60 seconds for guessing
-	int remainingTime = totalTime;
+	std::int64_t totalTime = 30; // 60 seconds for guessing
+	std::int64_t remainingTime = totalTime;
 	
 	std::string wordleWord = "Test";
 	std::string displayWordleWord = ""; 

@@ -7,7 +7,6 @@
 #endif
 #include "wordle.h"
 #include "wordfind.h"
-#include "wordscapes.h"
 #include "hangman.h"
 #include "wordmatchbingo.h"
 

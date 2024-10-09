@@ -150,7 +150,13 @@ bool Hangman::menu() {
 
 //function to handle getting a word in lowercase
 bool Hangman::guessWord(std::string input) {
-
+	if (input.compare(answer) == 0) {
+		for each (char c in input)
+		{
+			correct_letters.insert(c);
+			//seen_letters.insert(c);
+		}
+	}
 	return input.compare(answer) == 0;
 }
 
@@ -160,7 +166,7 @@ bool Hangman::guessLetter(char input) {
 	//seen_letters.insert(input);
 
 	//int x = countSubstringOccurrences(answer, input);
-	int x = std::count(answer.begin(), answer.end(), input);
+	__int64 x = std::count(answer.begin(), answer.end(), input);
 
 	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
@@ -210,12 +216,15 @@ int Hangman::startGame() {
 		}
 
 		if (val) {
-			std::this_thread::sleep_for(std::chrono::seconds(3));
+			//std::this_thread::sleep_for(std::chrono::seconds(3));
 			reset();
 			return 0; // return 0 coins as user quit and did not finish game
 		}
 
 	}
+
+	display();
+	std::cout << "You saved him, well done!" << std::endl;
 
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	reset();

@@ -22,7 +22,9 @@ public:
 
 private:
 	int attemptsCount = 0;
+
 	bool wordleComplete = false;
+
 	std::string wordToGuess;
 
 	void giveHint() override;

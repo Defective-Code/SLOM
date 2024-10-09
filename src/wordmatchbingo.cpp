@@ -182,17 +182,17 @@ int WordMatchBingo::startGame() {
 
     // Start the timer
     auto startTime = std::chrono::steady_clock::now();
-    auto elapsedTime = 0;
+    auto elapsedTime = std::int64_t{ 0 };
 
     while (!bingoCard.empty() && !bingoCardPool.empty() && bingoWordPoolCount && remainingTime > 0) {
         // Check the elapsed time
         auto currentTime = std::chrono::steady_clock::now();
         elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
 
-        remainingTime = std::max(0, totalTime - elapsedTime);
+        remainingTime = std::max(std::int64_t{ 0 }, (totalTime - elapsedTime));
         displayCurrentBingoWord();
         displayBingoCard();
-        printf("Time left: %d seconds\n", remainingTime);
+        printf("Time left: %lld seconds\n", remainingTime);
         receiveUserInput();
         
 

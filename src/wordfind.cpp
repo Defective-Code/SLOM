@@ -192,6 +192,9 @@ std::string Wordfind::generate() {
 +=================================================+
 )" << std::endl;
 
+    int wordsRemaining = words.size() - wordsFound.size();
+    oss << "Words left to find: " << wordsRemaining << "\n";
+
     oss << printGrid() << std::endl;
 
     oss << "Press 1) to guess a word\nPress q to quit" << std::endl;
