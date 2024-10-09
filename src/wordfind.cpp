@@ -29,7 +29,6 @@ void Wordfind::initializeGrid() {
             grid[i][j] = letters[rand() % numLetters];
         }
     }
-
 }
 
 // Function to place a word in the grid
@@ -132,6 +131,7 @@ void Wordfind::setup() {
         std::cout << nextWord << std::endl;;
         words.push_back(nextWord);
     }
+
 
     initializeGrid();
 
