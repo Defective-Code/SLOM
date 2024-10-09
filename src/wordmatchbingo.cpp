@@ -66,7 +66,7 @@ void WordMatchBingo::updateWordWithStrikethrough(std::string& word) {
 
 
 
-size_t getDisplayLength(const std::string& word) {
+size_t WordMatchBingo::getDisplayLength(const std::string& word) {
     size_t length = 0;
     bool inEscapeCode = false;
     for (char ch : word) {
@@ -146,8 +146,14 @@ bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
     // Check if the userInput matches the currentBingoWord.first
     if (toLowerCase(currentBingoWord.first) == toLowerCase(userInput)) {
         // Now check if it's in the bingoCard
+        
         auto it = std::find_if(bingoCard.begin(), bingoCard.end(),
             [&userInput](const std::pair<std::string, std::string>& pair) {
+                //std::cout << pair.first << std::endl;
+                // if(userInput == "BANANA" && pair.first == "banana") {
+                //     std::cout << (toLowerCase(pair.first) == toLowerCase(userInput)) << std::endl;
+                //     std::cout << (toLowerCase("banana") == toLowerCase("BANANA")) << std::endl;
+                // }
                 return toLowerCase(pair.first) == toLowerCase(userInput);
             });
 

@@ -55,6 +55,7 @@ class WordMatchBingo {
 		void displayCurrentBingoWord();
 		bool compareUserInputToBingoCard(const std::string& userInput);
 		void updateWordWithStrikethrough(std::string& word);
+		size_t getDisplayLength(const std::string& word);
 		
 		void reset();
 		void setup();

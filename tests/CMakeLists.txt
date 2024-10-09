@@ -43,6 +43,6 @@ add_executable(test_hangman "hangman_t.cpp")
 target_link_libraries(test_hangman Games)
 add_test(Hangman_Test test_hangman)
 
-# add_executable(test_wordmatchbingo "wordmatchbingo_t.cpp")
-# target_link_libraries(test_wordmatchbingo Games) #this is optional if you don't require an external library
-# add_test(Wordmatchbingo_Test test_wordmatchbingo)
+add_executable(test_wordmatchbingo "wordmatchbingo_t.cpp")
+target_link_libraries(test_wordmatchbingo Games) #this is optional if you don't require an external library
+add_test(Wordmatchbingo_Test test_wordmatchbingo)

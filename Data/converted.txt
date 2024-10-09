@@ -42,7 +42,7 @@ fire
 
 
 ahiahi
-early evening, afternoon 
+early evening, afternoon
 
 
 aho
@@ -337,7 +337,7 @@ ha
 breath
 
 *
-haere 
+haere
 go, come
 
 *
@@ -349,7 +349,7 @@ haerenga
 journey
 
 
-hai 
+hai
 as for hei (variant of hei)
 
 
@@ -499,7 +499,7 @@ where?
 *
 hei
 Various meanings, eg future preposition, at, in, with,
-for, to, as a 
+for, to, as a
 
 heihei
 chicken
@@ -634,11 +634,11 @@ hoiho
 horse
 
 *
-hoki 
+hoki
 also, too
 
 *
-hoki 
+hoki
 to go back, return
 
 
@@ -709,7 +709,7 @@ to open
 huaki + passive suffix -na
 
 *
-huarahi 
+huarahi
 path, road
 
 *
@@ -767,13 +767,13 @@ fur
 *
 i
 Several uses; not always translatable with a specific English word.
-Past tense verb particle: I haere ia ... She went 
-Past time marker: I tera wiki ... Last week 
+Past tense verb particle: I haere ia ... She went
+Past time marker: I tera wiki ... Last week
 Direct object marker: Ka kai ia i te aporo.
 Source marker (from): Kua hoki mai au i te kura.
 
 *
-i naianei 
+i naianei
 now
 (spelled as inaianei in older texts)
 
@@ -826,7 +826,7 @@ ira
 gene
 
 
-irirangi 
+irirangi
 radio (usually as reo irirangi)
 
 *
@@ -919,7 +919,7 @@ kai- + takaro
 
 
 kaitiaki
-caretaker, caregiver 
+caretaker, caregiver
 kai- + tiaki
 
 
@@ -1050,7 +1050,7 @@ animal
 
 
 kare
-Term of address: E kare, dear 
+Term of address: E kare, dear
 
 
 kare
@@ -1170,7 +1170,7 @@ kawe + passive suffix -a
 
 
 kawenga
-load, luggage, burden 
+load, luggage, burden
 kawe + nominal suffix -nga
 
 
@@ -1188,7 +1188,7 @@ ghost
 *
 kei
 Various uses, meanings, eg:
-preposition, present time and place location – at, in 
+preposition, present time and place location – at, in
 verbal particle, non-past time, as in: kei te haere
 
 
@@ -1678,7 +1678,7 @@ mata
 point, blade
 
 
-mataki 
+mataki
 to watch
 
 
@@ -1738,11 +1738,11 @@ matu
 fat, chemical
 
 *
-matua 
-parent, father 
+matua
+parent, father
 
 *
-matua 
+matua
 parents, fathers (plural form of matua)
 
 *
@@ -1750,11 +1750,11 @@ mau
 to take, bring
 
 *
-mau 
+mau
 to be caught
 
 *
-mau 
+mau
 to wear clothes
 
 
@@ -1790,7 +1790,7 @@ me
 Various meanings, uses, eg with, like, should
 
 *
-mea 
+mea
 thing
 
 *
@@ -1870,7 +1870,7 @@ moana
 sea
 
 *
-moe 
+moe
 to sleep
 
 *
@@ -1878,7 +1878,7 @@ moe
 to marry
 
 
-moemoea 
+moemoea
 to dream
 dream
 
@@ -1991,7 +1991,7 @@ mutu + noun ending -nga
 
 *
 na
-Various meanings, eg by, belonging to (a category), by way of 
+Various meanings, eg by, belonging to (a category), by way of
 
 
 naianei
@@ -2152,7 +2152,7 @@ nona
 his, her, realised possession, o category
 
 *
-nui 
+nui
 big, great, many
 
 
@@ -2175,7 +2175,7 @@ Has several uses: of, belonging to
 
 *
 o
-your, one person, neutral category possession, plural 
+your, one person, neutral category possession, plural
 
 
 oho
@@ -2214,7 +2214,7 @@ ope
 group travelling together
 
 *
-ora 
+ora
 alive, well, healthy, safe
 
 
@@ -2312,11 +2312,11 @@ pakanga
 to fight, battle, war, hostility
 
 
-pakari 
+pakari
 strong
 
 
-pakari 
+pakari
 mature, ripe
 
 
@@ -2348,11 +2348,11 @@ pakete
 bucket
 
 
-paki 
+paki
 to slap, to pat
 
 
-pakipaki 
+pakipaki
 to applaud, to clap; applause
 
 
@@ -2364,7 +2364,7 @@ pakiwaitara
 story
 
 
-paku 
+paku
 small
 
 
@@ -2405,7 +2405,7 @@ orphan; to be orphaned
 
 
 panui
-to read 
+to read
 
 
 panui
@@ -2456,7 +2456,7 @@ paru
 dirt, mud, dirty
 
 
-paruparu 
+paruparu
 dirt, mud
 
 
@@ -2484,15 +2484,15 @@ patiti
 grass
 
 
-patu 
+patu
 to strike, beat, thrash
 
 
-patu 
+patu
 to kill
 
 
-patua 
+patua
 patu + passive suffix -a
 
 *
@@ -2556,7 +2556,7 @@ pene
 pen
 
 *
-penei 
+penei
 like this, near speaker
 
 *
@@ -2576,7 +2576,7 @@ pere
 bell
 
 
-pewhea 
+pewhea
 how? (variant of pehea)
 
 
@@ -2680,7 +2680,7 @@ poro
 ball
 
 
-porohita 
+porohita
 circle, round (variant of porowhita)
 
 
@@ -2732,7 +2732,7 @@ pu
 gun
 
 *
-pu 
+pu
 to blow gently
 
 
@@ -2793,7 +2793,7 @@ to sing, to rumble
 
 
 pupu
-to boil 
+to boil
 
 
 pupu
@@ -2832,7 +2832,7 @@ purerehua
 butterfly
 
 
-puru 
+puru
 to block up, plug
 
 
@@ -2878,7 +2878,7 @@ to heap up; a heap, pile
 
 *
 ra
-Various uses, meanings, eg over there 
+Various uses, meanings, eg over there
 
 *
 ra
@@ -2930,7 +2930,7 @@ to be heard (passive form of rongo)
 
 
 rapa
-to look for 
+to look for
 
 
 rapu
@@ -3025,7 +3025,7 @@ rere
 to escape
 
 *
-rereke 
+rereke
 different, changed
 
 
@@ -3051,7 +3051,7 @@ reta
 letter
 
 
-reti 
+reti
 to skate, slide
 
 
@@ -3198,7 +3198,7 @@ tae + passive suffix -a
 
 
 taenga
-arrival 
+arrival
 tae + nominal suffix -nga
 
 *
@@ -3215,7 +3215,7 @@ your, a category possession, singular (variant of tau)
 
 
 *
-tahi 
+tahi
 one, single
 
 
@@ -3265,7 +3265,7 @@ to fall, to fall off, to drop
 
 *
 taka
-to come around in a cycle 
+to come around in a cycle
 
 *
 takaro
@@ -3520,11 +3520,11 @@ tau
 beloved, darling
 
 *
-tau 
+tau
 to land on, alight, come to rest
 
 *
-tau 
+tau
 to settle down
 
 
@@ -3672,7 +3672,7 @@ tihi
 topknot
 
 *
-tika 
+tika
 to be right, correct, straight, in order
 
 *
@@ -3681,7 +3681,7 @@ custom, habit, agreed way of doing things
 tika + nominal suffix -nga
 
 *
-tikanga 
+tikanga
 reason, meaning
 tika + nominal suffix -nga
 
@@ -3759,7 +3759,7 @@ tipua
 a person of high status
 
 
-tipuna 
+tipuna
 grandparent, ancestor
 
 
@@ -3783,7 +3783,7 @@ tiriti
 street
 
 *
-tiro 
+tiro
 to look
 
 
@@ -3799,13 +3799,13 @@ tirotiro
 to look about, to investigate
 
 *
-titiro 
+titiro
 to look at
 
 *
 to
 your, neutral, one person, singular
-o category possessive determiner, singular, as in: to tatou 
+o category possessive determiner, singular, as in: to tatou
 
 
 *
@@ -3846,15 +3846,15 @@ tohora
 whale
 
 *
-tohu 
+tohu
 a sign, mark
 
 *
-tohu 
+tohu
 to indicate, point out
 
 *
-tohu 
+tohu
 a qualification, eg degree
 
 
@@ -3983,7 +3983,7 @@ tuahine
 sister, of a male
 
 tuakana
-older sibling of the same sex 
+older sibling of the same sex
 
 tuanui
 roof
@@ -4028,7 +4028,7 @@ writing, text
 tuhi + nominal suffix -nga
 
 
-tuhituhi 
+tuhituhi
 to write, draw
 
 
@@ -4053,15 +4053,15 @@ tuku
 to let something down; to hand something down
 
 *
-tuku 
+tuku
 to let go, to give up
 
 *
-tuku 
+tuku
 to put off, to leave aside
 
 
-tukua 
+tukua
 tuku + passive suffix -a
 
 *
@@ -4093,7 +4093,7 @@ tungane
 brother, of a female
 
 
-tunu 
+tunu
 to cook, roast
 
 
@@ -4117,7 +4117,7 @@ tu + nominal suffix -ranga
 
 
 turanga
-stopping place, as in: turanga pahi bus stop 
+stopping place, as in: turanga pahi bus stop
 tu + nominal suffix -ranga
 
 
@@ -4205,7 +4205,7 @@ uku
 to wash
 
 
-umere 
+umere
 to shout (in wonder, in appreciation)
 
 
@@ -4313,11 +4313,11 @@ wahie
 driftwood
 
 *
-wahine 
+wahine
 woman, wife
 
 *
-wahine 
+wahine
 women, wives (plural form of wahine)
 
 *
@@ -4486,7 +4486,7 @@ to take photos; photograph
 
 
 whakaari
-to display, to exhibit 
+to display, to exhibit
 
 
 whakaari
@@ -4509,18 +4509,18 @@ whakaatu
 to display, show, demonstrate
 
 *
-whakaaturanga 
+whakaaturanga
 display
 whakaatu + nominal suffix -ranga
 
 *
-whakaaturanga 
+whakaaturanga
 television programme
 whakaatu + nominal suffix -ranga
 
 
 whakahaere
-to run something, manage, make something go 
+to run something, manage, make something go
 
 
 whakahau
@@ -4728,7 +4728,7 @@ whakatau
 to decide
 
 
-whakatika 
+whakatika
 to straighten, to correct, to fix
 
 
@@ -4776,11 +4776,11 @@ whaki
 to reveal, to disclose, to confess
 
 *
-whanau 
+whanau
 family
 
 *
-whanau 
+whanau
 to be born / be born
 
 *
@@ -4845,7 +4845,7 @@ whawhai
 to fight; a battle
 
 
-whea 
+whea
 where? (variant of hea)
 
 *
