@@ -35,9 +35,9 @@ add_executable(test_wordfind "wordfind_t.cpp")
 target_link_libraries(test_wordfind Games) 
 add_test(Wordfind_Test test_wordfind)
 
-# add_executable(test_wordle "wordle_t.cpp")
-# target_link_libraries(test_wordle Games)
-# add_test(Wordle_Test test_wordle)
+add_executable(test_wordle "wordle_t.cpp")
+target_link_libraries(test_wordle Games)
+add_test(Wordle_Test test_wordle)
 
 add_executable(test_hangman "hangman_t.cpp")
 target_link_libraries(test_hangman Games)

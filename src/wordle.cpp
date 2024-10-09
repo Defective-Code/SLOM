@@ -67,12 +67,13 @@ bool Wordle::menu() {
     }
     case 'q':
     {
-        printf("Quitting.....");
+        std::cout << "Quitting.....\n";
         return false;
     }
     default:
-        printf("Please select a valid option\n");
+        std::cout << "Please select a valid option\n";
     }
+    return true;
 }
 
 std::string Wordle::receiveUserInput()
@@ -196,7 +197,7 @@ void Wordle::setup() {
 
     wordleWord = wordToGuess;
 
-    printf("%s\n", wordToGuess.c_str());
+    std::cout << ("%s\n", wordToGuess.c_str());
     //printf("%zu\n", result.length());
 
     //this code initializes the initial state of the display word (e.g the _ initially displayed)
