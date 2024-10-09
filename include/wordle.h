@@ -1,44 +1,31 @@
 #pragma once
+#pragma execution_character_set( "utf-8" )
 #include <string>
 #include <map>
+#include "game.h"
 
-class Wordle {
+class Wordle : private Game{
+	const static int MAX_ATTEMPTS = 5;
+	const int WORD_LENGTH = 5;
+
 	std::string wordleWord = "Test";
 	std::string displayWordleWord = "";
-	const static int totalAttempts = 5;
-	int attemptsCount = 0;
-	bool wordleComplete = false;
-	std::string attempts[totalAttempts];
+	
+	std::string attempts[MAX_ATTEMPTS];
 	std::map<char, int> charCount;
 public:
-
-	/**
-		 * Method to check if character is a diacritic
-		 * 
-		 * @param char32_t the char to be checked
-		 * @return bool whether the character has diacritics
-		*/
-	bool isDiacritic(char32_t c);
-
 		/**
-		 * Method to check if string contains diacritics
+		 * Method used to start the game. This is called when the user selects Wordle as their game of choice.
 		 * 
-		 * @param string input word
-		 * return bool whether the string contains diacritics
-		*/
-	bool hasDiacritics(const std::string& input);
-
-		/**
-		 * Method used to initialise the game.
 		 */
-	void initialiseGame();
+	int startGame() override;
 
-		/**
-		 * Method used to select a random Maori word to be used as the Wordle word.
-		 * 
-		 * @return string containing the selected Maori word.
-		 */
-	std::string selectWordleWord();
+private:
+	int attemptsCount = 0;
+	bool wordleComplete = false;
+	std::string wordToGuess;
+
+	void giveHint() override;
 
 		/**
 		 * Method used to receive user input (their Wordle guess).
@@ -54,22 +41,18 @@ public:
 		 */
 	void getNextGameState(const std::string userGuess);
 
-		/**
-		 * Method used to display the current game state.
-		 * 
-		 */
-	void displayGameState();
-
-		/**
-		 * Method used to start the game. This is called when the user selects Wordle as their game of choice.
-		 * 
-		 */
-	void startGame();
+	void setup() override;
 
 	/**
      * Method to reset the game state to its initial configuration.
      */
-    void resetGameState();
+    void reset() override;
+
+	bool menu() override;
+
+	std::string generate() override;
+
+	void display() override;
 
 	friend class WordleTest;
 };

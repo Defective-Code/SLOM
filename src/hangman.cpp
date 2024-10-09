@@ -1,3 +1,5 @@
+﻿#pragma execution_character_set( "utf-8" )
+
 #include <stdio.h>
 #include <iostream> 
 #include <chrono>
@@ -8,111 +10,11 @@
 
 #include "hangman.h"
 #include "get_data.h"
-
-std::vector<std::string> Hangman::splitStringOnNewline(const std::string& input) {
-	std::vector<std::string> lines;
-	std::stringstream ss(input);
-	std::string line;
-
-	// Use std::getline to extract lines
-	while (std::getline(ss, line, '\n')) {
-		lines.push_back(line);
-	}
-
-	return lines;
-}
-
-/*
-void Hangman::display(int stage) {
-	system("CLS"); // Clear the terminal screen
-	std::cout << R"(
-
-	   +===================================================+
-	   |   _   _                                           |
-	   |  | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __    |
-	   |  | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \   |
-	   |  |  _  | (_| | | | | (_| | | | | | | (_| | | | |  |
-	   |  |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|  |
-	   |                     |___/                         |
-	   +===================================================+
-
-	)" << std::endl;
-
-
-	//std::cout << answer << std::endl;
-
-	std::vector<std::string> seen_letters_box;
-	seen_letters_box.push_back("+---------+");
-
-	std::vector<char> temp;
-	for (const char& seen_letter : seen_letters) {
-		temp.push_back(seen_letter);
-
-	}
-
-	
-	int counter = 0;
-	std::string line = "| ";
-	for (int i = 0; i < 26; i++)
-	{	
-		if (seen_letters.count(alphabet[i]) > 0) {
-			
-			line += (alphabet[i]);
-			line += " ";
-		}
-		else {
-			line += "  ";
-		}
-
-		counter++;
-
-		if (counter >= 4) {
-			line += "|";
-			seen_letters_box.push_back(line);
-			line = "| ";
-			counter = 0;
-		}
-		
-
-	}
-
-	line += "    |";
-	seen_letters_box.push_back(line);
-	line = "+---------+";
-	seen_letters_box.push_back(line);
-
-	//std::cout << hangman_stages[stage] << std::endl;
-
-	std::vector<std::string> split = splitStringOnNewline(hangman_stages[stage]);
-
-
-	std::cout << "                                        Used Letters" << std::endl;
-
-	for (int i = 0; i < split.size(); i++)
-	{
-		std::cout << split[i] << "		" << seen_letters_box[i] << std::endl;
-	}
-
-	std::string underscore_word;
-	for (int i = 0; i < answer.length(); i++) {
-		if (correct_letters.count(answer[i])) {
-			underscore_word += answer[i];
-		}
-		else {
-			underscore_word += "_";
-		}
-	}
-
-	std::cout << "\n          Guess: " + underscore_word + "\n" << std::endl;
+#include "io_handler.h"
 
 
 
-	
-	std::cout << "\nPress the corresponding key in the bracket to select that option.\n1) Guess a letter\n2) Guess the word\n\nPress q to quit..." << std::endl;
-}
-*/
-
-std::string Hangman::display(int stage) {
+std::string Hangman::generate() {
 	std::ostringstream oss;
 
 	oss << R"(
@@ -164,7 +66,7 @@ std::string Hangman::display(int stage) {
 	seen_letters_box.push_back(line);
 
 	// Append the hangman stage
-	std::vector<std::string> split = splitStringOnNewline(hangman_stages[stage]);
+	std::vector<std::string> split = splitStringOnNewline(hangman_stages[current_stage]);
 
 	oss << "                                      Used Letters" << std::endl;
 
@@ -176,9 +78,9 @@ std::string Hangman::display(int stage) {
 
 	// Building the underscore_word
 	std::string underscore_word;
-	for (char c : answer) {
-		if (correct_letters.count(toupper(c))) {
-			underscore_word += c;
+	for (int i = 0; i < (answer.length()); i++) {
+		if (correct_letters.count(answer[i]) != 0) {
+			underscore_word += answer[i];
 		}
 		else {
 			underscore_word += "_";
@@ -188,86 +90,142 @@ std::string Hangman::display(int stage) {
 	oss << "\n          Guess: " + underscore_word + "\n" << std::endl;
 
 	// Append options for the user
-	oss << "\nPress the corresponding key in the bracket to select that option.\n1) Guess a letter\n2) Guess the word\n\nPress q to quit..." << std::endl;
+	oss << "\nPress the corresponding key in the bracket to select that option.\n1) Guess a letter\n2) Guess the word\n\nPress q to quit...";
 
 	return oss.str();
 }
 
-bool Hangman::guess_word() {
-	std::cin >> word_input; // Get user input from the keyboard
-	std::transform(word_input.begin(), word_input.end(), word_input.begin(), [](unsigned char c) { return std::tolower(c); });
-
-	return word_input.compare(answer) == 0;
+void Hangman::display() {
+	clearScreen();
+	std::string output = generate();
+	std::cout << output << std::endl;
 }
 
-bool Hangman::get_letter() {
+
+
+void Hangman::setup() {
+	DataGenerator dg = DataGenerator();
+	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
+
+	answer = toLowerCase(removeWhitespace(answer_pair.first));
+}
+
+bool Hangman::menu() {
+	char ch = getSingleCharacter();
+	bool result; //variable to store the result of a guess
+	switch (ch) {
+	case '1': {
+		char c_input = getSingleCharacter();
+		result = guessLetter(c_input);
+		if (!result) {
+			current_stage++;
+		}
+		break;
+	}
+	case '2':
+	{
+		std::string w_input = getWord();
+		result = guessWord(w_input);
+		if (result != true) {
+			current_stage++;
+			break;
+		}
+		else {
+			printf("Well done!");
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			break;
+		}
+	}
+	case 'q':{
+		printf("Quitting.....");
+		return true;
+	}
+	default:
+	{
+		printf("Please select a valid option\n");
+	}
+	}
+	return false;
+}
+
+//function to handle getting a word in lowercase
+bool Hangman::guessWord(std::string input) {
+
+	return input.compare(answer) == 0;
+}
+
+bool Hangman::guessLetter(char input) {
+
 	
-	std::cin >> char_input;
-	char_input = tolower(char_input);
 	//seen_letters.insert(input);
 
-	int x = std::count(answer.begin(), answer.end(), char_input);
+	//int x = countSubstringOccurrences(answer, input);
+	int x = std::count(answer.begin(), answer.end(), input);
 
+	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
-		correct_letters.insert(toupper(char_input));
+		correct_letters.insert(input);
+		
 		return true;
 	}
 	else {
-		seen_letters.insert(toupper(char_input));
+		seen_letters.insert(input);
 		return false;
 	}
 }
 
-void Hangman::startGame() {
-	int stage = 0;
-	bool result;
-	seen_letters.clear(); //clear the set between games;
-	DataGenerator dg = DataGenerator();
-	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
+bool Hangman::checkGameEnd() {
+	// Iterate over each character in the word
+	for (char c : answer) {
+		// Check if the character is not in the set
+		if (correct_letters.find(c) == correct_letters.end()) {
+			return false; // Return false if any character is not in the set
+		}
+	}
+	return true; // Return true if all characters are found in the set
+}
 
-	answer = answer_pair.first;
+void Hangman::giveHint() {
 
-	while (stage != MAX_STAGE) {
+}
+
+int Hangman::startGame() {
+	
+	//seen_letters.clear(); //clear the set between games
+	setup();
+
+	//loop until the stage is the max stage and the hangman is done
+	while (current_stage != MAX_STAGE) {
 		//system("CLS"); // Clear the terminal screen
-		std::cout << answer << std::endl;
+		
+		std::cout << answer << std::endl; //here for testing purposes
 
-		std::string output = display(stage);
-		std::cout << output << std::endl;
+		display();
 
-		char ch = '0'; //variable to store user input
+		bool val = menu();
 
-		std::cin >> ch;
-
-		switch (ch) {
-		case '1':
-			result = get_letter();
-			if (!result) {
-				stage++;
-			}
+		//if all letters in the word are contained in correct letters, then we know the game is done
+		if (checkGameEnd()) {
 			break;
-		case '2':
-			result = guess_word();
-			if (result != true) {
-				stage++;
-				break;
-			}
-			else {
-				printf("Well done!");
-				std::this_thread::sleep_for(std::chrono::seconds(3));
-				return;
-			}
-		case 'q':
-			printf("Quitting.....");
-			return;
-		default:
-			printf("Please select a valid option\n");
+		}
+
+		if (val) {
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			reset();
+			return 0; // return 0 coins as user quit and did not finish game
 		}
 
 	}
-	
-	
-	
 
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	reset();
+	return COIN_AMOUNT;
+}
+
+void Hangman::reset() {
+	correct_letters.clear();
+	current_stage = 0;
+	seen_letters.clear();
 }
 
 

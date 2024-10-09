@@ -1,19 +1,24 @@
 ﻿#pragma once
+#pragma execution_character_set( "utf-8" )
 
 #include <string>
 #include <vector>
 #include <set>
 
+#include <game.h> //extends this class
+
 /**
  * @class Hangman
  * @brief The Hangman class encapsulates the logic and functionality for the Hangman game.
  */
-class Hangman {
+class Hangman : private Game {
 
     /**
      * @brief Maximum number of incorrect guesses allowed before losing the game.
      */
     const int MAX_STAGE = 7;
+
+    const int COIN_AMOUNT = 5;
 
     /**
      * @brief The word to be guessed by the player.
@@ -99,12 +104,10 @@ class Hangman {
      * @brief Vector of characters representing the English alphabet.
      */
     const std::vector<char> alphabet = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-        'U', 'V', 'W', 'X', 'Y', 'Z'
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+    'u', 'v', 'w', 'x', 'y', 'z'
     };
-
-    
 
     public:
 
@@ -113,51 +116,53 @@ class Hangman {
          *
          * Initializes the game state and enters the game loop, allowing the player to guess letters or the entire word.
         */
-        void startGame();
+        int startGame() override;
 
     private:
         /**
-         * @brief Displays the current state of the game, including the hangman stage, used letters, and the word with guessed letters.
-         *
-         * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
-         */
-        std::string display(int stage);
+        * @brief Set of correctly guessed letters in the answer.
+        */
+        std::set<char> correct_letters;
+
+        int current_stage; //tracks the current stage of the hangman game
 
         /**
          * @brief Set of letters that have been guessed by the player.
          */
         std::set<char> seen_letters;
 
-        /**
-        * @brief Set of correctly guessed letters in the answer.
-        */
-        std::set<char> correct_letters;
-
-        std::string word_input;
-
-        char char_input;
+        void giveHint() override;
 
         /**
-         * @brief Splits a string into a vector of strings based on newline characters.
+         * @brief Displays the current state of the game, including the hangman stage, used letters, and the word with guessed letters.
          *
-         * @param input The input string to be split.
-         * @return A vector of strings, each representing a line from the input.
+         * @param stage The current stage of the hangman drawing, representing the number of incorrect guesses.
          */
-        std::vector<std::string> splitStringOnNewline(const std::string& input);
+        void display() override;
+
+        std::string generate() override;
+
+        void setup() override; //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
+
+        void reset() override;
+
+        bool menu() override;
+
+        bool checkGameEnd();
 
         /**
          * @brief Processes a letter guess by the player.
          *
          * @return True if the guessed letter is in the answer, otherwise false.
          */
-        bool get_letter();
+        bool guessLetter(char input);
 
         /**
          * @brief Processes a word guess by the player.
          *
          * @return True if the guessed word matches the answer, otherwise false.
          */
-        bool guess_word();
+        bool guessWord(std::string input);
         
     friend class HangmanTest;
 };
