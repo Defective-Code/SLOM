@@ -66,7 +66,7 @@ class Wordfind : private Game {
 		void initializeGrid();
 
 		/**
-		 * Prints the grid to the standard output.
+		 * Creates a string of the grid 
 		 * Each row of the grid is printed on a new line, with characters separated by spaces.
 		 *
 		 * @param grid A constant reference to a 2D vector of characters representing the grid to be printed.

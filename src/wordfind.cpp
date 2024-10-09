@@ -208,6 +208,7 @@ void Wordfind::display() {
 
 bool Wordfind::menu() {
     char ch = getSingleCharacter();
+    //std::cout << ch << std::endl;
     switch (ch) {
     case '1':
     {
@@ -216,11 +217,13 @@ bool Wordfind::menu() {
         break;
     }
     case 'q':
-        printf("Quitting.....");
+        printf("Quitting.....\n");
         return false;
     default:
         printf("Please select a valid option\n");
     }
+
+    return true;
 }
 
 void Wordfind::giveHint() {
