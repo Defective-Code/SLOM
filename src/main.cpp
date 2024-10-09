@@ -9,6 +9,7 @@
 #include "wordfind.h"
 #include "hangman.h"
 #include "wordmatchbingo.h"
+#include "io_handler.h"
 
 /***
  *	Method to render main menu to the console screen
@@ -87,10 +88,10 @@ char getMenuOption(int range) {
 		displayMainMenu();
 
 		// Get the first character from user input
-		ch = getchar();
+		ch = getSingleCharacter();
 
 		// Flush the remaining characters in the input buffer
-		while (getchar() != '\n');  // Discard all characters until a newline is encountered
+		//while (getchar() != '\n');  // Discard all characters until a newline is encountered
 
 		// Validate input: it must be a digit and within the desired range
 	} while (ch != 'q' && (!isdigit(ch) || (ch - '0') <= 0 || (ch - '0') > range));
