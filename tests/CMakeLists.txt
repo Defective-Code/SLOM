@@ -31,9 +31,9 @@ add_executable(test_get_data "get_data_t.cpp")
 target_link_libraries(test_get_data Utilities) # add the utilities library as that is what we are testing with this test
 add_test(Get_Data_Test test_get_data)
 
-# add_executable(test_wordfind "wordfind_t.cpp")
-# target_link_libraries(test_wordfind Games) 
-# add_test(Wordfind_Test test_wordfind)
+add_executable(test_wordfind "wordfind_t.cpp")
+target_link_libraries(test_wordfind Games) 
+add_test(Wordfind_Test test_wordfind)
 
 # add_executable(test_wordle "wordle_t.cpp")
 # target_link_libraries(test_wordle Games)

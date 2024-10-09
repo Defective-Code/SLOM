@@ -31,17 +31,17 @@ public:
         Wordfind wf;
         std::vector<std::vector<char>> test_grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); // the grid
 
-        wf.initializeGrid(test_grid);
+        wf.initializeGrid();
 
         for (int i = 0; i < Wordfind::GRID_SIZE; ++i) {
             for (int j = 0; j < Wordfind::GRID_SIZE; ++j) {
                 // Compile-time check that each element in the grid is of type 'char'
-                assert(typeid(test_grid[i][j]) == typeid(char));
+                assert(typeid(wf.grid[i][j]) == typeid(char));
 
                 // Runtime assertion that the grid element is not an empty space or null
-                assert(test_grid[i][j] != ' ' && test_grid[i][j] != '\0' && "Grid position contains an invalid character.");
+                assert(wf.grid[i][j] != ' ' && wf.grid[i][j] != '\0' && "Grid position contains an invalid character.");
 
-                assert(test_grid[i][j] >= 'A' && test_grid[i][j] <= 'Z');  // Example: ensure it's an uppercase letter
+                assert(wf.grid[i][j] >= 'A' && wf.grid[i][j] <= 'Z');  // Example: ensure it's an uppercase letter
             }
         }
     }
@@ -56,7 +56,7 @@ public:
 
         // Test case 1: Place word horizontally in an empty grid
         std::string word1 = "TEST";
-        bool result1 = wordfind.placeWord(grid, word1, 2, 2, 0, 1, occupiedPositions);
+        bool result1 = wordfind.placeWord(word1, 2, 2, 0, 1, occupiedPositions);
         assert(result1 == true);  // Word should be placed successfully
         assert(grid[2][2] == 'T' && grid[2][3] == 'E' && grid[2][4] == 'S' && grid[2][5] == 'T');
 
@@ -64,30 +64,30 @@ public:
         //printPositionSet(occupiedPositions);
 
         // Test case 2: Try placing the same word in the same position (should return True, as technically the new TEST overwwrites the old one due to overlap)
-        bool result2 = wordfind.placeWord(grid, word1, 2, 2, 0, 1, occupiedPositions);
+        bool result2 = wordfind.placeWord(word1, 2, 2, 0, 1, occupiedPositions);
         assert(result2 == true);  // Word should not be placed again
 
         // Test case 3: Place a word vertically that overlaps correctly with an existing word
         std::string word2 = "EXAM";
-        bool result3 = wordfind.placeWord(grid, word2, 2, 3, 1, 0, occupiedPositions);
+        bool result3 = wordfind.placeWord(word2, 2, 3, 1, 0, occupiedPositions);
         assert(result3 == true);  // Word should be placed successfully
         assert(grid[2][3] == 'E' && grid[3][3] == 'X' && grid[4][3] == 'A' && grid[5][3] == 'M');
 
         // Test case 4: Attempt to place a word that goes out of bounds
         std::string word3 = "OUTOFBOUNDS";
-        bool result4 = wordfind.placeWord(grid, word3, 9, 9, 0, 1, occupiedPositions);
+        bool result4 = wordfind.placeWord(word3, 9, 9, 0, 1, occupiedPositions);
         assert(result4 == false);  // Word should not be placed
 
         
         
         // Test case 5: Place a word diagonally
         std::string word4 = "DIAGONAL";
-        bool result5 = wordfind.placeWord(grid, word4, 0, 0, 1, 1, occupiedPositions);
+        bool result5 = wordfind.placeWord(word4, 0, 0, 1, 1, occupiedPositions);
         assert(result5 == false);  // Word should fail as it overlaps with the "TEST" which is inserted at 2, 2
         //assert(grid[0][0] == 'D' && grid[1][1] == 'I' && grid[2][2] == 'A' && grid[3][3] == 'G' && grid[4][4] == 'O');
 
         std::string word5 = "GUAM";
-        bool result6 = wordfind.placeWord(grid, word5, 2, 0, 1, 1, occupiedPositions);
+        bool result6 = wordfind.placeWord(word5, 2, 0, 1, 1, occupiedPositions);
         assert(result6 == true); //Word should succeed now, as the M matches with the M in "EXAM", and doesn't overlap with anything else
         assert(grid[2][0] == 'G' && grid[3][1] == 'U' && grid[4][2] == 'A' && grid[5][3] == 'M');
 
@@ -105,9 +105,10 @@ public:
 
         // List of words to add
         std::vector<std::string> words = { "HELLO", "WORLD", "TEST", "GRID" };
+        wordfind.words = words;
 
         // Call the method to add words to the grid
-        wordfind.addWordsToGrid(grid, words);
+        wordfind.addWordsToGrid();
 
         // Output the grid for manual inspection
         /*
@@ -138,59 +139,53 @@ public:
         std::cout << "All words were placed successfully." << std::endl;
     }
 
-    static void isDiacritic_t() {
+    // Test method for Wordfind::guessWord
+    static void guessWord_t() {
         Wordfind wordfind;
 
-        // Test diacritic characters within the specified ranges
-        // Combining Diacritical Marks
-        assert(wordfind.isDiacritic(0x0300)); // Combining Grave Accent
-        assert(wordfind.isDiacritic(0x036F)); // Combining Double Breve
+        // Sample words to add to Wordfind
+        wordfind.words = { "HELLO", "WORLD", "TEST", "GRID" };
 
-        // Combining Diacritical Marks for Greek and Coptic
-        assert(wordfind.isDiacritic(0x1DC0)); // Combining Dotted Grave Accent
-        assert(wordfind.isDiacritic(0x1DFF)); // Combining Macron Below
+        // Test with a correct guess
+        std::string correctGuess = "HELLO";
+        wordfind.guessWord(correctGuess);
 
-        // Latin Extended-A
-        assert(wordfind.isDiacritic(0x0100)); // Latin Capital Letter A with Macron
-        assert(wordfind.isDiacritic(0x017F)); // Latin Small Letter Long S
+        // Check if the word was added to wordsFound
+        assert(std::find(wordfind.wordsFound.begin(), wordfind.wordsFound.end(), correctGuess) != wordfind.wordsFound.end() &&
+            "Correct guess was not added to wordsFound!");
 
-        // Non-diacritic characters within the range limits
-        assert(!wordfind.isDiacritic(0x0270)); // Latin Letter Small T with Retroflection Hook (outside Latin Extended-A range)
-        assert(!wordfind.isDiacritic(0x0279)); // Latin Letter Small D with Hook (outside Latin Extended-A range)
+        // Test with an incorrect guess
+        std::string incorrectGuess = "INVALID";
 
-        std::cout << "All specified range diacritic tests passed." << std::endl;
+        // Use a mock function to prevent actual console output during testing
+        //auto mockClearLastNLines = [](int n) {
+            // Placeholder for clearing lines; in real implementation, it would modify console output
+        //    };
+        //wordfind.clearLastNLines = mockClearLastNLines;
+
+        // Capture the output for the incorrect guess
+        std::ostringstream oss;
+        std::streambuf* originalCoutBuffer = std::cout.rdbuf(oss.rdbuf()); // Redirect std::cout to oss
+
+        wordfind.guessWord(incorrectGuess);
+
+        // Restore original cout buffer
+        std::cout.rdbuf(originalCoutBuffer);
+
+        // Check if the output contains the expected message
+        std::string expectedMessage = "Try again...";
+        assert(oss.str().find(expectedMessage) != std::string::npos &&
+            "Expected message for incorrect guess was not printed!");
+
+        // Check that wordsFound has not been updated
+        assert(std::find(wordfind.wordsFound.begin(), wordfind.wordsFound.end(), incorrectGuess) == wordfind.wordsFound.end() &&
+            "Incorrect guess should not have been added to wordsFound!");
+
+        std::cout << "All guessWord tests passed successfully." << std::endl;
     }
 
-    static void hasDiacritics_t() {
-        Wordfind wordfind;
 
-        // Test strings with diacritical marks (Maori words)
-        assert(wordfind.hasDiacritics("Māori")); // 'ā' has a diacritic
-        assert(wordfind.hasDiacritics("Ngā")); // 'ā' has a diacritic
-        assert(wordfind.hasDiacritics("Hāpai")); // 'ā' has a diacritic
-        assert(wordfind.hasDiacritics("Tūī")); // 'ū' has a diacritic
-        assert(wordfind.hasDiacritics("Pūkeko")); // 'ū' has a diacritic
-
-        // Test strings without diacritical marks (Maori words without macrons)
-        assert(!wordfind.hasDiacritics("Maori")); // No diacritic
-        assert(!wordfind.hasDiacritics("Nga")); // No diacritic
-        assert(!wordfind.hasDiacritics("Hapai")); // No diacritic
-        assert(!wordfind.hasDiacritics("Tui")); // No diacritic
-        assert(!wordfind.hasDiacritics("Pukeko")); // No diacritic
-
-        // Test empty string
-        assert(!wordfind.hasDiacritics("")); // No diacritic in an empty string
-
-        // Test string with only diacritical marks
-        assert(wordfind.hasDiacritics("\u0101\u016B")); // Combining macrons for 'ā' and 'ū
-
-        // Test empty string
-        assert(!wordfind.hasDiacritics("")); // No diacritic in an empty string
-
-        std::cout << "All hasDiacritics tests passed." << std::endl;
-    }
-
-    static void resetGameState_t() {
+    static void reset_t() {
         Wordfind wordfind;
 
         // Set initial state with some dummy data
@@ -208,7 +203,7 @@ public:
         assert(!wordfind.wordToPositionMap.empty());
 
         // Call the resetGameState method
-        wordfind.resetGameState();
+        wordfind.reset();
 
         // Test that all internal state variables are cleared
         assert(wordfind.wordsFound.empty());
@@ -225,7 +220,8 @@ public:
         // Set up initial data
         std::vector<std::vector<char>> grid(10, std::vector<char>(10, ' '));
         std::vector<std::string> words = { "word" };
-        wordfind.addWordsToGrid(grid, words);
+        wordfind.words = words;
+        wordfind.addWordsToGrid();
 
         // Simulate positions in the wordToPositionMap
         Wordfind::PositionSet positions;
@@ -249,65 +245,32 @@ public:
         std::cout << "updateWordVector test passed." << std::endl;
     }
 
-    static void waitForEnter_t() {
+    // Test method for Wordfind::setup
+    static void setup_t() {
         Wordfind wordfind;
 
-        // Set up mock data
-        wordfind.words = { "WORD", "TEST", "GAME" };
-
-        // Test: Simulate valid input
-        {
-            std::string input = "word\n"; // Simulated input
-            std::istringstream input_stream(input);
-            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
-
-            bool quit = wordfind.waitForEnter();
-
-            assert(wordfind.wordsFound.size() == 1);
-            assert(wordfind.wordsFound[0] == "WORD");
-            assert(!quit);
-            std::cout << "testWaitForEnter (valid input) passed." << std::endl;
-        }
+        // Mock DataGenerator to provide controlled output
+        DataGenerator mockGenerator;
         
-        // Test: Simulate quit input
-        {
-            std::string input = "q\n"; // Simulated input
-            std::istringstream input_stream(input);
-            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
+        // Call setup to populate words and initialize the grid
+        wordfind.setup();
 
-            bool quit = wordfind.waitForEnter();
+        // Validate that the words vector is populated correctly
+        assert(wordfind.words.size() == Wordfind::WORD_COUNT && "Word count mismatch!");
 
-            assert(quit);
-            std::cout << "testWaitForEnter (quit input) passed." << std::endl;
+        // Check if the words are valid (not empty and of correct size)
+        for (const auto& word : wordfind.words) {
+            assert(word.size() < Wordfind::GRID_SIZE && word.size() > 2 && "Word size is not valid!");
+            assert(std::all_of(word.begin(), word.end(), ::islower) && "Word must be in lowercase!");
         }
-        /*
-        // Test: Simulate invalid input
-        {
-            std::string input = "invalid\n"; // Simulated input
-            std::istringstream input_stream(input);
-            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
 
-            bool quit = wordfind.waitForEnter();
+        // Check if the grid is initialized correctly (the actual check will depend on your implementation)
+        assert(!wordfind.grid.empty() && "Grid should not be empty!");
+        assert(wordfind.grid.size() == Wordfind::GRID_SIZE && "Grid size mismatch!");
 
-            assert(wordfind.wordsFound.empty());
-            assert(!quit);
-            std::cout << "testWaitForEnter (invalid input) passed." << std::endl;
-        }
-        
-        // Test: Simulate empty input
-        {
-            std::string input = "\n"; // Simulated input
-            std::istringstream input_stream(input);
-            StreamRedirector stream_redirector(input_stream.rdbuf(), std::cout.rdbuf());
-
-            bool quit = wordfind.waitForEnter();
-
-            assert(wordfind.wordsFound.empty());
-            assert(!quit);
-            std::cout << "testWaitForEnter (empty input) passed." << std::endl;
-        }*/
-        
+        std::cout << "All setup tests passed successfully." << std::endl;
     }
+
 
     // Method that tests the print method for the wordfind class
     static void printGrid_t() {
@@ -320,12 +283,14 @@ public:
             {'G', 'H', 'I'}
         };
 
+        wf.grid = grid;
+
         // Redirect cout to a string stream
         std::stringstream ss;
         std::streambuf* oldCoutBuffer = std::cout.rdbuf(ss.rdbuf());
 
         // Call the method
-        wf.printGrid(grid);
+        wf.printGrid();
 
         // Reset cout
         std::cout.rdbuf(oldCoutBuffer);
@@ -346,50 +311,171 @@ public:
         // std::cout << (output == expectedOutput) << std::endl;
     }
 
-    // Test function for clearLastNLines
-    static void clearLastNLines_t() {
-        Wordfind wf;
+    static void generate_t() {
+        Wordfind wordfind;
 
-        // Save the original buffer
-        std::streambuf* originalBuffer = std::cout.rdbuf();
-
-        // Create a string stream to capture the output
-        std::ostringstream outputStream;
-        std::cout.rdbuf(outputStream.rdbuf());
-
-        // Print some lines to the output stream
-        std::vector<std::vector<char>> grid = {
-            {'A', 'B', 'C'},
-            {'D', 'E', 'F'},
-            {'G', 'H', 'I'}
+        // Setup a mock grid for testing
+        wordfind.grid = {
+            {'H', 'E', 'L', 'L', 'O'},
+            {'W', 'O', 'R', 'L', 'D'},
+            {'T', 'E', 'S', 'T', 'S'},
+            {'G', 'R', 'I', 'D', 'S'},
+            {'A', 'B', 'C', 'D', 'E'}
         };
 
-        wf.printGrid(grid);
+        // Generate the output string
+        std::string output = wordfind.generate();
 
-        // Clear the last 2 lines
-        wf.clearLastNLines(2);
+        // Expected ASCII art header
+        std::string expectedHeader = R"(
++=================================================+
+|   __        __            _  __ _           _   |
+|   \ \      / /__  _ __ __| |/ _(_)_ __   __| |  |
+|    \ \ /\ / / _ \| '__/ _` | |_| | '_ \ / _` |  |
+|     \ V  V / (_) | | | (_| |  _| | | | | (_| |  |
+|      \_/\_/ \___/|_|  \__,_|_| |_|_| |_|\__,_|  |
+|                                                 |
++=================================================+
+)";
 
-        // Restore the original buffer
-        std::cout.rdbuf(originalBuffer);
+        // Check if the header is present in the output
+        assert(output.find(expectedHeader) != std::string::npos && "Header is missing in the output!");
 
-        // Get the output string
-        std::string output = outputStream.str();
+        // Check if the grid is printed correctly
+        std::string expectedGrid = "H E L L O\nW O R L D\nT E S T S\nG R I D S\nA B C D E\n"; // Adjust based on your printGrid implementation
+        assert(output.find(expectedGrid) != std::string::npos && "Grid is missing or incorrect in the output!");
 
-        // Check if the output contains the escape sequences for clearing lines
-        std::string clearSequence = "\033[A\033[2K";
+        // Check for the prompt
+        assert(output.find("Press 1) to guess a word") != std::string::npos && "Prompt for guessing a word is missing!");
+        assert(output.find("Press q to quit") != std::string::npos && "Quit prompt is missing!");
 
-        // Assert that the output contains the expected number of clear sequences
-        size_t count = 0;
-        size_t pos = 0;
-        while ((pos = output.find(clearSequence, pos)) != std::string::npos) {
-            count++;
-            pos += clearSequence.length();
+        std::cout << "All generate tests passed successfully." << std::endl;
+    }
+
+    //Code to test the display method
+
+    // Mock class to capture output during testing
+    class MockWordfind : public Wordfind {
+    public:
+        std::string generatedOutput;
+
+        std::string generate() override {
+            generatedOutput = Wordfind::generate(); // Call the original method
+            return generatedOutput;
+        }
+    };
+
+    static void display_t() {
+        MockWordfind wordfind;
+
+        // Setup a mock grid for testing
+        wordfind.grid = {
+            {'H', 'E', 'L', 'L', 'O'},
+            {'W', 'O', 'R', 'L', 'D'},
+            {'T', 'E', 'S', 'T', 'S'},
+            {'G', 'R', 'I', 'D', 'S'},
+            {'A', 'B', 'C', 'D', 'E'}
+        };
+
+        // Call the display method
+        wordfind.display();
+
+        // Check if the generated output is not empty
+        assert(!wordfind.generatedOutput.empty() && "Generated output is empty!");
+
+        // Check if the header is present in the output
+        std::string expectedHeader = R"(
++=================================================+
+|   __        __            _  __ _           _   |
+|   \ \      / /__  _ __ __| |/ _(_)_ __   __| |  |
+|    \ \ /\ / / _ \| '__/ _` | |_| | '_ \ / _` |  |
+|     \ V  V / (_) | | | (_| |  _| | | | | (_| |  |
+|      \_/\_/ \___/|_|  \__,_|_| |_|_| |_|\__,_|  |
+|                                                 |
++=================================================+
+)";
+
+        // Check if the header is present in the output
+        assert(wordfind.generatedOutput.find(expectedHeader) != std::string::npos && "Header is missing in the output!");
+
+        // Check for the grid in the output
+        std::string expectedGrid = "H E L L O\nW O R L D\nT E S T S\nG R I D S\nA B C D E\n"; // Adjust based on your printGrid implementation
+        assert(wordfind.generatedOutput.find(expectedGrid) != std::string::npos && "Grid is missing or incorrect in the output!");
+
+        // Check for the prompt
+        assert(wordfind.generatedOutput.find("Press 1) to guess a word") != std::string::npos && "Prompt for guessing a word is missing!");
+        assert(wordfind.generatedOutput.find("Press q to quit") != std::string::npos && "Quit prompt is missing!");
+
+        std::cout << "All display tests passed successfully." << std::endl;
+    }
+
+    static void menu_t() {
+        Wordfind wordfind;
+
+        // Test case 1: Valid guess input
+        {
+            // Set up the initial state
+            wordfind.words = { "TEST", "HELLO", "WORLD" }; // Add words to the game
+            std::string guess = "TEST"; // Simulated guess input
+
+            // Capture the output for verification
+            std::streambuf* originalCout = std::cout.rdbuf(); // Save original buffer
+            std::ostringstream oss; // Create a string stream to capture output
+            std::cout.rdbuf(oss.rdbuf()); // Redirect std::cout to the string stream
+
+            // Simulate user input
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore any leftover input
+            std::cout << "1\n" << guess << std::endl; // Simulate selecting option '1' and inputting the guess
+
+            // Call the menu function
+            bool continueGame = wordfind.menu();
+
+            // Verify that the word was guessed correctly
+            assert(wordfind.wordsFound.size() == 1 && "The guessed word should be added to wordsFound.");
+            assert(wordfind.wordsFound[0] == guess && "The guessed word should be 'TEST'.");
+            assert(continueGame == true && "The game should continue after a valid guess.");
+
+            std::cout.rdbuf(originalCout); // Restore original buffer
         }
 
-        assert(count >= 2 && "The number of clear sequences does not match the expected value.");
+        // Test case 2: Quit option
+        {
+            std::streambuf* originalCout = std::cout.rdbuf(); // Save original buffer
+            std::ostringstream oss; // Create a string stream to capture output
+            std::cout.rdbuf(oss.rdbuf()); // Redirect std::cout to the string stream
 
-        std::cout << "Test passed!" << std::endl;
+            std::cout << "q" << std::endl; // Simulate selecting the quit option
+
+            // Call the menu function
+            bool continueGame = wordfind.menu();
+
+            // Verify that the game ends
+            assert(continueGame == false && "The game should end after selecting quit.");
+
+            std::cout.rdbuf(originalCout); // Restore original buffer
+        }
+
+        // Test case 3: Invalid option
+        {
+            std::streambuf* originalCout = std::cout.rdbuf(); // Save original buffer
+            std::ostringstream oss; // Create a string stream to capture output
+            std::cout.rdbuf(oss.rdbuf()); // Redirect std::cout to the string stream
+
+            std::cout << "x" << std::endl; // Simulate pressing an invalid key
+
+            // Call the menu function
+            bool continueGame = wordfind.menu();
+
+            // Verify that the game continues
+            assert(continueGame == true && "The game should continue after an invalid input.");
+
+            std::cout.rdbuf(originalCout); // Restore original buffer
+        }
+
+        std::cout << "All menu tests passed!" << std::endl;
     }
+
 
 
 private:
@@ -422,6 +508,8 @@ private:
         }
         return false;
     }
+
+    friend class Wordfind;
 };
 
 
@@ -430,14 +518,15 @@ int main() {
     WordfindTest::initializeGrid_t();
     WordfindTest::placeWord_t();
     WordfindTest::addWordsToGrid_t();
-    WordfindTest::isDiacritic_t();
-    //WordfindTest::hasDiacritics_t(); currently not working
-    WordfindTest::resetGameState_t();
+    WordfindTest::reset_t();
     WordfindTest::updateWordVector_t();
-    WordfindTest::waitForEnter_t();
     WordfindTest::printGrid_t();
-    WordfindTest::clearLastNLines_t();
-    
+    WordfindTest::setup_t();
+    WordfindTest::generate_t();
+    WordfindTest::display_t();
+    WordfindTest::menu_t();
+
+
 	return 0;
 }
 
