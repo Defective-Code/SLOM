@@ -50,7 +50,7 @@ jobs:
       run: OpenCppCoverage.exe --modules Debug --export_type cobertura:slom.xml --cover_children -- ctest -C ${{env.BUILD_TYPE}} --test-dir build
     
     - name: Upload Report to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@f30e4959ba63075080d4f7f90cacc18d9f3fafd7
       with:
         fail_ci_if_error: true
         files: slom.xml

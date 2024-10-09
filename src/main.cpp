@@ -85,8 +85,16 @@ char getMenuOption(int range) {
 	
 	do {
 		displayMainMenu();
+
+		// Get the first character from user input
 		ch = getchar();
-	} while (ch != 'q' && !isdigit(ch) && ((ch - '0') <= 0 || (ch - '0') > range)); //this checks if the entered character is a digit, and within the range of menu item values, subtracting '0' as that returns converts the number from its ASCII value to its actual value
+
+		// Flush the remaining characters in the input buffer
+		while (getchar() != '\n');  // Discard all characters until a newline is encountered
+
+		// Validate input: it must be a digit and within the desired range
+	} while (ch != 'q' && (!isdigit(ch) || (ch - '0') <= 0 || (ch - '0') > range));
+
 	return ch;
 }
 
