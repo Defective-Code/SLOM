@@ -60,7 +60,8 @@ void Wordfind::initializeGrid(std::vector<std::vector<char>>& grid) {
 
 // Function to print the grid
 void Wordfind::printGrid(const std::vector<std::vector<char>>& grid) {
-    
+    int wordsRemaining = words.size() - wordsFound.size();
+    std::cout << "Words to find: " << wordsRemaining << "\n";
 
     int r = 0;
     for (int i = 0; i <= GRID_SIZE; i++) {
@@ -339,7 +340,7 @@ int Wordfind::startGame() {
         std::transform(nextWord.begin(), nextWord.end(), nextWord.begin(), [](unsigned char c) { return std::toupper(c); });
         std::cout << nextWord << std::endl;;
         words.push_back(nextWord);
-    }   
+    }
 
     std::vector<std::vector<char>> grid(Wordfind::GRID_SIZE, std::vector<char>(Wordfind::GRID_SIZE, ' ')); //the grid
 
