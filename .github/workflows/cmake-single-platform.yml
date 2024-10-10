@@ -81,8 +81,13 @@ jobs:
         run: |
           cd build
           for exe in $(find . -maxdepth 2 -type f -executable); do
-            valgrind --leak-check=full --log-file=${{github.workspace}}/valgrind/$(basename $exe).txt ./$exe
+            if [[ "$(basename $exe)" == "SLOM" ]]; then
+              valgrind --leak-check=full --log-file=${{github.workspace}}/valgrind/$(basename $exe).txt ./$exe < ${{github.workspace}}/valgrind_input.txt
+            else
+              valgrind --leak-check=full --log-file=${{github.workspace}}/valgrind/$(basename $exe).txt ./$exe
+            fi
           done
+        
 
       - name: Upload Valgrind output
         uses: actions/upload-artifact@v3
