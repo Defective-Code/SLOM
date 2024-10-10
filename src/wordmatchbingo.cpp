@@ -203,7 +203,9 @@ int WordMatchBingo::startGame() {
         remainingTime = totalTime - elapsedTime;
     }
 
-    std::cout << "Game over! You found " << wordsFound << " words.\n\n";
+    std::cout << "\nGame over! You found " << wordsFound << " out of " << bingoWordPoolCount << " words.\n\n";
+
+    std::this_thread::sleep_for(std::chrono::seconds(3));
     reset();
 
     return 0;
