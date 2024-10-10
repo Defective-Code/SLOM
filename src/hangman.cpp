@@ -166,7 +166,7 @@ bool Hangman::guessLetter(char input) {
 	//seen_letters.insert(input);
 
 	//int x = countSubstringOccurrences(answer, input);
-	__int64 x = std::count(answer.begin(), answer.end(), input);
+	int64_t x = std::count(answer.begin(), answer.end(), input);
 
 	//if x > 0, then it exists in the word and is a correct letter, else it is an incorrect letter
 	if (x > 0) {
@@ -201,7 +201,7 @@ int Hangman::startGame() {
 	setup();
 
 	//loop until the stage is the max stage and the hangman is done
-	while (current_stage != MAX_STAGE) {
+	while (current_stage < MAX_STAGE) {
 		//system("CLS"); // Clear the terminal screen
 		
 		std::cout << answer << std::endl; //here for testing purposes
@@ -223,12 +223,23 @@ int Hangman::startGame() {
 
 	}
 
-	display();
-	std::cout << "You saved him, well done!" << std::endl;
+	//you won
+	if (current_stage < MAX_STAGE) {
+		display();
+		std::cout << "You saved him, well done!" << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(3));
+		reset();
+		return COIN_AMOUNT;
+	}
+	//you lost
+	else {
+		std::cout << "Sorry, you didn't make it in time. :(" << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(3));
+		reset();
+		return 0;
+	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	reset();
-	return COIN_AMOUNT;
+	
 }
 
 void Hangman::reset() {
