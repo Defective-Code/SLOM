@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <sstream>
 #include <thread>
+#include <random>
 #include <cstdlib>  // For rand() and srand()
 #include <ctime>    // For time
 
@@ -44,7 +45,7 @@ bool Wordfind::placeWord(const std::string& word, int row, int col, int dRow, in
         if (r < 0 || r >= GRID_SIZE || c < 0 || c >= GRID_SIZE) return false;
         if (occupiedPositions.find(pos) != occupiedPositions.end() && grid[r][c] != word[i]) return false;
 
-        wordPositions.push_back(pos);
+        
     }
 
     wordToPositionMap[word] = PositionSet();
@@ -57,6 +58,7 @@ bool Wordfind::placeWord(const std::string& word, int row, int col, int dRow, in
         grid[r][c] = word[i];
         occupiedPositions.insert(pos);
         wordToPositionMap[word].insert(pos);
+        if(i == 0) wordPositions.push_back(pos);
     }
 
     return true;
@@ -161,10 +163,11 @@ std::string Wordfind::printGrid() {
         for (char cell : row) {
             Position pos = { r, c };
             auto it = wordsFoundCoordinates.find(pos);
+            auto it2 = hintCoords.find(pos);
             char up_cell = toupper(cell);
-            if (it != wordsFoundCoordinates.end()) {
+            if (it != wordsFoundCoordinates.end() || it2 != hintCoords.end()) { //case if hint is given but word hasn't been found yet
                 oss << "\033[32m" << up_cell << "\033[0m" << ' ';
-            }
+            } 
             else {
                 oss << up_cell << ' ';
             }
@@ -215,7 +218,7 @@ std::string Wordfind::generate() {
 
     oss << printGrid() << std::endl;
 
-    oss << "Press 1) to guess a word\nPress q to quit" << std::endl;
+    oss << "Press 1) to guess a word\nPress 2) to get a hint\nPress q to quit" << std::endl;
 
     return oss.str();
 }
@@ -238,6 +241,11 @@ bool Wordfind::menu() {
         guessWord(input);
         break;
     }
+    case '2':
+    {
+        giveHint();
+        break;
+    }
     case 'q':
         printf("Quitting.....\n");
         return false;
@@ -250,7 +258,53 @@ bool Wordfind::menu() {
 
 // function to give hint to user
 void Wordfind::giveHint() {
+
+    if(hintsGiven.size() >= WORD_COUNT) {
+        std::cout << "All hints already given, sorry" << std::endl; 
+        return;
+    }
     
+    // Create a random number generator
+    std::random_device rd;  // Seed for the random number engine
+    std::mt19937 gen(rd()); // Mersenne Twister engine initialized with rd()
+
+    // Define a distribution from 0 to WORD_COUNT  
+    std::uniform_int_distribution<> distrib(0, WORD_COUNT-1); //between 0 and WORD_COUNT-1 inclusive
+    
+    int random_number = 0;
+    std::vector<int>::iterator it;
+    //std::string word = "";
+
+    //this loop iterates until it finds an index that has not already been assigned a hint.
+    do {
+        
+        random_number = distrib(gen); // Generate a random index
+        it = std::find(hintsGiven.begin(), hintsGiven.end(), random_number);
+        //word = words[random_number]; // Get the word corresponding to the random index
+
+    } while(it != hintsGiven.end());
+
+    // Retrieve the set of coordinates for the word
+    Position coord = wordPositions[random_number]; // Get the coordinates set for the word
+
+    hintCoords.insert(coord); //add the coord to display in the grid
+
+    hintsGiven.push_back(random_number); //add the index to the hint given vector 
+
+    //std::string& word = words[random_number]; // Get the reference to the word
+
+    // std::cout << random_number << std::endl;
+    // std::cout << word << std::endl;
+
+    // ANSI escape code for green text
+    //std::string green = "\033[32m";
+    // ANSI escape code to reset text color
+    //std::string reset = "\033[0m";
+
+    // Modify the first character of the word in place
+    //word = green + word[0] + reset + word.substr(1); // Modify the original word
+    //std::cout << word << std::endl;
+
 }
 
 // function to start game 
@@ -260,7 +314,10 @@ int Wordfind::startGame() {
 
     while (wordsFound.size() < words.size()) { //looping until player has found all words
         display();
-        if(!menu()) return 0;
+        if(!menu()) {
+            reset();
+            return 0;
+        }
     }
     display();
 
@@ -272,8 +329,11 @@ int Wordfind::startGame() {
 
  // Function to reset game state
 void Wordfind::reset() {
+    words.clear();
     wordsFound.clear();
     wordPositions.clear();
     wordsFoundCoordinates.clear();
     wordToPositionMap.clear();
+    hintsGiven.clear();
+    hintCoords.clear();
 }

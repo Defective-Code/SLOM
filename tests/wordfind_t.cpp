@@ -198,6 +198,7 @@ public:
         wordfind.wordPositions = { {0, 0}, {1, 1} };
         wordfind.wordsFoundCoordinates.insert({ 2, 2 });
         wordfind.wordToPositionMap["word2"] = { {3, 3}, {4, 4} };
+        wordfind.hintsGiven = {0, 2};
 
         // Ensure the state is set
         assert(!wordfind.words.empty());
@@ -205,15 +206,18 @@ public:
         assert(!wordfind.wordPositions.empty());
         assert(!wordfind.wordsFoundCoordinates.empty());
         assert(!wordfind.wordToPositionMap.empty());
+        assert(!wordfind.hintsGiven.empty());
 
         // Call the resetGameState method
         wordfind.reset();
 
         // Test that all internal state variables are cleared
+        assert(wordfind.words.empty());
         assert(wordfind.wordsFound.empty());
         assert(wordfind.wordPositions.empty());
         assert(wordfind.wordsFoundCoordinates.empty());
         assert(wordfind.wordToPositionMap.empty());
+        assert(wordfind.hintsGiven.empty());
 
         std::cout << "resetGameState test passed." << std::endl;
     }
@@ -443,6 +447,38 @@ public:
         std::cout << "All menu tests passed!" << std::endl;
     }
 
+    // Test method for giveHint
+    static void giveHint_t() {
+        Wordfind wordfind;
+
+        // Initialize words for testing
+        wordfind.words = {"apple", "banana", "cherry", "date"};
+
+        // Test hint generation
+        for (int i = 0; i < Wordfind::WORD_COUNT; ++i) {
+            wordfind.giveHint(); // Call the method to give a hint
+        }
+
+        // Assert that all hints have been given
+        assert(wordfind.hintsGiven.size() == Wordfind::WORD_COUNT && "Not all hints were given!");
+        assert(wordfind.hintCoords.size() == Wordfind::WORD_COUNT && "Not all hints were given!");
+
+        // // Check that the first letter of each word is indicated as "green"
+        // for (size_t i = 0; i < Wordfind::WORD_COUNT; i++)
+        // {
+        //     assert(wordfind.wordPositions[i])
+        // }
+        
+
+        // Try to give another hint
+        // This should indicate that all hints have been given
+        wordfind.giveHint(); // Call again to see if it handles the case correctly
+        assert(wordfind.hintsGiven.size() == Wordfind::WORD_COUNT && "Expected no additional hints to be given!");
+
+        std::cout << "giveHint() methods passed" << std::endl;
+    }
+
+
 
 
 private:
@@ -476,6 +512,15 @@ private:
         return false;
     }
 
+
+    // Function to check if the first letter of the word is green
+    static bool isFirstLetterGreen(const std::string& word) {
+        // Check if the word starts with the ANSI escape code for green
+        const std::string green = "\033[32m"; // ANSI escape code for green text
+        return word.size() > green.size() && word.substr(0, green.size()) == green;
+    }
+
+
     friend class Wordfind;
 };
 
@@ -492,6 +537,7 @@ int main() {
     WordfindTest::generate_t();
     WordfindTest::display_t();
     WordfindTest::menu_t();
+    WordfindTest::giveHint_t();
 
 
 	return 0;
