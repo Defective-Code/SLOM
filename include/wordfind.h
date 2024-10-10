@@ -37,7 +37,7 @@ class Wordfind : private Game {
 
 	public:
 		/***
-		* Method that starts the game, 
+		* @brief Method that starts the game, 
 		*
 		* @param words The real words to be placed in the wordfind
 		*/
@@ -54,28 +54,36 @@ class Wordfind : private Game {
 
 		std::vector<std::vector<char>> grid; //the grid of letters
 
+		/**
+		 * @brief method to give hint to user 
+		*/
 		void giveHint() override;
 
+		/**
+		 * @brief method to get random words from data generator
+		 * 
+		 * @return string representation of random word 
+		*/
 		std::vector<std::string> getRandomWords();
 
 		/**
-		 * Initializes the grid with random letters from A to Z.
-		 * Each cell in the grid is filled with a random uppercase letter.
+		 * @brief Initializes the grid with random letters from A to Z.
+		 * @brief Each cell in the grid is filled with a random uppercase letter.
 		 *
 		 * @param grid A reference to a 2D vector of characters representing the grid to be initialized.
 		*/
 		void initializeGrid();
 
 		/**
-		 * Creates a string of the grid 
-		 * Each row of the grid is printed on a new line, with characters separated by spaces.
+		 * @brief Creates a string of the grid 
+		 * @brief Each row of the grid is printed on a new line, with characters separated by spaces.
 		 *
 		 * @param grid A constant reference to a 2D vector of characters representing the grid to be printed.
 		 */
 		std::string printGrid();
 
 		/**
-		 * Tries to place a word in the grid at a specified position and direction.
+		 * @brief Tries to place a word in the grid at a specified position and direction.
 		 *
 		 * This method checks if the word can fit in the grid starting from a given position
 		 * and moving in a specified direction. It also ensures that the word does not overlap
@@ -95,7 +103,7 @@ class Wordfind : private Game {
 		bool placeWord(const std::string& word, int row, int col, int dRow, int dCol, PositionSet& occupiedPositions);
 
 		/**
-		 * Adds a list of words to the grid, placing each word at a random position and direction.
+		 * @brief Adds a list of words to the grid, placing each word at a random position and direction.
 		 *
 		 * This method attempts to place each word from the provided list into the grid. It uses
 		 * random positions and directions for placing the words and ensures that words do not
@@ -107,30 +115,47 @@ class Wordfind : private Game {
 		*/
 		void addWordsToGrid();
 
+		/**
+		 * @brief method to take user input word guess and check if correct
+		 * 
+		 * @param string input from user
+		*/
 		void guessWord(std::string input);
 
 		/** 
-		 * Takes a word that has been found, and updates vector of positions found for print grid 
-		 * method to utilise / print found words as green
+		 * @brief Takes a word that has been found, and updates vector of positions found for print grid 
+		 * @brief method to utilise / print found words as green
 		 * 
 		 * @param string key the key for the Map of the word that has been found and it's positions 
 		 in the grid
 		*/
 		void updateWordVector(const std::string& key);
 
+		/**
+		 * @brief function to display menu
+		*/
 		bool menu() override;
 
+		/**
+		 * @brief function to set up initial game state 
+		*/
 		void setup() override;
 
 		/**
-		 * Function to reset game state
+		 * @brief Function to reset game state
 		 * 
 		 * Clears all data held within variable from previous game.
 		*/
 		void reset() override; 
 
+		/**
+		 * @brief function to generate game 
+		*/
 		std::string generate() override;
 
+		/**
+		 * @brief function to display screen
+		*/
 		void display() override;
 
 		friend class WordfindTest;
