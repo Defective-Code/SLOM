@@ -13,7 +13,7 @@
 #include "io_handler.h"
 
 
-
+// method to generate initial menu screen
 std::string Hangman::generate() {
 	std::ostringstream oss;
 
@@ -95,6 +95,7 @@ std::string Hangman::generate() {
 	return oss.str();
 }
 
+// method to display screen
 void Hangman::display() {
 	clearScreen();
 	std::string output = generate();
@@ -102,7 +103,7 @@ void Hangman::display() {
 }
 
 
-
+// method to set up initial game state and initialise variables
 void Hangman::setup() {
 	DataGenerator dg = DataGenerator();
 	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
@@ -110,6 +111,7 @@ void Hangman::setup() {
 	answer = toLowerCase(removeWhitespace(answer_pair.first));
 }
 
+// method to display menu
 bool Hangman::menu() {
 	char ch = getSingleCharacter();
 	bool result; //variable to store the result of a guess
@@ -161,6 +163,7 @@ bool Hangman::guessWord(std::string input) {
 	return input.compare(answer) == 0;
 }
 
+// method to get user input 
 bool Hangman::guessLetter(char input) {
 
 	
@@ -181,6 +184,7 @@ bool Hangman::guessLetter(char input) {
 	}
 }
 
+// method to check if game has finihsed
 bool Hangman::checkGameEnd() {
 	// Iterate over each character in the word
 	for (char c : answer) {
@@ -192,10 +196,12 @@ bool Hangman::checkGameEnd() {
 	return true; // Return true if all characters are found in the set
 }
 
+// method to provide hint to player
 void Hangman::giveHint() {
 
 }
 
+// method to check if game has started 
 int Hangman::startGame() {
 	
 	//seen_letters.clear(); //clear the set between games
@@ -243,6 +249,7 @@ int Hangman::startGame() {
 	
 }
 
+// method to reset game state 
 void Hangman::reset() {
 	correct_letters.clear();
 	current_stage = 0;

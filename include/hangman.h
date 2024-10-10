@@ -130,7 +130,10 @@ class Hangman : private Game {
          * @brief Set of letters that have been guessed by the player.
          */
         std::set<char> seen_letters;
-
+        
+        /**
+         * @brief method to give hint to user
+        */
         void giveHint() override;
 
         /**
@@ -142,12 +145,28 @@ class Hangman : private Game {
 
         std::string generate() override;
 
+       /**
+        * @brief method to set up initial game state and intitialise variables
+       */
         void setup() override; //this method sets up the games initial state, e.g initalize the word, setup background data sctructures etc.
 
+       /***
+        * @brief method to reset game
+       */
         void reset() override;
 
+       /**
+        * @brief method to display menu
+        * 
+        * @return boolean - returns true if game is finished or quit and false otherwise
+       */
         bool menu() override;
 
+       /**
+        * @brief Method to check if game has finished - player has guessed word or ran out of attempts
+        * 
+        * @return boolean - whether game has ended 
+       */
         bool checkGameEnd();
 
         /**

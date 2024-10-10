@@ -220,13 +220,14 @@ std::string Wordfind::generate() {
     return oss.str();
 }
 
-
+// function to display screen
 void Wordfind::display() {
     clearScreen();
     std::cout << generate() << std::endl;
 
 }
 
+// function to display menu
 bool Wordfind::menu() {
     char ch = getSingleCharacter();
     //std::cout << ch << std::endl;
@@ -247,10 +248,12 @@ bool Wordfind::menu() {
     return true;
 }
 
+// function to give hint to user
 void Wordfind::giveHint() {
 
 }
 
+// function to start game 
 int Wordfind::startGame() {
 
     setup();
