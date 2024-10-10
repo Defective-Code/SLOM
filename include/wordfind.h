@@ -45,16 +45,54 @@ class Wordfind : private Game {
 
 	private:
 
-		std::vector<std::string> words; //vector of the words to find
-		std::unordered_map<std::string, std::string> wordDefs; //vector of word and definition pairs
-		std::vector<std::string> wordsFound; //vector of the words that have been found
-		std::vector<int> hintsGiven; // vector for the indexes of the words that have been give a hint
-		PositionSet hintCoords; //coords of the first letters of hints
-		std::vector<Position> wordPositions; //vector of each corresponding words position in the grid. Each position is the x,y of the first 
-		PositionSet wordsFoundCoordinates;  //set of positions that have been found.
-		std::unordered_map <std::string, PositionSet> wordToPositionMap; 
+		/**
+		 * @brief A vector of words to be found in the game.
+		 */
+		std::vector<std::string> words;
 
-		std::vector<std::vector<char>> grid; //the grid of letters
+		/**
+		 * @brief An unordered map of word and definition pairs, where the key is the word 
+		 * and the value is its definition.
+		 */
+		std::unordered_map<std::string, std::string> wordDefs;
+
+		/**
+		 * @brief A vector of words that have already been found by the player.
+		 */
+		std::vector<std::string> wordsFound;
+
+		/**
+		 * @brief A vector of indices representing the words for which hints have been given.
+		 */
+		std::vector<int> hintsGiven;
+
+		/**
+		 * @brief A set of coordinates representing the positions of the first letters of the hinted words.
+		 */
+		PositionSet hintCoords;
+
+		/**
+		 * @brief A vector representing the positions of each corresponding word in the grid. 
+		 * Each position stores the x and y coordinates of the first letter of the word.
+		 */
+		std::vector<Position> wordPositions;
+
+		/**
+		 * @brief A set of positions that have been found by the player.
+		 */
+		PositionSet wordsFoundCoordinates;
+
+		/**
+		 * @brief An unordered map that associates each word with a set of positions 
+		 * on the grid, representing where the word is located.
+		 */
+		std::unordered_map<std::string, PositionSet> wordToPositionMap;
+
+		/**
+		 * @brief A 2D vector representing the grid of letters in the game.
+		 */
+		std::vector<std::vector<char>> grid;
+
 
 		/**
 		 * @brief method to give hint to user 
