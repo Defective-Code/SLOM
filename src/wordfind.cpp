@@ -186,10 +186,11 @@ std::string Wordfind::printGrid() {
 std::string Wordfind::generate() {
     std::ostringstream oss;
 
-    for each (auto word in words)
+    for (const auto& word : words)
     {
         oss << word << "\n";
     }
+
 
     oss << R"(
 +=================================================+
@@ -206,10 +207,11 @@ std::string Wordfind::generate() {
     oss << "Words left to find: " << wordsRemaining << "\n";
 
     oss << "Words Found so far :\n";
-    for each (std::string word in wordsFound)
+    for (const std::string& word : wordsFound)
     {
-        oss << word << " : " << wordDefs.at(word) << "\n";
+    oss << word << " : " << wordDefs.at(word) << "\n";
     }
+
 
     oss << printGrid() << std::endl;
 

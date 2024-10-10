@@ -91,7 +91,7 @@ void WordMatchBingo::displayCurrentBingoWord() {
     auto selectedWord = bingoCardPool[index];
     currentBingoWord = selectedWord;
 
-    std::cout << "\nSelected Word: " << selectedWord.first << std::endl;
+    // : " << selectedWord.first << std::endl;
     std::cout << "Definition: " << selectedWord.second << std::endl;
 
     bingoCardPool.erase(bingoCardPool.begin() + index);
@@ -199,7 +199,7 @@ int WordMatchBingo::startGame() {
         // Print the remaining time
 
         bool matchResult = compareUserInputToBingoCard(userGuess);
-        clearLastNLines(15);
+        clearLastNLines(16);
         remainingTime = totalTime - elapsedTime;
     }
 

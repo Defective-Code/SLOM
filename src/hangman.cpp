@@ -151,11 +151,12 @@ bool Hangman::menu() {
 //function to handle getting a word in lowercase
 bool Hangman::guessWord(std::string input) {
 	if (input.compare(answer) == 0) {
-		for each (char c in input)
-		{
-			correct_letters.insert(c);
-			//seen_letters.insert(c);
-		}
+		for (char c : input)
+	{
+    	correct_letters.insert(c);
+    //seen_letters.insert(c);
+	}
+
 	}
 	return input.compare(answer) == 0;
 }
