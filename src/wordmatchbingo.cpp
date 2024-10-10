@@ -253,7 +253,7 @@ int WordMatchBingo::startGame()
         remainingTime = std::max(std::int64_t{0}, (totalTime - elapsedTime));
         displayCurrentBingoWord();
         displayBingoCard();
-        printf("Time left: %lld seconds\n", remainingTime);
+        printf("Time left: %ld seconds\n", remainingTime);
         receiveUserInput();
 
         // Print the remaining time

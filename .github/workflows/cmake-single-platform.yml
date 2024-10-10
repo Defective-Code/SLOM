@@ -56,6 +56,40 @@ jobs:
         files: slom.xml
         token: ${{ secrets.CODECOV_TOKEN }}
 
+
+  valgrind:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y valgrind
+
+      - name: Create output folder
+        run: mkdir -p ${{github.workspace}}/valgrind
+
+      - name: Build project
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          cmake --build . --config ${{env.BUILD_TYPE}}
+
+      - name: Run Valgrind on all executables
+        run: |
+          cd build
+          for exe in $(find . -maxdepth 1 -type f -executable); do
+            valgrind --leak-check=full --log-file=${{github.workspace}}/valgrind/$(basename $exe).txt $exe
+          done
+
+      - name: Upload Valgrind output
+        uses: actions/upload-artifact@v3
+        with:
+          name: valgrind-logs
+          path: ${{github.workspace}}/valgrind
+  
       
   deploy:
     environment:

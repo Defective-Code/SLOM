@@ -10,6 +10,7 @@ void make_wordmap_t() {
 	std::cout << filepath << std::endl;
 	DataGenerator dg_test = DataGenerator(filepath);
 
+	std::cout << dg_test.wordmap["hello"] << std::endl;
 	assert(dg_test.wordmap["hello"] == "a standard greeting in the English language");
 	assert(dg_test.wordmap["world"] == "meaning either the earth, together with all of its countries and peoples or a particular region or group of countries");
 	assert(dg_test.wordmap.size() == 3);
