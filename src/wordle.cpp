@@ -191,7 +191,9 @@ void Wordle::setup() {
     wordToGuess = "";
     //get a word and loop until the word is of the correct length
     while (wordToGuess.length() != WORD_LENGTH) {
-        wordToGuess = removeWhitespace(generator.get_random_entry().first);
+        auto wordPair = generator.get_random_entry();
+        wordToGuess = removeWhitespace(wordPair.first);
+        wordDef = wordPair.second;
     }
     //wordToGuess = removeWhitespace(wordToGuess);
 
@@ -213,7 +215,7 @@ void Wordle::setup() {
 }
 
 void Wordle::giveHint() {
-
+    
 }
 
 int Wordle::startGame() {
@@ -226,7 +228,9 @@ int Wordle::startGame() {
 	}
 	if (wordleComplete)
 	{   
+        std::cout << "Word : " << wordleWord << " | Definition : " << wordDef << std::endl;
 		std::cout << "Congrats Wordle complete!" << std::endl;
+        display(); //display the completed wordle
 	}
 	else
 	{

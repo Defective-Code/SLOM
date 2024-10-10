@@ -109,6 +109,7 @@ void Hangman::setup() {
 	std::pair<std::string, std::string> answer_pair = dg.get_random_entry();
 
 	answer = toLowerCase(removeWhitespace(answer_pair.first));
+	definition = answer_pair.second;
 }
 
 // method to display menu
@@ -233,6 +234,9 @@ int Hangman::startGame() {
 	//you won
 	if (current_stage < MAX_STAGE) {
 		display();
+
+		std::cout << "Word : " << answer << " | Definition : " << definition << std::endl; 
+
 		std::cout << "You saved him, well done!" << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(3));
 		reset();

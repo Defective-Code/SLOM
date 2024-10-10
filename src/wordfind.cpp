@@ -250,7 +250,7 @@ bool Wordfind::menu() {
 
 // function to give hint to user
 void Wordfind::giveHint() {
-
+    
 }
 
 // function to start game 

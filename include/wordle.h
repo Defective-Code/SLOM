@@ -27,6 +27,8 @@ private:
 
 	std::string wordToGuess;
 
+	std::string wordDef;
+
 	void giveHint() override;
 
 		/**

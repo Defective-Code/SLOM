@@ -25,6 +25,8 @@ class Hangman : private Game {
      */
     std::string answer;
 
+    std::string definition;
+
     /**
      * @brief Vector of ASCII art representations of the hangman stages.
      */
