@@ -56,10 +56,10 @@ uncover the mystery!
 
 3) Word Match Bingo			4) Hangman
 ---------------------------------- -	---------------------------------- -
-Match your words and fill your		Can you save the word from the
-bingo card for a thrilling race		gallows ? Guess the letters before
-against the clock!Get ready to		time runs out!
-shout “Bingo!”
+Match your words to their		Can you save the word from the
+descriptions and fill your		gallows ? Guess the letters before
+bingo card for a thrilling race		time runs out!
+against the clock!
 
 ========================================
 🚀 To make your selection, enter the

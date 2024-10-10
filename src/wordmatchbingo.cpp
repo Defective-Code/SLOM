@@ -177,7 +177,7 @@ void WordMatchBingo::getHint() {
 }
 
 int WordMatchBingo::startGame() {
-    clearLastNLines(13);
+    clearLastNLines(1);
     setup();
 
     // Start the timer
