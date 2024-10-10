@@ -44,19 +44,23 @@ void DataGenerator::make_wordmap(std::string filepath) {
 	bool addmap{ false };
 
 	while (std::getline(file, line)) {
+		
 		if (line.empty() || line[0] == '*') {
 			if (!key.empty() && !definition.empty()) {
 				wordmap[key] = definition;
 			}
+			
 			key.clear();
 			definition.clear();
 			nextkey = true;
 		}
 		else if (nextkey) {
+			
 			key = line;
 			nextkey = false;
 		}
 		else {
+			
 			if (!definition.empty()) {
 				definition.append(" " + line);
 			}

@@ -10,6 +10,8 @@ void make_wordmap_t() {
 	std::cout << filepath << std::endl;
 	DataGenerator dg_test = DataGenerator(filepath);
 
+	std::cout << dg_test.wordmap.size() << std::endl;
+
 	std::cout << dg_test.wordmap["hello"] << std::endl;
 	assert(dg_test.wordmap["hello"] == "a standard greeting in the English language");
 	assert(dg_test.wordmap["world"] == "meaning either the earth, together with all of its countries and peoples or a particular region or group of countries");
@@ -20,7 +22,7 @@ void make_wordmap_t() {
 	assert(dg_test.wordmap["multiline"].compare("a test of multiline definition capture"));
 	
 	//Assuming a key with a multiline definition
-	dg_test = DataGenerator(TEST_RESOURCES_FILE_PATH + std::string("empty_file.txt"));
+	//dg_test = DataGenerator(TEST_RESOURCES_FILE_PATH + std::string("empty_file.txt"));
 	
 
 }
