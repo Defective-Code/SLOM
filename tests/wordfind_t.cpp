@@ -453,6 +453,7 @@ public:
 
         // Initialize words for testing
         wordfind.words = {"apple", "banana", "cherry", "date"};
+        wordfind.wordPositions = {{0, 1}, {2, 1}, {5, 6}, {6, 1}};
 
         // Test hint generation
         for (int i = 0; i < Wordfind::WORD_COUNT; ++i) {

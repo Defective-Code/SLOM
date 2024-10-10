@@ -283,7 +283,7 @@ void Wordfind::giveHint() {
         //word = words[random_number]; // Get the word corresponding to the random index
 
     } while(it != hintsGiven.end());
-
+    //std::cout << wordPositions.size() << random_number << std::endl;
     // Retrieve the set of coordinates for the word
     Position coord = wordPositions[random_number]; // Get the coordinates set for the word
 
