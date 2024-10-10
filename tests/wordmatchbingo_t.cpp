@@ -4,18 +4,18 @@
 #include <algorithm>
 #include "wordmatchbingo.h"
 
-class WordMatchBingoTest {
+class WordMatchBingoTest
+{
 public:
-
     // Test method for reset()
-    static void reset_t() {
+    static void reset_t()
+    {
         WordMatchBingo bingo;
 
         // Set initial state
         bingo.bingoCard = {
             {"apple", "A fruit that is typically round and red, green, or yellow."},
-            {"banana", "A long, curved fruit with a yellow skin."}
-        };
+            {"banana", "A long, curved fruit with a yellow skin."}};
         bingo.currentBingoWord = {"banana", "A long, curved fruit with a yellow skin."};
         bingo.userGuess = "banana";
         bingo.wordsFound = 1;
@@ -36,38 +36,41 @@ public:
         std::cout << "All tests passed for reset!\n";
     }
 
-    static void selectBingoCard_t() {
+    static void selectBingoCard_t()
+    {
         WordMatchBingo bingo; // Create an instance of WordMatchBingo
-        //ingo.bingoWordPoolCount = 5; // Assuming you have a method to set the word pool count
+        // ingo.bingoWordPoolCount = 5; // Assuming you have a method to set the word pool count
 
         // Call the method under test
         bingo.selectBingoCard();
-
 
         // Check that the bingo card has the correct number of words
         assert(bingo.bingoCardPool.size() == bingo.bingoWordPoolCount);
 
         // Check that each word does not contain diacritics and has no whitespace
-        for (const auto& entry : bingo.bingoCardPool) {
+        for (const auto &entry : bingo.bingoCardPool)
+        {
             std::string word = entry.first;
             assert(word.length() > 0); // Ensure the word is not empty
 
             // Check for diacritics (basic example)
-            for (char c : word) {
+            for (char c : word)
+            {
                 assert(!(c & 0x80)); // Check that there are no high-bit set characters (indicative of diacritics)
             }
 
             // Check that there are no whitespace characters
-            //if(word.find(' ')) std::cout << word << std::endl;
-            //assert(word.find(' ') == std::string::npos); //Need to fix dataset
+            // if(word.find(' ')) std::cout << word << std::endl;
+            // assert(word.find(' ') == std::string::npos); //Need to fix dataset
         }
 
         std::cout << " selectBingoCard_t passed!" << std::endl;
     }
 
-    static void setup_t() {
+    static void setup_t()
+    {
         WordMatchBingo bingo; // Create an instance of WordMatchBingo
-        //bingo.setBingoWordPoolCount(5); // Set the desired number of words for the bingo card
+        // bingo.setBingoWordPoolCount(5); // Set the desired number of words for the bingo card
 
         // Call the setup method which should call selectBingoCard internally
         bingo.setup();
@@ -76,12 +79,14 @@ public:
         assert(bingo.bingoCardPool.size() == bingo.bingoWordPoolCount);
 
         // Check that each word does not contain diacritics and has no whitespace
-        for (const auto& entry : bingo.bingoCardPool) {
+        for (const auto &entry : bingo.bingoCardPool)
+        {
             std::string word = entry.first;
             assert(word.length() > 0); // Ensure the word is not empty
 
             // Check for diacritics (basic example)
-            for (char c : word) {
+            for (char c : word)
+            {
                 assert(!(c & 0x80)); // Check that there are no high-bit set characters (indicative of diacritics)
             }
 
@@ -92,18 +97,19 @@ public:
         std::cout << "All tests passed for setup_t!" << std::endl;
     }
 
-    static void updateWordWithStrikethrough_t() {
+    static void updateWordWithStrikethrough_t()
+    {
         WordMatchBingo bingo; // Create an instance of WordMatchBingo
         std::string testWord = "test";
 
         // Define the expected result
         std::string expected = "\033[9m" + testWord + "\033[0m"; // Expected formatted string
-        
+
         // Call the method to apply strikethrough
         bingo.updateWordWithStrikethrough(testWord);
 
-        // std::cout << testWord << std::endl;  
-        // std::cout << expected << std::endl;  
+        // std::cout << testWord << std::endl;
+        // std::cout << expected << std::endl;
 
         // Check if the result matches the expected value
         assert(testWord == expected);
@@ -111,20 +117,22 @@ public:
         std::cout << "updateWordWithStrikethrough_t() test passed!" << std::endl;
     }
 
-    static void getDisplayLength_t() {
+    static void getDisplayLength_t()
+    {
         // Test cases
         WordMatchBingo bingo;
-        assert(bingo.getDisplayLength("hello") == 5); // No escape codes
+        assert(bingo.getDisplayLength("hello") == 5);                     // No escape codes
         assert(bingo.getDisplayLength("\033[38;5;10mhello\033[0m") == 5); // Escape codes around "hello"
         assert(bingo.getDisplayLength("\033[38;5;10mhe\033[0mllo") == 5); // Mixed escape codes
-        //std::cout << bingo.getDisplayLength("\033[9mstrikethrough\033[0m") << std::endl;
-        assert(bingo.getDisplayLength("\033[9mstrikethrough\033[0m") == 13); // Strikethrough effect
+        // std::cout << bingo.getDisplayLength("\033[9mstrikethrough\033[0m") << std::endl;
+        assert(bingo.getDisplayLength("\033[9mstrikethrough\033[0m") == 13);        // Strikethrough effect
         assert(bingo.getDisplayLength("\033[38;5;226mcolorful text\033[0m") == 13); // Colorful text
 
         std::cout << "All getDisplayLength_t tests passed!" << std::endl;
     }
 
-    static void displayCurrentBingoWord_t() {
+    static void displayCurrentBingoWord_t()
+    {
         WordMatchBingo bingoGame;
 
         // Set up a sample bingo card pool
@@ -134,27 +142,26 @@ public:
 
         // Display current bingo word and check the currentBingoWord
         bingoGame.displayCurrentBingoWord();
-        
+
         // Ensure the currentBingoWord is set
         assert(!bingoGame.currentBingoWord.first.empty());
-        
+
         // Check that the word was removed from the pool
         auto it = std::find(bingoGame.bingoCardPool.begin(), bingoGame.bingoCardPool.end(), bingoGame.currentBingoWord);
         assert(it == bingoGame.bingoCardPool.end()); // Should not be found
     }
 
-    
-    static void displayBingoCard_t() {
+    static void displayBingoCard_t()
+    {
         WordMatchBingo bingo;
         bingo.bingoCard = {
             {"apple", "A fruit that is typically round and red, green, or yellow."},
             {"banana", "A long, curved fruit with a yellow skin."},
-            {"cherry", "A small, round fruit that is typically red or black."}
-        };
+            {"cherry", "A small, round fruit that is typically red or black."}};
 
         // Redirect std::cout to a string stream
         std::stringstream buffer;
-        std::streambuf* oldCoutBuffer = std::cout.rdbuf(buffer.rdbuf());
+        std::streambuf *oldCoutBuffer = std::cout.rdbuf(buffer.rdbuf());
 
         // Call the method under test
         bingo.displayBingoCard();
@@ -179,19 +186,19 @@ public:
         std::cout << "Test passed! All keywords are present in the output.\n";
     }
 
-
-    static void receiveUserInput_t() {
+    static void receiveUserInput_t()
+    {
         WordMatchBingo bingo;
-        bingo.reset();  // Assuming reset sets up the initial state
+        bingo.reset(); // Assuming reset sets up the initial state
 
         // Redirect std::cin to simulate user input
-        std::string simulatedInput = "Hint\napple\n";  // Simulate the user typing "Hint" and then "apple"
+        std::string simulatedInput = "Hint\napple\n"; // Simulate the user typing "Hint" and then "apple"
         std::istringstream inputStream(simulatedInput);
-        std::streambuf* oldCinBuffer = std::cin.rdbuf(inputStream.rdbuf());
+        std::streambuf *oldCinBuffer = std::cin.rdbuf(inputStream.rdbuf());
 
         // Redirect std::cout to capture output for verification
         std::stringstream outputBuffer;
-        std::streambuf* oldCoutBuffer = std::cout.rdbuf(outputBuffer.rdbuf());
+        std::streambuf *oldCoutBuffer = std::cout.rdbuf(outputBuffer.rdbuf());
 
         // Call the method under test
         bingo.receiveUserInput();
@@ -211,15 +218,15 @@ public:
         std::cout << "Test passed! Hint was generated." << std::endl;
     }
 
-    static void compareUserInputToBingoCard_t() {
+    static void compareUserInputToBingoCard_t()
+    {
         WordMatchBingo bingo;
-        
+
         // Initialize the bingo card with some words
         bingo.bingoCard = {
             {"apple", "A fruit that is typically round and red, green, or yellow."},
             {"banana", "A long, curved fruit with a yellow skin."},
-            {"cherry", "A small, round fruit that is typically red or black."}
-        };
+            {"cherry", "A small, round fruit that is typically red or black."}};
 
         // Set the current bingo word
         bingo.currentBingoWord = {"banana", "A long, curved fruit with a yellow skin."};
@@ -255,7 +262,8 @@ public:
         std::cout << "All tests passed for compareUserInputToBingoCard!\n";
     }
 
-    static void getHint_t() {
+    static void getHint_t()
+    {
         WordMatchBingo bingo;
 
         // Test case 1: Current bingo word is set
@@ -263,7 +271,7 @@ public:
 
         // Redirect std::cout to a string stream to capture output
         std::stringstream outputBuffer;
-        std::streambuf* oldCoutBuffer = std::cout.rdbuf(outputBuffer.rdbuf());
+        std::streambuf *oldCoutBuffer = std::cout.rdbuf(outputBuffer.rdbuf());
 
         // Call the method under test
         bingo.getHint();
@@ -273,16 +281,16 @@ public:
 
         // Check the output
         std::string output = outputBuffer.str();
-        assert(output == "Hint: The first letter of the current word is 'c'.\n" && 
-            "Test failed! The hint output is incorrect.");
+        assert(output == "Hint: The first letter of the current word is 'c'.\n" &&
+               "Test failed! The hint output is incorrect.");
 
         // Test case 2: No current bingo word
-        bingo.currentBingoWord = {"", ""};  // Clear the current bingo word
+        bingo.currentBingoWord = {"", ""}; // Clear the current bingo word
 
         // Redirect std::cout to capture output
-        outputBuffer.str("");  // Clear the previous output
+        outputBuffer.str(""); // Clear the previous output
         outputBuffer.clear();
-        bingo.getHint();  // Call the method again
+        bingo.getHint(); // Call the method again
 
         // Check the output
         output = outputBuffer.str();
@@ -296,36 +304,68 @@ public:
         std::cout << "All tests passed for getHint!\n";
     }
 
-    static void testStartGame() {
+    static void testStartGame_Continue()
+    {
         WordMatchBingo bingo;
 
         // Mock the input/output streams
         std::stringstream inputStream;
         std::stringstream outputStream;
-        std::streambuf* cinBuf = std::cin.rdbuf();
-        std::streambuf* coutBuf = std::cout.rdbuf();
+        std::streambuf *cinBuf = std::cin.rdbuf();
+        std::streambuf *coutBuf = std::cout.rdbuf();
         std::cin.rdbuf(inputStream.rdbuf());
         std::cout.rdbuf(outputStream.rdbuf());
 
         // Prepare mocked input for the game
-        inputStream.str("test\n"); // Simulate user input
+        inputStream.str("continue\n"); // Simulate user input of "continue"
 
-        bingo.startGame();
+        bingo.startGame(); // Start the game
 
-        // Check for game over message
+        // Check for game over message in the output
         std::string output = outputStream.str();
         assert(output.find("Game over!") != std::string::npos);
 
         // Restore original streams
         std::cin.rdbuf(cinBuf);
         std::cout.rdbuf(coutBuf);
-        std::cout << "testStartGame passed." << std::endl;
+
+        std::cout << "testStartGame (continue case) passed." << std::endl;
+    }
+
+    static void testStartGame_Choose()
+    {
+        WordMatchBingo bingo;
+
+        // Mock the input/output streams
+        std::stringstream inputStream;
+        std::stringstream outputStream;
+        std::streambuf *cinBuf = std::cin.rdbuf();
+        std::streambuf *coutBuf = std::cout.rdbuf();
+        std::cin.rdbuf(inputStream.rdbuf());
+        std::cout.rdbuf(outputStream.rdbuf());
+
+        // Simulate user input: "choose", then custom settings (e.g., bingo card size = 5, total time = 120 seconds)
+        inputStream.str("choose\n5\n120\n");
+
+        // Start the game
+        bingo.startGame();
+
+        // Check for "Game over!" in the output to ensure the game ran and ended correctly
+        std::string output = outputStream.str();
+        assert(output.find("Game over!") != std::string::npos);
+
+        // Restore original streams
+        std::cin.rdbuf(cinBuf);
+        std::cout.rdbuf(coutBuf);
+
+        std::cout << "testStartGame_Choose passed." << std::endl;
     }
 
     friend class WordMatchBingo;
 };
 
-int main() {
+int main()
+{
     WordMatchBingoTest::selectBingoCard_t();
     WordMatchBingoTest::receiveUserInput_t();
     WordMatchBingoTest::displayBingoCard_t();
@@ -336,8 +376,9 @@ int main() {
     WordMatchBingoTest::reset_t();
     WordMatchBingoTest::setup_t();
     WordMatchBingoTest::getHint_t();
-    //WordMatchBingoTest::
-    WordMatchBingoTest::testStartGame();
+    // WordMatchBingoTest::
+    WordMatchBingoTest::testStartGame_Continue();
+    WordMatchBingoTest::testStartGame_Choose();
 
     std::cout << "All tests passed!" << std::endl;
 

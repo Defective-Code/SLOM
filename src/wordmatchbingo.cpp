@@ -13,10 +13,11 @@
 
 // Function definitions
 
-void WordMatchBingo::reset() {
+void WordMatchBingo::reset()
+{
     // Clear the bingo word pool and bingo card
     bingoCard.clear();
-    
+
     // Reset the current bingo word and user guess
     currentBingoWord = {"", ""};
     userGuess = "";
@@ -27,20 +28,22 @@ void WordMatchBingo::reset() {
 }
 
 // Function that selects random words and generates the wordpool of bingo words.
-void WordMatchBingo::selectBingoCard() {
+void WordMatchBingo::selectBingoCard()
+{
     std::vector<std::pair<std::string, std::string>> allWords;
 
     DataGenerator generator; // Assuming DataGenerator is defined and accessible
     std::string result;
 
     // Generate a sufficient number of words ensuring no diacritics
-    while (allWords.size() < bingoWordPoolCount) {
+    while (allWords.size() < bingoWordPoolCount)
+    {
         auto entry = generator.get_random_entry();
         result = entry.first;
 
         // Check if the word has diacritics
 
-        result = removeWhitespace(result);        
+        result = removeWhitespace(result);
 
         // Add the valid entry to allWords
         allWords.push_back(entry);
@@ -56,36 +59,44 @@ void WordMatchBingo::selectBingoCard() {
     bingoCardPool = bingoCard;
 }
 
-void WordMatchBingo::setup() {
+void WordMatchBingo::setup()
+{
     selectBingoCard();
 }
 
-void WordMatchBingo::updateWordWithStrikethrough(std::string& word) {
-    word = "\033[9m" + word + "\033[0m";  // Add strikethrough formatting using ANSI codes
+void WordMatchBingo::updateWordWithStrikethrough(std::string &word)
+{
+    word = "\033[9m" + word + "\033[0m"; // Add strikethrough formatting using ANSI codes
 }
 
-
-
-size_t WordMatchBingo::getDisplayLength(const std::string& word) {
+size_t WordMatchBingo::getDisplayLength(const std::string &word)
+{
     size_t length = 0;
     bool inEscapeCode = false;
-    for (char ch : word) {
-        if (ch == '\033') {
+    for (char ch : word)
+    {
+        if (ch == '\033')
+        {
             inEscapeCode = true;
-        } else if (ch == 'm') {
+        }
+        else if (ch == 'm')
+        {
             inEscapeCode = false;
-        } else if (!inEscapeCode) {
+        }
+        else if (!inEscapeCode)
+        {
             ++length;
         }
     }
     return length;
 }
 
-void WordMatchBingo::displayCurrentBingoWord() {
+void WordMatchBingo::displayCurrentBingoWord()
+{
 
     std::random_device rd;
     std::mt19937 g(rd());
-    std::uniform_int_distribution<> dis(0, static_cast<int>(bingoCardPool.size() - 1)); //static cast due to size() returning size_t and uniform_int_dist seeking an int
+    std::uniform_int_distribution<> dis(0, static_cast<int>(bingoCardPool.size() - 1)); // static cast due to size() returning size_t and uniform_int_dist seeking an int
     int index = dis(g);
 
     auto selectedWord = bingoCardPool[index];
@@ -95,12 +106,13 @@ void WordMatchBingo::displayCurrentBingoWord() {
     std::cout << "Definition: " << selectedWord.second << std::endl;
 
     bingoCardPool.erase(bingoCardPool.begin() + index);
-
 }
 
-void WordMatchBingo::displayBingoCard() {
+void WordMatchBingo::displayBingoCard()
+{
     size_t maxWordLength = 0;
-    for (const auto& pair : bingoCard) {
+    for (const auto &pair : bingoCard)
+    {
         maxWordLength = std::max(maxWordLength, getDisplayLength(pair.first));
     }
 
@@ -108,7 +120,8 @@ void WordMatchBingo::displayBingoCard() {
 
     std::cout << std::string(boxWidth, '-') << std::endl;
 
-    for (const auto& pair : bingoCard) {
+    for (const auto &pair : bingoCard)
+    {
         size_t wordLength = getDisplayLength(pair.first);
         size_t padding = (boxWidth - wordLength - 2) / 2;
         std::string paddingSpaces = std::string(padding, ' ');
@@ -119,45 +132,59 @@ void WordMatchBingo::displayBingoCard() {
     std::cout << std::string(boxWidth, '-') << std::endl;
 }
 
-void WordMatchBingo::receiveUserInput() {
+void WordMatchBingo::receiveUserInput()
+{
     bool lastWasHint = false;
     std::string userInput;
 
-    while (true) {
+    while (true)
+    {
         std::cout << "Enter a word (or 'Hint' for a hint): ";
         std::cin >> userInput;
 
         // Check for valid input or commands
-        if (userInput == "Hint") {
-            if (lastWasHint) {
+        if (userInput == "Hint")
+        {
+            if (lastWasHint)
+            {
                 clearLastNLines(1);
             }
             clearLastNLines(1);
             getHint();
             lastWasHint = true;
-        } else {
+        }
+        else
+        {
+            if (lastWasHint)
+            {
+                clearLastNLines(1);
+            }
             userGuess = userInput;
             break;
         }
     }
 }
 
-bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
+bool WordMatchBingo::compareUserInputToBingoCard(const std::string &userInput)
+{
     // Check if the userInput matches the currentBingoWord.first
-    if (toLowerCase(currentBingoWord.first) == toLowerCase(userInput)) {
+    if (toLowerCase(currentBingoWord.first) == toLowerCase(userInput))
+    {
         // Now check if it's in the bingoCard
-        
-        auto it = std::find_if(bingoCard.begin(), bingoCard.end(),
-            [&userInput](const std::pair<std::string, std::string>& pair) {
-                //std::cout << pair.first << std::endl;
-                // if(userInput == "BANANA" && pair.first == "banana") {
-                //     std::cout << (toLowerCase(pair.first) == toLowerCase(userInput)) << std::endl;
-                //     std::cout << (toLowerCase("banana") == toLowerCase("BANANA")) << std::endl;
-                // }
-                return toLowerCase(pair.first) == toLowerCase(userInput);
-            });
 
-        if (it != bingoCard.end()) {
+        auto it = std::find_if(bingoCard.begin(), bingoCard.end(),
+                               [&userInput](const std::pair<std::string, std::string> &pair)
+                               {
+                                   // std::cout << pair.first << std::endl;
+                                   //  if(userInput == "BANANA" && pair.first == "banana") {
+                                   //      std::cout << (toLowerCase(pair.first) == toLowerCase(userInput)) << std::endl;
+                                   //      std::cout << (toLowerCase("banana") == toLowerCase("BANANA")) << std::endl;
+                                   //  }
+                                   return toLowerCase(pair.first) == toLowerCase(userInput);
+                               });
+
+        if (it != bingoCard.end())
+        {
             updateWordWithStrikethrough(it->first); // Update word with strikethrough
             wordsFound += 1;
             return true;
@@ -167,39 +194,72 @@ bool WordMatchBingo::compareUserInputToBingoCard(const std::string& userInput) {
     return false;
 }
 
-void WordMatchBingo::getHint() {
-    if (!currentBingoWord.first.empty()) {
-        std::cout << "Hint: The first letter of the current word is '" 
+void WordMatchBingo::getHint()
+{
+    if (!currentBingoWord.first.empty())
+    {
+        std::cout << "Hint: The first letter of the current word is '"
                   << currentBingoWord.first[0] << "'.\n";
-    } else {
+    }
+    else
+    {
         std::cout << "No current bingo word available for a hint.\n";
     }
 }
 
-int WordMatchBingo::startGame() {
+int WordMatchBingo::startGame()
+{
     clearLastNLines(1);
+
+    std::string choice;
+    do
+    {
+        std::cout << "Current settings: bingo card size = " << bingoWordPoolCount
+                  << ", total time = " << totalTime << " seconds.\n";
+        std::cout << "Type 'continue' to use these settings or 'choose' to select your own: ";
+        std::cin >> choice;
+        clearLastNLines(2); // Clear the last two lines after input
+    } while (choice != "continue" && choice != "choose"); // Repeat the question until valid input is received
+
+    if (choice == "choose")
+    {
+        int newBingoCardSize, newTotalTime;
+
+        // Ask for new bingoWordPoolCount
+        std::cout << "Enter the desired bingo card size (int): ";
+        std::cin >> newBingoCardSize;
+        bingoWordPoolCount = newBingoCardSize;
+        clearLastNLines(1); // Clear after input
+
+        // Ask for new totalTime
+        std::cout << "Enter the desired total time (in seconds): ";
+        std::cin >> newTotalTime;
+        totalTime = newTotalTime;
+        clearLastNLines(1); // Clear after input
+    }
+
     setup();
 
     // Start the timer
     auto startTime = std::chrono::steady_clock::now();
-    auto elapsedTime = std::int64_t{ 0 };
+    auto elapsedTime = std::int64_t{0};
 
-    while (!bingoCard.empty() && !bingoCardPool.empty() && bingoWordPoolCount && remainingTime > 0) {
+    while (!bingoCard.empty() && !bingoCardPool.empty() && bingoWordPoolCount && remainingTime > 0)
+    {
         // Check the elapsed time
         auto currentTime = std::chrono::steady_clock::now();
         elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
 
-        remainingTime = std::max(std::int64_t{ 0 }, (totalTime - elapsedTime));
+        remainingTime = std::max(std::int64_t{0}, (totalTime - elapsedTime));
         displayCurrentBingoWord();
         displayBingoCard();
         printf("Time left: %lld seconds\n", remainingTime);
         receiveUserInput();
-        
 
         // Print the remaining time
 
         bool matchResult = compareUserInputToBingoCard(userGuess);
-        clearLastNLines(16);
+        clearLastNLines((bingoWordPoolCount + 5));
         remainingTime = totalTime - elapsedTime;
     }
 
