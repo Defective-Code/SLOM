@@ -189,11 +189,13 @@ std::string Wordfind::printGrid() {
 std::string Wordfind::generate() {
     std::ostringstream oss;
 
+    //this prints the words for testing purposes
+    /*
     for (const auto& word : words)
     {
         oss << word << "\n";
     }
-
+    */
 
     oss << R"(
 +=================================================+

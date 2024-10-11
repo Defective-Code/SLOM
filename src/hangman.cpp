@@ -98,6 +98,7 @@ std::string Hangman::generate() {
 // method to display screen
 void Hangman::display() {
 	clearScreen();
+	
 	std::string output = generate();
 	std::cout << output << std::endl;
 }
@@ -212,7 +213,7 @@ int Hangman::startGame() {
 	while (current_stage < MAX_STAGE) {
 		//system("CLS"); // Clear the terminal screen
 		
-		std::cout << answer << std::endl; //here for testing purposes
+		//std::cout << answer << std::endl; //here for testing purposes
 
 		display();
 
