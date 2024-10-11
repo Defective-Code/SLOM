@@ -1,20 +1,63 @@
 #include "get_data.h"
-#include "io_handler.h" //included here as all games require these methods
+#include "io_handler.h" // Included here as all games require these methods
 
 #pragma once
 
 #pragma execution_character_set( "utf-8" )
 
-//This pure abstract class defines the base structure of any game in this project. All games must have implementation for these methods
+/**
+ * This pure abstract class defines the base structure of any game in this project. 
+ * All games must have an implementation for these methods.
+ */
 class Game {
 public:
-	virtual int startGame() = 0; //this method returns the number of coins for hints. All this method should do is call other methods within the class that actually do game and menu logic
-	
+    /**
+     * Starts the game and returns the number of coins for hints.
+     * All this method should do is call other methods within the class that handle 
+     * game and menu logic.
+     * 
+     * @return The number of coins available for hints.
+     */
+    virtual int startGame() = 0;
+
 private:
-	virtual void giveHint() = 0; //function to present a hint to the user
-	virtual void display() = 0; //this function displays the current game state. This method should contain any display code that doesn't go in the menu generate() method, e.g clear() the terminal screen.
-	virtual std::string generate() = 0; //this function generates a string of the current game state, with the idea it is called by display(); This is for testing purpose
-	virtual void setup() = 0; //method that sets up a games initial state
-	virtual void reset() = 0; //method to reset the state of the game
-	virtual bool menu() = 0; //this fucntion should present a menu on the screen, and take in the user input to select the menu option. All games should have an option to guess (some games may have more than one such as hangman with guess a lettter and a word), a hint option, and a quit game option., 
+    /**
+     * Presents a hint to the user.
+     */
+    virtual void giveHint() = 0;
+
+    /**
+     * Displays the current game state.
+     * This method should contain any display code that doesn't go in the 
+     * menu generate() method, for example, clearing the terminal screen.
+     */
+    virtual void display() = 0;
+
+    /**
+     * Generates a string representing the current game state. 
+     * This is for testing purposes and should be called by display().
+     * 
+     * @return A string representing the current game state.
+     */
+    virtual std::string generate() = 0;
+
+    /**
+     * Sets up the game's initial state.
+     */
+    virtual void setup() = 0;
+
+    /**
+     * Resets the state of the game.
+     */
+    virtual void reset() = 0;
+
+    /**
+     * Presents a menu on the screen and handles user input for menu selection.
+     * All games should have options to guess (some games may have more than one, 
+     * such as Hangman, where there are options to guess a letter or a word), 
+     * request a hint, and quit the game.
+     * 
+     * @return A boolean indicating whether the menu was handled successfully.
+     */
+    virtual bool menu() = 0;
 };
