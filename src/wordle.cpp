@@ -199,7 +199,7 @@ void Wordle::setup() {
 
     wordleWord = wordToGuess;
 
-    std::cout << ("%s\n", wordToGuess.c_str());
+    std::cout << wordToGuess.c_str() << std::endl;
     //printf("%zu\n", result.length());
 
     //this code initializes the initial state of the display word (e.g the _ initially displayed)
